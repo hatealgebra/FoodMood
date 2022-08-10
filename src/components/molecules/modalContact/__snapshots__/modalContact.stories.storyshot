@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Molecules/Modal contact Contact 1`] = `
+Array [
+  <div>
+    <span />
+  </div>,
+  <span />,
+]
+`;

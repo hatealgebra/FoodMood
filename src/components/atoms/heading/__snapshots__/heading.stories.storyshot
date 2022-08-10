@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Atoms/Heading Dual Color 1`] = `
+Array [
+  <div>
+    <h2
+      className="chakra-heading css-1mcxc9b"
+    >
+      First part 
+      <div
+        className="css-qa8l2m"
+      >
+        Second part
+      </div>
+    </h2>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Atoms/Heading Fira Headings 1`] = `
+Array [
+  <div>
+    <h1
+      className="chakra-heading css-l3q7tk"
+    >
+      Heading 1
+    </h1>
+    <h2
+      className="chakra-heading css-1f4jntz"
+    >
+      Heading 2
+    </h2>
+    <h3
+      className="chakra-heading css-1j5ryu1"
+    >
+      Heading 3
+    </h3>
+    <h4
+      className="chakra-heading css-te92xg"
+    >
+      Heading 4
+    </h4>
+    <h5
+      className="chakra-heading css-1pnz8ag"
+    >
+      Heading 5
+    </h5>
+    <h6
+      className="chakra-heading css-750xsh"
+    >
+      Heading 6
+    </h6>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Atoms/Heading Headings 1`] = `
+Array [
+  <div>
+    <h1
+      className="chakra-heading css-1i61012"
+    >
+      Heading 1
+    </h1>
+    <h2
+      className="chakra-heading css-1ha5w2r"
+    >
+      Heading 2
+    </h2>
+    <h3
+      className="chakra-heading css-1jkx6l7"
+    >
+      Heading 3
+    </h3>
+    <h4
+      className="chakra-heading css-1dklj6k"
+    >
+      Heading 4
+    </h4>
+    <h5
+      className="chakra-heading css-1jb3vzl"
+    >
+      Heading 5
+    </h5>
+    <h6
+      className="chakra-heading css-18j379d"
+    >
+      Heading 6
+    </h6>
+  </div>,
+  <span />,
+]
+`;

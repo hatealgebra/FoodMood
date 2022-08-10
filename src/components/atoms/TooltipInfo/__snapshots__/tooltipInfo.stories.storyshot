@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Atoms/Tooltip Generic Tooltip 1`] = `
+Array [
+  <div>
+    <span
+      className="css-0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      tabIndex={0}
+    >
+      Get info
+    </span>
+  </div>,
+  <span />,
+]
+`;

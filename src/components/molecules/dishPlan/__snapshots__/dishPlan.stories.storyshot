@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Molecules/Dish Plan Variable Dish 1`] = `
+Array [
+  <div>
+    <div
+      style={
+        Object {
+          "margin": "2em",
+        }
+      }
+    >
+      <div
+        className="css-8atqhb"
+      >
+        <div
+          className="sc-bdnxRM EWAwP"
+        >
+          <div
+            className="css-xo4ptx"
+          >
+            <h3
+              aria-label="lunch"
+              className="chakra-text css-1nkzofs"
+            >
+              lunch
+            </h3>
+          </div>
+        </div>
+        <img
+          alt="Pumpkin Soup"
+          className="chakra-image css-1y3o82d"
+          src="pumpkin-soup.jpg"
+        />
+        <div
+          className="css-1yi83h1"
+        >
+          Pumpkin Soup
+        </div>
+      </div>
+    </div>
+  </div>,
+  <span />,
+]
+`;

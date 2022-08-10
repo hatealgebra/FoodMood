@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Atoms/List List Example 1`] = `
+Array [
+  <div>
+    <figure>
+      <figcaption>
+        <h2
+          className="chakra-heading css-10ibg55"
+        >
+          Heading
+        </h2>
+      </figcaption>
+      <ul
+        className="css-1avzygp"
+        role="list"
+      >
+        <li
+          className="css-0"
+        >
+          Item number one
+        </li>
+        <li
+          className="css-0"
+        >
+          Item number two
+        </li>
+        <li
+          className="css-0"
+        >
+          Item number three
+        </li>
+      </ul>
+    </figure>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Atoms/List Ordered List Example 1`] = `
+Array [
+  <div>
+    <ol
+      className="css-kht5bd"
+      role="list"
+    >
+      <li
+        className="css-0"
+      >
+        Item number one
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number two
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number three
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number one
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number two
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number three
+      </li>
+    </ol>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Atoms/List Unstyled List 1`] = `
+Array [
+  <div>
+    <ul
+      className="css-1jwrh5v"
+      role="list"
+    >
+      <li
+        className="css-0"
+      >
+        Item number one
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number two
+      </li>
+      <li
+        className="css-0"
+      >
+        Item number three
+      </li>
+    </ul>
+  </div>,
+  <span />,
+]
+`;
