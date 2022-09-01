@@ -3,7 +3,7 @@ import React from "react";
 import { Heading, Text } from "@chakra-ui/react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { getAuth } from "firebase/auth";
-import store from "../../store/store";
+import store from "../store/store";
 import { showError, showSuccess } from "./message.helpers";
 import { renderComponent } from "./testing.helpers";
 import { SetUserData } from "./storybook.helpers";

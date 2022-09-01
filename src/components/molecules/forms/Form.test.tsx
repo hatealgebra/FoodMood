@@ -1,7 +1,7 @@
 import React from "react";
 import userEvent from "@testing-library/user-event";
 
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 import LoginForm from "./LoginForm";
 import { screen, waitFor } from "@testing-library/react";
 import SignupForm from "./SignupForm";
@@ -13,10 +13,16 @@ const inputMock = [
   "Password1",
 ];
 
+// FIXME mock firebase needed
+
 describe("Login form functionality", () => {
   test("on submit", async () => {
     const onSubmit = jest.fn();
-    renderComponent(<LoginForm onSubmit={onSubmit} />);
+    const fakeSubmit = (e: any) => {
+      e.preventDefault();
+      onSubmit();
+    };
+    renderComponent(<LoginForm onSubmit={() => fakeSubmit} />);
     const loginButton = screen.getByRole("button", { name: /login/i });
     userEvent.click(loginButton);
     await waitFor(() => expect(onSubmit).toHaveBeenCalled());

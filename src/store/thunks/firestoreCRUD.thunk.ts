@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteDoc, DocumentData, setDoc } from "firebase/firestore";
 
-import { recipeRef } from "../../utils/helpers/firestore.helpers";
+import { recipeRef } from "../../helpers/firestore.helpers";
 
 import Recipe from "../../types/recipe.types";
 

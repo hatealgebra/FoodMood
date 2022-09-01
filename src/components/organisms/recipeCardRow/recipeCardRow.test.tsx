@@ -5,7 +5,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 
 import {
   NoRecipesRow,

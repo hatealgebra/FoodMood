@@ -5,7 +5,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { setupIsolatedComponent } from "../../../helpers/testing.helpers";
 import AlertDelete from "./AlertDelete";
 
 const textBtn = "Dialog delete";
@@ -14,7 +14,7 @@ let action: jest.Mock;
 describe("Alert delete dialog flow", () => {
   beforeEach(() => {
     action = jest.fn();
-    renderComponent(
+    setupIsolatedComponent(
       <AlertDelete
         heading="Alert dialog heading"
         button={textBtn}
@@ -30,14 +30,13 @@ describe("Alert delete dialog flow", () => {
     const alertDialog = await screen.findByRole("alertdialog");
     await waitFor(() => expect(alertDialog).toBeInTheDocument());
   });
-  test("Call delete function", async () => {
+  test("Call delete function", () => {
     const openBtn = screen.getByRole("button", { name: textBtn });
     userEvent.click(openBtn);
-    const alertDialog = await screen.findByRole("alertdialog");
-    const deleteBtn = await screen.findByRole("button", { name: "Delete" });
+    const alertDialog = screen.getByRole("alertdialog");
+    const deleteBtn = screen.getByRole("button", { name: "Delete" });
     userEvent.click(deleteBtn);
     expect(action).toHaveBeenCalled();
-    await waitForElementToBeRemoved(() => screen.getByRole("alertdialog"));
-    expect(alertDialog).not.toBeInTheDocument();
+    expect(alertDialog).toHaveStyle({ opacity: 0 });
   });
 });

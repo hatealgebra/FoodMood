@@ -1,7 +1,7 @@
 import React from "react";
 import * as redux from "react-redux";
 
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 import {
   screen,
   waitFor,

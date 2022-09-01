@@ -1,11 +1,11 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { setupIsolatedComponent } from "../../../helpers/testing.helpers";
 import { RadioSortBy } from "./dropdown.stories";
 
 describe("Choose diet tests", () => {
-  beforeEach(() => renderComponent(<RadioSortBy />));
+  beforeEach(() => setupIsolatedComponent(<RadioSortBy />));
   test("Opens the dropdown", () => {
     const menuButton = screen.getByRole("button", { name: /sort by/i });
     const dropdownMenu = screen.getByRole("menu", { hidden: true });

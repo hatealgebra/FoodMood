@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Link, ListItem, UnorderedList } from "@chakra-ui/react";
+import { ListItem, UnorderedList } from "@chakra-ui/react";
 //  FIXME Gatsby Links
-// import { Link as LinkRouter } from "react-router-dom";
+import { Link } from "gatsby";
 
 import * as routerConstantClass from "../../../utils/constants/router.constants";
 
@@ -23,36 +23,27 @@ const TouchMenuLinks = ({ noMargin }: TouchMenuLinksProps) => {
       mx={noMargin ? 0 : [5, 16]}
     >
       <ListItem>
-        {/* <Link as={LinkRouter} to="/" color="mono.500">
+        <Link to="/" color="mono.500">
           Homepage
         </Link>
       </ListItem>
       <ListItem>
-        <Link
-          as={LinkRouter}
-          to={routerConstantClass.ROUTE_APP.APP_HOME_PAGE}
-          color="mono.500"
-        >
+        <Link to={routerConstantClass.ROUTE_APP.APP_HOME_PAGE} color="mono.500">
           Explore App
         </Link>
       </ListItem>
       <ListItem>
-        <Link
-          as={LinkRouter}
-          to={routerConstantClass.ROUTE_WEB.ABOUT_PAGE}
-          color="mono.500"
-        >
+        <Link to={routerConstantClass.ROUTE_WEB.ABOUT_PAGE} color="mono.500">
           About
         </Link>
       </ListItem>
       <ListItem>
         <Link
-          as={LinkRouter}
           to={routerConstantClass.ROUTE_WEB.TERMS_POLICY_PAGE}
           color="mono.500"
         >
           Terms & policy
-        </Link> */}
+        </Link>
       </ListItem>
     </UnorderedList>
   );

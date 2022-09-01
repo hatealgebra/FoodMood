@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 import GenericPage from "./GenericPage";
 
 describe("test if header and footer are rendered", () => {

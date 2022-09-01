@@ -8,7 +8,6 @@ function useHover() {
 
   useEffect(() => {
     const node: any = ref.current;
-    console.log(ref);
     if (node) {
       node.addEventListener("mouseover", handleMouseOver);
       node.addEventListener("mouseout", handleMouseOut);

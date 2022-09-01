@@ -1,7 +1,7 @@
 import React from "react";
 
 import userEvent from "@testing-library/user-event";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 
 import { FormForLogin, FormForSignup } from "./formHero.stories";
 import LoginForm from "../../molecules/forms/LoginForm";

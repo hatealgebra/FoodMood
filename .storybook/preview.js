@@ -1,6 +1,6 @@
 import { addDecorator } from "@storybook/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import themeDefault from "../src/components/particles/themeDefault";
+import themeDefault from "../src/@chakra-ui/gatsby-plugin/theme";
 import { Provider } from "react-redux";
 import store from "../src/store/store";
 import { initialize, mswDecorator } from "msw-storybook-addon";

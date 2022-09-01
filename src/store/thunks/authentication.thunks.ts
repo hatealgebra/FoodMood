@@ -14,13 +14,13 @@ import {
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 
-import themeDefault from "../../components/particles/themeDefault";
+import themeDefault from "../../@chakra-ui/gatsby-plugin/theme";
 import { dbFirestore } from "../../services/firebase/configFirebase";
 import { CreateUserProps, LoginCredentials } from "../../types/async.types";
 
 import * as myConstClass from "../../utils/constants/router.constants";
-import { userRef } from "../../utils/helpers/firestore.helpers";
-import { showError, showSuccess } from "../../utils/helpers/message.helpers";
+import { userRef } from "../../helpers/firestore.helpers";
+import { showError, showSuccess } from "../../helpers/message.helpers";
 
 const toast = createStandaloneToast({ theme: themeDefault });
 

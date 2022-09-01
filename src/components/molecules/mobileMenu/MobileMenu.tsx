@@ -8,7 +8,7 @@ import UserAvatar from "../userAvatar/UserAvatar";
 import { useAppSelector } from "../../../store/hooks";
 import { selectUserStatus } from "../../../store/slices/user.slice";
 
-// ! Body scroll doesnt toggle
+// FIXME: Body scroll doesnt toggle
 const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
   const currentUser = getAuth().currentUser;
   const userStatus = useAppSelector(selectUserStatus);

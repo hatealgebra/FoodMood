@@ -8,9 +8,10 @@ const index = () => {
   const deviceWidth: WindowSize = useWindowSize();
 
   return (
-    <GenericPage>
-      <HomePagePresentation mobile={deviceWidth.width! < 670 ? true : false} />
-    </GenericPage>
+    // <GenericPage>
+    //   <HomePagePresentation mobile={deviceWidth.width! < 670 ? true : false} />
+    // </GenericPage>
+    <h1>In progress :)</h1>
   );
 };
 

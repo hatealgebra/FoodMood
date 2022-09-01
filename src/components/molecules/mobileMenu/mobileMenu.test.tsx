@@ -1,11 +1,12 @@
-import { screen } from "@testing-library/react";
 import React from "react";
+import { screen } from "@testing-library/react";
 
 import * as routeConstantClass from "../../../utils/constants/router.constants";
 
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 import MobileMenu from "./MobileMenu";
 
+// FIXME Firebase mock needed
 beforeEach(() => renderComponent(<MobileMenu isOpen />));
 
 describe("Rendering the menu", () => {
@@ -17,6 +18,7 @@ describe("Rendering the menu", () => {
 
 describe("Correct link href", () => {
   test("Correct homepage href", () => {
+    screen.debug();
     const link = screen.getByRole("link", { name: /homepage/i });
     expect(link).toHaveAttribute("href", "/");
   });

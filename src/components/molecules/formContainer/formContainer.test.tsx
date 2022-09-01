@@ -1,13 +1,13 @@
 import { screen } from "@testing-library/react";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { setupIsolatedComponent } from "../../../helpers/testing.helpers";
 import FormContainer from "./FormContainer";
 
 describe("test if container is responsive", () => {
   function getFormContainer(width: number) {
     global.innerWidth = width;
     global.dispatchEvent(new Event("resize"));
-    renderComponent(<FormContainer>Hey</FormContainer>);
+    setupIsolatedComponent(<FormContainer>Hey</FormContainer>);
   }
 
   test("show mobile version", () => {

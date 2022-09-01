@@ -7,7 +7,7 @@ import { VStack, Text, SimpleGrid, Button } from "@chakra-ui/react";
 import AppSection from "../../components/molecules/appSection/AppSection";
 import AppPage from "../../components/templates/appPage/AppPage.template";
 import { useAppDispatch } from "../../store/hooks";
-import UploadAvatar from "../../components/molecules/uploadAvatar/UploadAvatar";
+import UploadAvatar from "../../components/organisms/uploadAvatar/UploadAvatar";
 import { IFieldInput } from "../../types/utils.types";
 import FormikInput from "../../components/atoms/input/Input";
 import {

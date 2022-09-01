@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 
 import styled from "styled-components";
-import themeDefault from "../../particles/themeDefault";
+import themeDefault from "../../../@chakra-ui/gatsby-plugin/theme";
 
 const OverlineText = styled.div`
   &::before {

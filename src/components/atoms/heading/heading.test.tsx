@@ -1,19 +1,19 @@
 import { Heading } from "@chakra-ui/react";
 import { screen } from "@testing-library/react";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { setupIsolatedComponent } from "../../../helpers/testing.helpers";
 import { FiraHeadings, Headings } from "./heading.stories";
 
 describe("Rendering correct level of headings", () => {
   test("it is heading", () => {
-    renderComponent(<Heading as="h1">This is heading 1</Heading>);
+    setupIsolatedComponent(<Heading as="h1">This is heading 1</Heading>);
     expect(screen.getByRole("heading")).toHaveTextContent(/heading 1/);
   });
 });
 
 describe("correct font family rendering", () => {
   test("if heading has PlayFair Display family", () => {
-    renderComponent(<Headings />);
+    setupIsolatedComponent(<Headings />);
 
     const headings = screen.getAllByRole("heading");
     headings.map((heading) =>
@@ -24,7 +24,7 @@ describe("correct font family rendering", () => {
   });
 
   test("if heading has Fira family", () => {
-    renderComponent(<FiraHeadings />);
+    setupIsolatedComponent(<FiraHeadings />);
 
     const headings = screen.getAllByRole("heading");
     headings.map((heading) =>

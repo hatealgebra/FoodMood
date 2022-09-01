@@ -2,11 +2,11 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import DishPlan from "./DishPlan";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { setupIsolatedComponent } from "../../../helpers/testing.helpers";
 
 describe("Fish soup", () => {
   beforeEach(() =>
-    renderComponent(
+    setupIsolatedComponent(
       <DishPlan
         dish="dinner"
         img="https://image.shutterstock.com/z/stock-photo-fried-cod-fish-filet-with-green-asparagus-and-mushrooms-as-close-up-on-a-plate-1075892291.jpg"

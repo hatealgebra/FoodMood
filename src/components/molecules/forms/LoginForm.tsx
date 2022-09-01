@@ -2,7 +2,7 @@ import React from "react";
 import "firebase/auth";
 
 import { Formik, Field, Form, FormikProps } from "formik";
-import { Button, Link, Text, VStack } from "@chakra-ui/react";
+import { Button, Text, VStack, Link } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 
 import FormikInput from "../../atoms/input/Input";
@@ -29,7 +29,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
     await dispatch(loginUser({ email, psw }));
     if (user.currentUser !== null) {
       // FIXME how to redirect nicely?
-      window.location = "/";
+      // window.location = "/";
     }
     actions.resetForm();
   };

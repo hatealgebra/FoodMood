@@ -2,7 +2,7 @@ import React from "react";
 
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 import TopPanel from "./TopPanel";
 
 describe("Devices rendering", () => {

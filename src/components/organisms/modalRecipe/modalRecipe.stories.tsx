@@ -2,7 +2,7 @@ import React from "react";
 
 import ModalRecipe from "./ModalRecipe";
 
-import { SetUserData } from "../../../utils/helpers/storybook.helpers";
+import { SetUserData } from "../../../helpers/storybook.helpers";
 import { useAppDispatch } from "../../../store/hooks";
 import { openModal } from "../../../store/slices/modalRecipe.slice";
 import { fetchRecipes } from "../../../store/thunks/edamamRecipe.thunk";

@@ -1,6 +1,7 @@
-import { screen } from "@testing-library/react";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { screen } from "@testing-library/react";
+
+import { renderComponent } from "../../../helpers/testing.helpers";
 import { PumpkinRecipe } from "./recipeCard.stories";
 
 describe("correct rendering", () => {

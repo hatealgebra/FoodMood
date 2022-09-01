@@ -5,8 +5,8 @@ import { connectFirestoreEmulator } from "@firebase/firestore";
 import { connectStorageEmulator, getStorage } from "firebase/storage";
 
 export const firebaseConfig = {
-  apiKey: process.env.FIREBASE_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  apiKey: "AIzaSyAscHD8Zm55ihNcjlLe6jcnQJ6XbUyAplw",
+  authDomain: "food-mood-a535d.firebaseapp.com",
   projectId: "food-mood-a535d",
   storageBucket: "food-mood-a535d.appspot.com",
   messagingSenderId: "969736149399",

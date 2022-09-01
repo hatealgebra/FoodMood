@@ -1,8 +1,8 @@
 import { getAuth } from "firebase/auth";
 import React, { ReactNode, useEffect } from "react";
 // import ModalRecipe from "../../components/organisms/modalRecipe/ModalRecipe";
-import { useAppDispatch } from "../../store/hooks";
-import { setUser } from "./testing.helpers";
+import { useAppDispatch } from "../store/hooks";
+import { setUser } from "./firebase.helpers";
 
 export const SetUserData: React.FC<{
   children: ReactNode;
