@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  screen,
-  waitForElementToBeRemoved,
-  waitFor,
-} from "@testing-library/react";
+import { screen } from "@testing-library/react";
 
 import { renderComponent } from "../../../helpers/testing.helpers";
 
@@ -12,7 +8,6 @@ import {
   RecipesRow,
   RecipesRowLoading,
 } from "./recipeCardRow.stories";
-import userEvent from "@testing-library/user-event";
 
 describe("set of correct rendering", () => {
   test("All elements have correct classname", () => {
@@ -33,21 +28,7 @@ describe("set of correct rendering", () => {
   });
   test("No data avalaible", () => {
     renderComponent(<NoRecipesRow />);
-    const msg = screen.getByText(/No saved recipes yet/gi);
+    const msg = screen.getByText(/No saved recipes yet/i);
     expect(msg).toBeTruthy();
   });
-});
-
-describe("other rendering", () => {
-  test("Close/Open modal", async () => {
-    renderComponent(<RecipesRow />);
-    const recipeCards = screen.getAllByLabelText("recipe-card");
-    userEvent.click(recipeCards[0]);
-    const modalRecipe = await screen.findByRole("dialog");
-    const closeBtn = await screen.findByRole("button", { name: "Close" });
-    await waitFor(() => expect(modalRecipe).toBeTruthy());
-    userEvent.click(closeBtn);
-    await waitForElementToBeRemoved(modalRecipe);
-    expect(modalRecipe).not.toBeInTheDocument();
-  }, 10000);
 });

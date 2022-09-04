@@ -7,12 +7,12 @@ import TextField from "./Input";
 import userEvent from "@testing-library/user-event";
 
 describe("testing the input", () => {
-  test("controlled input", () => {
+  test("controlled input", async () => {
     setupIsolatedComponent(
       <TextField type="text" id="input" placeholder="Type something" />
     );
     const input = screen.getByRole("textbox");
-    userEvent.type(input, "Prague");
+    await userEvent.type(input, "Prague");
     expect(input).toHaveValue("Prague");
   });
 });

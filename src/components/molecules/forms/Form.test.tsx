@@ -16,21 +16,24 @@ const inputMock = [
 // FIXME mock firebase needed
 
 describe("Login form functionality", () => {
-  test("on submit", async () => {
+  test("on submit", () => {
     const onSubmit = jest.fn();
-    const fakeSubmit = (e: any) => {
-      e.preventDefault();
-      onSubmit();
-    };
-    renderComponent(<LoginForm onSubmit={() => fakeSubmit} />);
-    const loginButton = screen.getByRole("button", { name: /login/i });
+
+    const { getByRole, getByLabelText } = renderComponent(
+      <LoginForm onSubmit={onSubmit()} />
+    );
+    const emailInput = getByRole("textbox");
+    const psw = getByLabelText("psw");
+    userEvent.type(emailInput, inputMock[1]);
+    userEvent.type(psw, inputMock[2]);
+    const loginButton = getByRole("button", { name: /login/i });
     userEvent.click(loginButton);
-    await waitFor(() => expect(onSubmit).toHaveBeenCalled());
+    expect(onSubmit).toBeCalled();
   });
 });
 
 describe("signup functionality", () => {
-  test("clicking the button triggers submit event", async () => {
+  test("clicking the button triggers submit event", () => {
     const onSubmit = jest.fn();
     renderComponent(<SignupForm onSubmit={onSubmit} />);
     const signupButton = screen.getByRole("button", { name: /sign up/i });
@@ -41,6 +44,6 @@ describe("signup functionality", () => {
     userEvent.type(psw, inputMock[2]);
     userEvent.type(pswAgain, inputMock[3]);
     userEvent.click(signupButton);
-    await waitFor(() => expect(onSubmit).toHaveBeenCalled());
+    expect(onSubmit).toBeCalled;
   });
 });

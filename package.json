@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --detectOpenHandles",
     "typecheck": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -27,6 +27,7 @@
     "@fontsource/kalam": "^4.5.8",
     "@fontsource/playfair-display": "^4.5.10",
     "@reduxjs/toolkit": "^1.8.3",
+    "@testing-library/user-event": "^14.4.3",
     "babel-plugin-styled-components": "^2.0.7",
     "body-scroll-lock": "^4.0.0-beta.0",
     "firebase": "^9.9.2",

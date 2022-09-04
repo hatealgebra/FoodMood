@@ -32,6 +32,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 
 // TODO Update rules for firestore and storage. Set anonymous sign in when testing in storybook and node with react-testing-library
 // TODO Down size image to get it more crisp
+// TODO Write tests
 
 interface UploadAvatarProps {
   uid: string;

@@ -4,7 +4,7 @@ import themeDefault from "../@chakra-ui/gatsby-plugin/theme";
 const DURATION = 3000;
 
 export const showError = async (error: Error) => {
-  const toast = createStandaloneToast({ theme: themeDefault });
+  const { toast } = createStandaloneToast({ theme: themeDefault });
   toast({
     title: error.name,
     description: error.message,
@@ -15,7 +15,7 @@ export const showError = async (error: Error) => {
 };
 
 export const showSuccess = async (title: string, description: string) => {
-  const toast = createStandaloneToast({ theme: themeDefault });
+  const { toast } = createStandaloneToast({ theme: themeDefault });
   toast({
     title,
     description,

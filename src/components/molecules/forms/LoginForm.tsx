@@ -29,7 +29,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
     await dispatch(loginUser({ email, psw }));
     if (user.currentUser !== null) {
       // FIXME how to redirect nicely?
-      // window.location = "/";
+      window.location = "/";
     }
     actions.resetForm();
   };
@@ -61,7 +61,6 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
                   isRequired
                   field={field}
                   label="Password"
-                  aria-label="psw"
                   id="psw"
                   type="password"
                 />

@@ -75,13 +75,7 @@ const RecipeCard = ({
               </Tag>
             ))}
           </ScrollableRow>
-          <Box
-            fontSize="xl"
-            fontWeight="600"
-            width="inherit"
-            isTruncated
-            overflow="hidden"
-          >
+          <Box fontSize="xl" fontWeight="600" width="inherit" overflow="hidden">
             {heading}
           </Box>
           <HStack

@@ -30,13 +30,15 @@ describe("Alert delete dialog flow", () => {
     const alertDialog = await screen.findByRole("alertdialog");
     await waitFor(() => expect(alertDialog).toBeInTheDocument());
   });
-  test("Call delete function", () => {
+  test("Call delete function", async () => {
     const openBtn = screen.getByRole("button", { name: textBtn });
     userEvent.click(openBtn);
-    const alertDialog = screen.getByRole("alertdialog");
-    const deleteBtn = screen.getByRole("button", { name: "Delete" });
+    const alertDialog = await screen.findByRole("alertdialog");
+    const deleteBtn = await screen.findByRole("button", { name: "Delete" });
     userEvent.click(deleteBtn);
-    expect(action).toHaveBeenCalled();
-    expect(alertDialog).toHaveStyle({ opacity: 0 });
+    await waitFor(() => {
+      expect(action).toHaveBeenCalled();
+      expect(alertDialog).toHaveStyle({ opacity: 0 });
+    });
   });
 });

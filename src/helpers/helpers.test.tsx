@@ -1,43 +1,61 @@
 import React from "react";
 
 import { Heading, Text } from "@chakra-ui/react";
-import { render, screen, waitFor } from "@testing-library/react";
-import { getAuth } from "firebase/auth";
+import { screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
 import store from "../store/store";
 import { showError, showSuccess } from "./message.helpers";
 import { renderComponent } from "./testing.helpers";
-import { SetUserData } from "./storybook.helpers";
-import { Provider } from "react-redux";
 
 const mockError = {
   name: "Error name",
   message: "Description of mock error.",
 };
 
-const MockComponent = () => {
+const MockComponent = ({
+  toastFunction,
+}: {
+  toastFunction: (error: Error) => Promise<void>;
+}) => {
+  const callToast = async () => await toastFunction(mockError);
+
   return (
     <>
       <Heading as="h2">Hello world</Heading>
       <Text>{store && "Store is here."}</Text>
+      <button onClick={() => callToast()}>Click me</button>
     </>
   );
 };
-describe("Message helpers", () => {
-  test("Error msg", async () => {
-    const error = await showError(mockError);
-    expect(error).toBe(1);
-  });
-  test("Success msg", async () => {
-    const success = await showSuccess(
-      "Success title",
-      "Description of succes msg"
-    );
-    expect(success).toBe(2);
-  });
-});
+
+// TODO: Jest somehow shows already for toasts there, it is a beahviour of toast from Chakra-UI
+
+// describe("Message helpers", () => {
+//   test("Error msg", async () => {
+//     const { getByRole } = renderComponent(
+//       <MockComponent toastFunction={showError} />
+//     );
+//     await waitFor(() =>
+//       document.getElementById("chakra-toast-portal")?.remove()
+//     );
+//     userEvent.click(getByRole("button"));
+//     expect(getByRole("portal"));
+//     screen.debug();
+//   });
+//   test("Success msg", async () => {
+//     const success = await showSuccess(
+//       "Success title",
+//       "Description of succes msg"
+//     );
+//     expect(success).toBe(2);
+//   });
+// });
 
 describe("Testing helpers/renderComponent", () => {
-  beforeEach(() => renderComponent(<MockComponent />));
+  beforeEach(() =>
+    renderComponent(<MockComponent toastFunction={showError} />)
+  );
   test("correct component", () => {
     const heading = screen.getByRole("heading", { name: "Hello world" });
     expect(heading).toBeInTheDocument();

@@ -13,7 +13,7 @@ describe("Button state", () => {
     const isLoadingText = screen.getByText(/is loading/i);
     expect(isLoadingText).toBeTruthy();
   });
-  test("Save button is saved", () => {
+  test("Save button is saved", async () => {
     const mockFn = jest.fn();
     setupIsolatedComponent(
       <SaveButton savedStatus={false} onClick={mockFn}>
@@ -22,7 +22,7 @@ describe("Button state", () => {
     );
     const saveButton = screen.getByRole("button");
     userEvent.click(saveButton);
-    const btnByLabel = screen.getByLabelText("Saved");
+    const btnByLabel = await screen.findByLabelText("Saved");
     expect(btnByLabel).toBeTruthy();
     expect(mockFn).toHaveBeenCalled();
   });

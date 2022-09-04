@@ -18,7 +18,6 @@ describe("Rendering the menu", () => {
 
 describe("Correct link href", () => {
   test("Correct homepage href", () => {
-    screen.debug();
     const link = screen.getByRole("link", { name: /homepage/i });
     expect(link).toHaveAttribute("href", "/");
   });

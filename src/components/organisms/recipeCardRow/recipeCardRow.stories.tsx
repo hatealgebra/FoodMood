@@ -6,7 +6,6 @@ import { recipeRowOrigin } from "../../../utils/firebase.utils";
 import ModalRecipe from "../modalRecipe/ModalRecipe";
 
 export const RecipesRow = () => {
-  console.log(typeof dailyRecipes);
   const recipeData = dailyRecipes.hits.map((hit) => hit.recipe);
 
   return (

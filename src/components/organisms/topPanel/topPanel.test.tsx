@@ -33,13 +33,17 @@ describe("Devices rendering", () => {
 
 describe("Mobile version interaction", () => {
   beforeEach(() => renderComponent(<TopPanel device="mobile" />));
-  test("toggling mobile menu", () => {
+  test("toggling mobile menu", async () => {
     const mobileMenu = screen.getByLabelText("mobile-menu");
     const hamburgerIcon = screen.getByLabelText("Menu button");
     expect(mobileMenu).toHaveStyle("opacity: 0; visibility: hidden");
     userEvent.click(hamburgerIcon);
-    expect(mobileMenu).toHaveStyle("opacity: 1; visibility: visible;");
+    await waitFor(() => {
+      expect(mobileMenu).toHaveStyle("opacity: 1; visibility: visible;");
+    });
     userEvent.click(hamburgerIcon);
-    expect(mobileMenu).toHaveStyle("opacity: 0; visibility: hidden");
+    await waitFor(() => {
+      expect(mobileMenu).toHaveStyle("opacity: 0; visibility: hidden");
+    });
   });
 });

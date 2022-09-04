@@ -5,6 +5,8 @@ import * as routeConstClass from "../../../utils/constants/router.constants";
 import useHover from "../../../utils/hooks/useHover";
 
 // Hovering is done through the component styling from chakra UI
+// FIXME: Rework/Refactor
+// TODO: Write tests
 
 const AppNavbar = () => {
   const {
