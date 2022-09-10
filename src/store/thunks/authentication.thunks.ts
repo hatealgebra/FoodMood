@@ -6,6 +6,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
   updateProfile,
   deleteUser,
   signOut,
@@ -21,6 +23,7 @@ import { CreateUserProps, LoginCredentials } from "../../types/async.types";
 import * as myConstClass from "../../utils/constants/router.constants";
 import { userRef } from "../../helpers/firestore.helpers";
 import { showError, showSuccess } from "../../helpers/message.helpers";
+import { navigate } from "gatsby";
 
 const toast = createStandaloneToast({ theme: themeDefault });
 
@@ -29,11 +32,14 @@ export const loginUser = createAsyncThunk<
   LoginCredentials,
   { rejectValue: Error }
 >("user/login", async (credentials: LoginCredentials, thunkApi) => {
-  const { email, psw } = credentials;
+  const { email, pwd } = credentials;
   try {
-    await signInWithEmailAndPassword(getAuth(), email, psw);
-    return showSuccess("Logged in", "User was successfully logged in.");
+    setPersistence(getAuth(), browserSessionPersistence);
+    await signInWithEmailAndPassword(getAuth(), email, pwd);
+    showSuccess("Logged in", "User was successfully logged in.");
+    return navigate("/");
   } catch (e) {
+    console.log(e);
     const name = "Incorrect login.";
     const message =
       "Login does not match. Either email doesn't exist or password is incorrect.";
@@ -63,18 +69,17 @@ export const createUser = createAsyncThunk<
   CreateUserProps,
   { rejectValue: Error }
 >("user/register", async (credentials: CreateUserProps, thunkApi) => {
-  const { email, psw, name } = credentials;
+  const { email, pwd, name } = credentials;
   try {
     const userData = await createUserWithEmailAndPassword(
       getAuth(),
       email,
-      psw
+      pwd
     );
     await updateProfile(userData.user, {
       displayName: name,
     });
     const { currentUser } = getAuth();
-    console.log("first");
     if (currentUser !== null) {
       await setDoc(userRef(currentUser.uid), { foo: "bar" });
       toast({

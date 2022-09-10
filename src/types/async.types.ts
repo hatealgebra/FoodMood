@@ -29,13 +29,13 @@ export interface UserSliceProps {
 
 export interface LoginCredentials {
   email: string;
-  psw: string;
+  pwd: string;
 }
 
 export interface CreateUserProps {
   name?: string;
   email: string;
-  psw: string;
+  pwd: string;
 }
 
 export interface FetchSavedRecipes {

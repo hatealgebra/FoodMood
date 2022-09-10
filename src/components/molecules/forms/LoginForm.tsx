@@ -21,16 +21,12 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
 
   const initialValues: LoginCredentials = {
     email: "",
-    psw: "",
+    pwd: "",
   };
 
   const logOnSubmit = async (values: typeof initialValues, actions: any) => {
-    const { email, psw } = values;
-    await dispatch(loginUser({ email, psw }));
-    if (user.currentUser !== null) {
-      // FIXME how to redirect nicely?
-      window.location = "/";
-    }
+    const { email, pwd } = values;
+    await dispatch(loginUser({ email, pwd }));
     actions.resetForm();
   };
 
@@ -55,13 +51,13 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
                 />
               )}
             </Field>
-            <Field name="psw">
+            <Field name="pwd">
               {({ field, form }: IFieldInput) => (
                 <FormikInput
                   isRequired
                   field={field}
                   label="Password"
-                  id="psw"
+                  id="pwd"
                   type="password"
                 />
               )}
