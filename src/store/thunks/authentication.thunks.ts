@@ -37,7 +37,7 @@ export const loginUser = createAsyncThunk<
     setPersistence(getAuth(), browserSessionPersistence);
     await signInWithEmailAndPassword(getAuth(), email, pwd);
     showSuccess("Logged in", "User was successfully logged in.");
-    return navigate("/");
+    return navigate("/app/home");
   } catch (e) {
     console.log(e);
     const name = "Incorrect login.";
@@ -90,6 +90,7 @@ export const createUser = createAsyncThunk<
         position: "top",
         duration: 3500,
       });
+      return navigate("/login");
     }
   } catch (err: any) {
     if (err.message.match(/email-already-in-use/gi)) {
@@ -143,7 +144,7 @@ export const signOutUser = createAsyncThunk<
       status: "success",
       position: "top",
     });
-    return true;
+    return navigate("/");
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "Something went wrong!",

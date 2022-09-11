@@ -137,6 +137,7 @@ const LastSection = () => (
   </Section>
 );
 
+// FIXME: Heading margin bottom
 const HamburgerRecipe = () => (
   <Section bg="#111111">
     <SimpleGrid

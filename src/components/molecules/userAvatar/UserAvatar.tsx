@@ -23,6 +23,8 @@ const UserAvatar = ({
 }: UserAvatarProps) => {
   const dispatch = useAppDispatch();
 
+  console.log(name);
+
   const signOut = () => {
     dispatch(signOutUser(null));
     navigate(myConstClass.ROUTE_WEB.LOGIN_PAGE);

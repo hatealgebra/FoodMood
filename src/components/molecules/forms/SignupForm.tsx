@@ -30,7 +30,7 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
         return name;
       })
       .join(" ");
-    dispatch(createUser({ email, psw: password, name: capitalizeName }));
+    dispatch(createUser({ email, pwd: password, name: capitalizeName }));
     actions.resetForm();
   };
 
@@ -44,78 +44,80 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
       validateOnChange={false}
     >
       {/* FIXME Typing props */}
-      {(props: FormikFormProps) => (
-        <Form aria-label="signup-form">
-          <SimpleGrid spacing={3}>
-            <Field name="name">
-              {({ field, form }: IFieldInput) => (
-                <FormikInput
-                  isRequired
-                  field={field}
-                  label="name"
-                  id="name"
-                  type="text"
-                  isInvalid={form.errors.name}
-                />
-              )}
-            </Field>
-            <Field name="email">
-              {({ field, form }: IFieldInput) => (
-                <FormikInput
-                  isRequired
-                  field={field}
-                  label="Email"
-                  id="email"
-                  type="email"
-                />
-              )}
-            </Field>
-            <Field name="password">
-              {({ field, form }: IFieldInput) => (
-                <FormikInput
-                  isRequired
-                  field={field}
-                  label="Password"
-                  id="password"
-                  type="password"
-                  isInvalid={form.errors.password}
-                />
-              )}
-            </Field>
-            <Field name="passwordAgain">
-              {({ field, form }: IFieldInput) => (
-                <FormikInput
-                  isRequired
-                  field={field}
-                  label="Password again"
-                  id="passwordAgain"
-                  type="password"
-                  isInvalid={form.errors.passwordAgain}
-                />
-              )}
-            </Field>
-            <Box>
-              <Link alignSelf="flex-end" variant="classic">
-                Forgot password?
-              </Link>
-              <Button type="submit" colorScheme="secondary" width="100%">
-                Sign Up
-              </Button>
-              <Text alignSelf="flex-start" as="span" variant="small">
-                Already have an account?
-                <Link
-                  as={GatsbyLink}
-                  to={routeConstantClass.ROUTE_WEB.LOGIN_PAGE}
-                  mx={1}
-                  variant="classic"
-                >
-                  Sign in.
+      {(props: FormikFormProps) => {
+        return (
+          <Form aria-label="signup-form">
+            <SimpleGrid spacing={3}>
+              <Field name="name">
+                {({ field, form }: IFieldInput) => (
+                  <FormikInput
+                    isRequired
+                    field={field}
+                    label="name"
+                    id="name"
+                    type="text"
+                    isInvalid={form.errors.name}
+                  />
+                )}
+              </Field>
+              <Field name="email">
+                {({ field, form }: IFieldInput) => (
+                  <FormikInput
+                    isRequired
+                    field={field}
+                    label="Email"
+                    id="email"
+                    type="email"
+                  />
+                )}
+              </Field>
+              <Field name="password">
+                {({ field, form }: IFieldInput) => (
+                  <FormikInput
+                    isRequired
+                    field={field}
+                    label="Password"
+                    id="password"
+                    type="password"
+                    isInvalid={form.errors.password}
+                  />
+                )}
+              </Field>
+              <Field name="passwordAgain">
+                {({ field, form }: IFieldInput) => (
+                  <FormikInput
+                    isRequired
+                    field={field}
+                    label="Password again"
+                    id="passwordAgain"
+                    type="password"
+                    isInvalid={form.errors.passwordAgain}
+                  />
+                )}
+              </Field>
+              <Box>
+                <Link alignSelf="flex-end" variant="classic">
+                  Forgot password?
                 </Link>
-              </Text>
-            </Box>
-          </SimpleGrid>
-        </Form>
-      )}
+                <Button type="submit" colorScheme="secondary" width="100%">
+                  Sign Up
+                </Button>
+                <Text alignSelf="flex-start" as="span" variant="small">
+                  Already have an account?
+                  <Link
+                    as={GatsbyLink}
+                    to={routeConstantClass.ROUTE_WEB.LOGIN_PAGE}
+                    mx={1}
+                    variant="classic"
+                  >
+                    Sign in.
+                  </Link>
+                </Text>
+              </Box>
+            </SimpleGrid>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
