@@ -8,10 +8,6 @@ import * as routerConstantClass from "../../../utils/constants/router.constants"
 
 beforeEach(() => renderComponent(<Footer />));
 
-/**
- * ? Testing react-router link with mocking
- */
-
 describe("Testing footer nav links", () => {
   test("goes to homepage", () => {
     const homepageLink = screen.getByRole("link", { name: "Homepage" });

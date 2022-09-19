@@ -1,8 +1,10 @@
 import React from "react";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { renderComponent } from "../../../helpers/testing.helpers";
 import { PumpkinRecipe } from "./recipeCard.stories";
+import store from "../../../store/store";
 
 describe("correct rendering", () => {
   beforeEach(() => renderComponent(<PumpkinRecipe />));

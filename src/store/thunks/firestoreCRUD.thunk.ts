@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteDoc, DocumentData, setDoc } from "firebase/firestore";
 
 import { recipeRef } from "../../helpers/firestore.helpers";
+import { showSuccess } from "../../helpers/message.helpers";
 
 import Recipe from "../../types/recipe.types";
 
@@ -39,7 +40,7 @@ export const saveRecipe = createAsyncThunk<
   const { label } = recipe;
   try {
     uid && (await setDoc(recipeRef(uid, label), recipe));
-    return true;
+    return showSuccess("Recipe saved", `The ${label} was saved succesfully.`);
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "Recipe was not saved",

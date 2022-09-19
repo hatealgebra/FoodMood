@@ -1,45 +1,18 @@
 import React, { useEffect } from "react";
 
 import { Center, Stack } from "@chakra-ui/react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-  selectRandomRecipes,
-  selectRandomRecipesError,
-  selectRandomRecipesStatus,
-} from "../../store/slices/randomRecipes.slice";
-import {
-  selectSavedRecipes,
-  selectSavedRecipesError,
-  selectSavedRecipesStatus,
-} from "../../store/slices/savedRecipes.slice";
+import { useAppDispatch } from "../../store/hooks";
 import { fetchRecipes } from "../../store/thunks/edamamRecipe.thunk";
 import AppPage from "../../components/templates/appPage/AppPage.template";
 import AppSection from "../../components/molecules/appSection/AppSection";
-import RecipeCardRow from "../../components/organisms/recipeCardRow/RecipeCardRow";
 import AlertBox from "../../components/atoms/alertBox/AlertBox";
+import SavedRecipesCardRow from "../../components/organisms/recipeCardRow/SavedRecipesCardRow";
+import RandomRecipesCardRow from "../../components/organisms/recipeCardRow/RandomRecipesCardRow";
 
 const AppHomepage = () => {
-  const randomRecipes = useAppSelector(selectRandomRecipes);
-  const randomRecipesStatus = useAppSelector(selectRandomRecipesStatus);
-  const randomRecipesError = useAppSelector(selectRandomRecipesError);
-  const savedRecipes = useAppSelector(selectSavedRecipes) || [];
-  const savedRecipesStatus = useAppSelector(selectSavedRecipesStatus);
-  const savedRecipesError = useAppSelector(selectSavedRecipesError);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRecipes("pizza"));
-  }, [dispatch]);
-
   return (
     <AppPage>
-      <AppSection headingOne="Your daily" headingTwo="recipes">
-        <RecipeCardRow
-          isLoading={randomRecipesStatus === "loading" ? true : false}
-          recipes={randomRecipes}
-          error={randomRecipesError}
-        />
-      </AppSection>
+      <RandomRecipesCardRow />
       <Stack
         direction={{ base: "column", lg: "row" }}
         width={["100%", "95%", "95%", "80%"]}
@@ -56,13 +29,7 @@ const AppHomepage = () => {
           <DishPlan dish="dinner" img={pumpkinSoup} mealName="Pumkin soup" />
         </Stack> */}
         </AppSection>
-        <AppSection fullWidth headingOne="My" headingTwo="Favourites">
-          <RecipeCardRow
-            isLoading={savedRecipesStatus === "loading" ? true : false}
-            recipes={savedRecipes}
-            error={savedRecipesError}
-          />
-        </AppSection>
+        <SavedRecipesCardRow />
       </Stack>
     </AppPage>
   );

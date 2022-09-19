@@ -33,25 +33,19 @@ const RecipeCardRow = ({
           <AlertBox status="error" title={error.name}>
             {error.message}
           </AlertBox>
-        ) : recipes.length === 0 || recipes === undefined ? (
+        ) : recipes === undefined || recipes.length === 0 ? (
           <Text
             textAlign="center"
             fontSize="xl"
             fontWeight="500"
             color="mono.400"
           >
-            No saved recipes yet.
+            No recipes to show.
           </Text>
         ) : (
-          recipeRowOrigin(recipes).map((recipe, i) => {
-            const {
-              cuisineType,
-              label,
-              totalTime,
-              dishType,
-              mealType,
-              image,
-            } = recipe as Recipe;
+          recipeRowOrigin(recipes).map(({ recipe }, i) => {
+            const { cuisineType, label, totalTime, dishType, mealType, image } =
+              recipe as Recipe;
             return (
               <RecipeCard
                 key={label + i}

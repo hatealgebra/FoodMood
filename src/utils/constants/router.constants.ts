@@ -10,7 +10,7 @@ export const ROUTE_WEB = {
 export const ROUTE_APP = {
   APP_HOME_PAGE: "/app/home",
   APP_SEARCH_PAGE: "/app/search",
-  APP_FAVOURITES_PAGE: "/app/favourites",
+  APP_FAVOURITES_PAGE: "/app/saved-recipes",
   APP_MEAL_PLAN_PAGE: "/app/meal-plan",
-  APP_USER_PAGE: "/app/user-settings",
+  APP_USER_PAGE: "/app/user",
 };

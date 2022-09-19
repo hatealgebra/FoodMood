@@ -27,6 +27,7 @@ const RecipeCard = ({
   const dispatch = useAppDispatch();
   return (
     <VStack
+      onClick={() => !isLoading && dispatch(openModal(allData))}
       spacing={2}
       background="black"
       width={["100%", "180px", "290px"]}
@@ -35,9 +36,8 @@ const RecipeCard = ({
       borderRadius="2px"
       bg="white"
       align="flex-start"
-      className="recipe-card"
       aria-label="recipe-card"
-      onClick={() => !isLoading && dispatch(openModal(allData))}
+      className="recipe-card"
       sx={{
         "&:hover": {
           cursor: !isLoading && "pointer",

@@ -14,7 +14,7 @@ import { Link as GatsbyLink } from "gatsby";
 
 import * as routerConstantClass from "../../../utils/constants/router.constants";
 
-import CustomIcon from "../../atoms/customIcon/customIcon/CustomIcon";
+import CustomIcon from "../../atoms/customIcon/CustomIcon";
 import Logo from "../../atoms/logo/Logo";
 
 import { GrFacebook, GrInstagram, GrLinkedin } from "react-icons/gr";

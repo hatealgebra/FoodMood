@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Field, Form, Formik, FormikFormProps } from "formik";
+import { Field, Form, Formik, FormikProps } from "formik";
 import { Box, Button, Link, SimpleGrid, Text } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 
@@ -44,7 +44,8 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
       validateOnChange={false}
     >
       {/* FIXME Typing props */}
-      {(props: FormikFormProps) => {
+      {/* ts-lint ignore */}
+      {(props: FormikProps<any>) => {
         return (
           <Form aria-label="signup-form">
             <SimpleGrid spacing={3}>

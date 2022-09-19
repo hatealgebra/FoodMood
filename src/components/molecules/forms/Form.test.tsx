@@ -23,7 +23,7 @@ describe("Login form functionality", () => {
       <LoginForm onSubmit={onSubmit()} />
     );
     const emailInput = getByRole("textbox");
-    const psw = getByLabelText("psw");
+    const psw = getByLabelText("password");
     userEvent.type(emailInput, inputMock[1]);
     userEvent.type(psw, inputMock[2]);
     const loginButton = getByRole("button", { name: /login/i });

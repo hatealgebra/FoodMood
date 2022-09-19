@@ -25,6 +25,7 @@ interface TabletMenuProps {
   onClose: () => void;
 }
 
+// FIXME: FIx tablet menu design
 const TabletMenu = ({ isOpen, onClose }: TabletMenuProps) => {
   const { currentUser } = getAuth();
   const userStatus = useAppSelector(selectUserStatus);

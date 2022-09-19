@@ -1,7 +1,6 @@
 // TODO: Link multiple providers
 // TODO: Email link authentication
 
-import { createStandaloneToast } from "@chakra-ui/react";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -24,8 +23,6 @@ import * as myConstClass from "../../utils/constants/router.constants";
 import { userRef } from "../../helpers/firestore.helpers";
 import { showError, showSuccess } from "../../helpers/message.helpers";
 import { navigate } from "gatsby";
-
-const toast = createStandaloneToast({ theme: themeDefault });
 
 export const loginUser = createAsyncThunk<
   any,
@@ -76,6 +73,7 @@ export const createUser = createAsyncThunk<
       email,
       pwd
     );
+    console.log(userData);
     await updateProfile(userData.user, {
       displayName: name,
     });
@@ -93,12 +91,15 @@ export const createUser = createAsyncThunk<
       return navigate("/login");
     }
   } catch (err: any) {
-    if (err.message.match(/email-already-in-use/gi)) {
-      return thunkApi.rejectWithValue({
+    if (err.message.match(/already/gi)) {
+      console.log(err.message);
+      const error = {
         name: "Email exists",
         message:
-          "This email is already in the use, please select different email. Thank you",
-      });
+          "This email is already in the use, please select different email. Thank you.",
+      };
+      showError(error);
+      return thunkApi.rejectWithValue(error);
     } else {
       return thunkApi.rejectWithValue({
         name: "Something went wrong",

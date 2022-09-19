@@ -1,30 +1,56 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FetchingRecipes } from "../../types/async.types";
+import { FetchingRecipes, RandomRecipes } from "../../types/async.types";
+import { RootObjectEdamam } from "../../types/recipe.types";
 import { RootState } from "../store";
-import { fetchRecipes } from "../thunks/edamamRecipe.thunk";
+import {
+  getRandomRecipes,
+  showMoreRecipes,
+} from "../thunks/edamamRecipe.thunk";
 
 const initialState = {
-  status: "idle",
-  recipesList: [],
-} as FetchingRecipes;
+  recipesData: [],
+  error: undefined,
+  sort: "default",
+} as RandomRecipes;
 
 export const randomRecipesSlice = createSlice({
   name: "randomRecipes",
   initialState,
   reducers: { sortRandomRecipes: (state, action: PayloadAction<string>) => {} },
   extraReducers: (builder) => {
-    builder.addCase(fetchRecipes.pending, (state) => {
-      state.status = "loading";
-      state.error = undefined;
+    builder.addCase(getRandomRecipes.pending, (state, { payload }) => {
+      if (state.recipesData.length === 0) {
+        state.recipesData.push({
+          status: "loading",
+          data: {} as RootObjectEdamam,
+          error: undefined,
+        });
+      }
     });
-    builder.addCase(fetchRecipes.fulfilled, (state, { payload }) => {
-      const recipesList = payload.map((data) => data!.recipe);
-      state.recipesList = recipesList;
-      state.status = "idle";
+    builder.addCase(getRandomRecipes.fulfilled, (state, { payload }) => {
+      state.recipesData[0].data = payload;
+      state.recipesData[0].status = "idle";
     });
-    builder.addCase(fetchRecipes.rejected, (state, { payload }) => {
+    builder.addCase(getRandomRecipes.rejected, (state, { payload }) => {
       state.error = payload;
-      state.status = "idle";
+      state.recipesData[0].status = "idle";
+    });
+    builder.addCase(showMoreRecipes.pending, (state, { payload }) => {
+      state.recipesData.push({
+        status: "loading",
+        data: {} as RootObjectEdamam,
+        error: undefined,
+      });
+      console.log(state.recipesData);
+    });
+    builder.addCase(showMoreRecipes.fulfilled, (state, { payload }) => {
+      const nextIndex = state.recipesData.length - 1;
+      state.recipesData[nextIndex].data = payload;
+      state.recipesData[nextIndex].status = "idle";
+    });
+    builder.addCase(showMoreRecipes.rejected, (state, { payload }) => {
+      const nextIndex = state.recipesData.length;
+      state.recipesData[nextIndex].status = "idle";
     });
   },
 });
@@ -32,12 +58,8 @@ export const randomRecipesSlice = createSlice({
 export const { sortRandomRecipes } = randomRecipesSlice.actions;
 
 export const selectRandomRecipes = (state: RootState) =>
-  state.randomRecipes.recipesList;
-export const selectRandomRecipesStatus = (state: RootState) =>
-  state.randomRecipes.status;
+  state.randomRecipes.recipesData;
 export const selectRandomRecipesSort = (state: RootState) =>
   state.randomRecipes.sort;
-export const selectRandomRecipesError = (state: RootState) =>
-  state.randomRecipes.error;
 
 export default randomRecipesSlice.reducer;

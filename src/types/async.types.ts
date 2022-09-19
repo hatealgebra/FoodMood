@@ -1,13 +1,17 @@
-import Recipe from "./recipe.types";
+import Recipe, { RootObjectEdamam } from "./recipe.types";
 import { SortByOptions } from "./utils.types";
 
 export type RecipesData = [] | Recipe[];
-
 export interface FetchingRecipes {
   status: "loading" | "idle";
-  recipesList: RecipesData;
-  sort: SortByOptions;
+  data: RootObjectEdamam;
   error?: Error;
+}
+
+export interface RandomRecipes {
+  recipesData: FetchingRecipes[];
+  error?: Error;
+  sort: SortByOptions;
 }
 
 export interface SearchRecipes extends FetchingRecipes {

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { RootState } from "../store";
 
-import { searchRecipesThunk } from "../thunks/edamamRecipe.thunk";
+import { searchRecipes } from "../thunks/edamamRecipe.thunk";
 import { sortRecipesBy } from "../../utils/utils";
 import { SearchRecipes } from "../../types/async.types";
 import { Hit } from "../../types/recipe.types";
@@ -26,12 +26,12 @@ export const searchedRecipesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(searchRecipesThunk.pending, (state) => {
+    builder.addCase(searchRecipes.pending, (state) => {
       state.status = "loading";
       state.error = undefined;
     });
     builder.addCase(
-      searchRecipesThunk.fulfilled,
+      searchRecipes.fulfilled,
       (state, { payload: { query, hits } }) => {
         const recipesList = hits.map((data: Hit) => data.recipe);
         state.query = query;
@@ -39,7 +39,7 @@ export const searchedRecipesSlice = createSlice({
         state.status = "idle";
       }
     );
-    builder.addCase(searchRecipesThunk.rejected, (state, { payload }) => {
+    builder.addCase(searchRecipes.rejected, (state, { payload }) => {
       state.error = payload;
       state.status = "idle";
     });

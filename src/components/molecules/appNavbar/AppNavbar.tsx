@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Box, Link, SimpleGrid } from "@chakra-ui/react";
 
 import * as routeConstClass from "../../../utils/constants/router.constants";
+import { Link as GatsbyLink } from "gatsby";
 import useHover from "../../../utils/hooks/useHover";
 
 // Hovering is done through the component styling from chakra UI
-// FIXME: Rework/Refactor
-// TODO: Write tests
+// TODO: Cypress styling maybe?
 
 const AppNavbar = () => {
   const {
@@ -24,8 +24,8 @@ const AppNavbar = () => {
       <Link
         variant="appNav"
         onClick={() => setActiveNav(url)}
-        // as={GatsbyLink}
-        // to={url}
+        as={GatsbyLink}
+        to={url}
         ref={ref}
         sx={{
           color: url === pathName ? "white" : "black",
@@ -58,7 +58,7 @@ const AppNavbar = () => {
       <NavbarLink url={APP_HOME_PAGE}>Home</NavbarLink>
       <NavbarLink url={APP_SEARCH_PAGE}>Search</NavbarLink>
       <NavbarLink url={APP_FAVOURITES_PAGE}>Saved Recipes</NavbarLink>
-      <NavbarLink url={APP_MEAL_PLAN_PAGE}>Meal Plan</NavbarLink>
+      {/* <NavbarLink url={APP_MEAL_PLAN_PAGE}>Meal Plan</NavbarLink> */}
       <Box
         position="absolute"
         className="hover-effect"

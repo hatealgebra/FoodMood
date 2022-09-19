@@ -61,7 +61,7 @@ describe("modal recipe interactions", () => {
   });
 });
 
-// //  ? How to mock dispatch actions bruh?
+// TODO: Write test for save button
 // describe("Save button interactions", () => {
 //   beforeEach(() => {
 //     renderComponent(<PumpkinRecipeModal />);

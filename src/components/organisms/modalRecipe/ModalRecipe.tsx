@@ -41,8 +41,8 @@ import { getAuth, User } from "firebase/auth";
 
 const ModalRecipe = () => {
   const [isSaved, setIsSaved] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
   const { uid } = getAuth().currentUser || ({} as User);
+  const dispatch = useAppDispatch();
   const modalRecipeData = useAppSelector(selectModalData);
   const {
     label,
@@ -61,6 +61,8 @@ const ModalRecipe = () => {
   const servings = modalRecipeData?.yield || 0;
   const modalOpen = useAppSelector(selectModalOpen);
   const savedRecipes = useAppSelector(selectSavedRecipes);
+
+  console.log(modalOpen);
 
   useEffect(() => {
     const checksIfRecipeIsSaved = () => {

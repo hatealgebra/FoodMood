@@ -57,7 +57,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
                   isRequired
                   field={field}
                   label="Password"
-                  id="pwd"
+                  id="password"
                   type="password"
                 />
               )}

@@ -42,8 +42,9 @@ export const savedRecipesSlice = createSlice({
     builder.addCase(saveRecipe.pending, (state) => {
       state.status = "loading";
     });
-    builder.addCase(saveRecipe.fulfilled, (state) => {
+    builder.addCase(saveRecipe.fulfilled, (state, { payload }) => {
       state.status = "idle";
+      state.recipesList.push(payload);
     });
     builder.addCase(saveRecipe.rejected, (state, { payload }) => {
       state.status = "idle";

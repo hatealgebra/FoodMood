@@ -3,6 +3,7 @@ import { UserSliceProps } from "../../types/async.types";
 
 import type { RootState } from "../store";
 import {
+  createUser,
   deleteUserAcc,
   loginUser,
   signOutUser,
@@ -18,6 +19,15 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(createUser.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(createUser.fulfilled, (state) => {
+      state.status = "idle";
+    });
+    builder.addCase(createUser.rejected, (state) => {
+      state.status = "idle";
+    });
     builder.addCase(loginUser.pending, (state) => {
       state.status = "loading";
     });
