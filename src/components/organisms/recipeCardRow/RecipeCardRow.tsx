@@ -14,6 +14,7 @@ const RecipeCardRow = ({
   recipes,
   error = null,
 }: RecipeCardRowProps) => {
+  console.log(recipes);
   return (
     <ScrollableRow>
       <SimpleGrid

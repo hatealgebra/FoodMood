@@ -33,6 +33,7 @@ export const searchedRecipesSlice = createSlice({
     builder.addCase(
       searchRecipes.fulfilled,
       (state, { payload: { query, hits } }) => {
+        console.log(query, hits);
         const recipesList = hits.map((data: Hit) => data.recipe);
         state.query = query;
         state.recipesList = recipesList;

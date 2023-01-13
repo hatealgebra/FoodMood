@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FetchingRecipes } from "../../types/async.types";
+import { FetchingRecipes, ISavedRecipes } from "../../types/async.types";
 import { SortByOptions } from "../../types/utils.types";
 import { sortRecipesBy } from "../../utils/utils";
 
@@ -8,21 +8,21 @@ import { readSavedRecipes, saveRecipe } from "../thunks/firestoreCRUD.thunk";
 
 const initialState = {
   status: "idle",
-  recipesList: [],
+  recipesData: [],
   sort: "default",
-} as FetchingRecipes;
+} as ISavedRecipes;
 
 export const savedRecipesSlice = createSlice({
   name: "savedRecipes",
   initialState,
   reducers: {
     sortRecipes: (state, action: PayloadAction<SortByOptions>) => {
-      const sortedRecipes = sortRecipesBy(state.recipesList, action.payload);
-      state.recipesList = sortedRecipes;
+      const sortedRecipes = sortRecipesBy(state.recipesData, action.payload);
+      state.recipesData = sortedRecipes;
       state.sort = action.payload;
     },
     emptySavedRecipes: (state) => {
-      state.recipesList = [];
+      state.recipesData = [];
       state.status = "idle";
       state.error = undefined;
     },
@@ -32,8 +32,9 @@ export const savedRecipesSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(readSavedRecipes.fulfilled, (state, { payload }) => {
+      console.log(payload);
       state.status = "idle";
-      state.recipesList = payload;
+      state.recipesData = payload;
     });
     builder.addCase(readSavedRecipes.rejected, (state, { payload }) => {
       state.status = "idle";
@@ -44,7 +45,7 @@ export const savedRecipesSlice = createSlice({
     });
     builder.addCase(saveRecipe.fulfilled, (state, { payload }) => {
       state.status = "idle";
-      state.recipesList.push(payload);
+      state.recipesData.push(payload);
     });
     builder.addCase(saveRecipe.rejected, (state, { payload }) => {
       state.status = "idle";
@@ -54,7 +55,7 @@ export const savedRecipesSlice = createSlice({
 });
 
 export const selectSavedRecipes = (state: RootState) =>
-  state.savedRecipes.recipesList;
+  state.savedRecipes.recipesData;
 
 export const selectSavedRecipesStatus = (state: RootState) =>
   state.savedRecipes.status;

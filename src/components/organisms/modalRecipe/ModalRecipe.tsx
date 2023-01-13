@@ -62,17 +62,17 @@ const ModalRecipe = () => {
   const modalOpen = useAppSelector(selectModalOpen);
   const savedRecipes = useAppSelector(selectSavedRecipes);
 
-  console.log(modalOpen);
-
   useEffect(() => {
     const checksIfRecipeIsSaved = () => {
-      if (savedRecipes === [] || label === undefined) {
+      if (savedRecipes == [] || label === undefined) {
         setIsSaved(false);
+      } else if (savedRecipes) {
+        const resultCheck = savedRecipes.find(
+          (value) => value!.recipe!.label === label
+        );
+        console.log(resultCheck);
+        resultCheck ? setIsSaved(true) : setIsSaved(false);
       }
-      const resultCheck = savedRecipes.filter(
-        (value) => value!.label === label
-      );
-      resultCheck.length === 1 ? setIsSaved(true) : setIsSaved(false);
     };
     checksIfRecipeIsSaved();
   }, [savedRecipes, label]);

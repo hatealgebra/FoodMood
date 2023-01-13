@@ -2,13 +2,20 @@ import Recipe, { RootObjectEdamam } from "./recipe.types";
 import { SortByOptions } from "./utils.types";
 
 export type RecipesData = [] | Recipe[];
+
+export interface ISavedRecipes {
+  status: "loading" | "idle";
+  recipesData: RecipesData;
+  error?: Error;
+  sort: SortByOptions;
+}
 export interface FetchingRecipes {
   status: "loading" | "idle";
   data: RootObjectEdamam;
   error?: Error;
 }
 
-export interface RandomRecipes {
+export interface IRandomRecipes {
   recipesData: FetchingRecipes[];
   error?: Error;
   sort: SortByOptions;

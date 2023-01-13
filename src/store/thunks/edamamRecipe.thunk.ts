@@ -85,9 +85,9 @@ export const searchRecipes = createAsyncThunk<
   const trimmedQuery = searchQuery.trim();
   try {
     const recipesResponse = await getRecipes(trimmedQuery);
+    console.log(recipesResponse);
     const { data } = recipesResponse;
-    const recipesData = data.hits;
-    return recipesData;
+    return { query: searchQuery, hits: data.hits };
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "No data avalaible",

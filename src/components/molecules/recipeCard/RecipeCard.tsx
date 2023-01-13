@@ -75,7 +75,14 @@ const RecipeCard = ({
               </Tag>
             ))}
           </ScrollableRow>
-          <Box fontSize="xl" fontWeight="600" width="inherit" overflow="hidden">
+          <Box
+            fontSize="xl"
+            fontWeight="600"
+            width="inherit"
+            overflow="hidden"
+            textOverflow="elipsis"
+            textTransform="capitalize"
+          >
             {heading}
           </Box>
           <HStack

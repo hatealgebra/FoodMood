@@ -13,7 +13,7 @@ import {
   sortRecipes,
 } from "../../store/slices/searchedRecipesSlice";
 import useSortRecipes from "../../utils/hooks/useSortRecipes";
-import { searchRecipesThunk } from "../../store/thunks/edamamRecipe.thunk";
+import { searchRecipes } from "../../store/thunks/edamamRecipe.thunk";
 import AppPage from "../../components/templates/appPage/AppPage.template";
 import AppSection from "../../components/molecules/appSection/AppSection";
 import { IFieldInput } from "../../types/utils.types";
@@ -30,6 +30,7 @@ const SearchPage = () => {
   const dispatch = useAppDispatch();
 
   const searchQuery = useAppSelector(selectSearchedRecipesQuery);
+  console.log(searchQuery);
   const recipesData = useAppSelector(selectSearchedRecipes);
   const recipesStatus = useAppSelector(selectSearchedRecipesStatus);
   const recipesError = useAppSelector(selectSearchedRecipesError);
@@ -41,7 +42,7 @@ const SearchPage = () => {
     actions: FormikHelpers<SearchFormValue>
   ) => {
     searchQuery !== values.querySearch &&
-      dispatch(searchRecipesThunk(values.querySearch));
+      dispatch(searchRecipes(values.querySearch));
     actions.resetForm();
   };
 
@@ -83,7 +84,7 @@ const SearchPage = () => {
       </AppSection>
       <AppSection
         yAxisMinus
-        hideHeading={searchQuery === "" || recipesData === []}
+        hideHeading={searchQuery === "" || recipesData.length === 0}
         headingOne={(recipesData.length !== 0 && "Results for:") || null}
       >
         {recipesData.length > 0 ? (
@@ -126,7 +127,7 @@ const SearchPage = () => {
             [...Array(20)].map((_, i) => (
               <RecipeCard img={null} key={i} isLoading allData />
             ))
-          ) : recipesData === [] && searchQuery !== "" ? (
+          ) : recipesData.length === 0 && searchQuery !== "" ? (
             <Text
               textAlign="center"
               fontSize="xl"

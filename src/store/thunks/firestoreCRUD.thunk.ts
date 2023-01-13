@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteDoc, DocumentData, setDoc } from "firebase/firestore";
+import { deleteDoc, getDocs, query, setDoc } from "firebase/firestore";
 
-import { recipeRef } from "../../helpers/firestore.helpers";
+import { recipeRef, savedRecipesRef } from "../../helpers/firestore.helpers";
 import { showSuccess } from "../../helpers/message.helpers";
 
 import Recipe from "../../types/recipe.types";
@@ -12,11 +12,19 @@ import Recipe from "../../types/recipe.types";
 // READ operations
 export const readSavedRecipes = createAsyncThunk<
   Recipe[],
-  DocumentData[],
+  string,
   { rejectValue: Error }
->("CRUD/read realtime", (recipes, thunkApi) => {
+>("CRUD/read realtime", async (uid, thunkApi) => {
+  console.log(uid);
   try {
-    return recipes as Recipe[];
+    const recipesData: any[] = [];
+    const q = query(savedRecipesRef(uid));
+    const snapshot = await getDocs(q);
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      recipesData.push({ recipe: data });
+    });
+    return recipesData;
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "Cant't reach saved recipes",

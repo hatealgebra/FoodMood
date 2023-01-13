@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FetchingRecipes, RandomRecipes } from "../../types/async.types";
+import { IRandomRecipes } from "../../types/async.types";
 import { RootObjectEdamam } from "../../types/recipe.types";
 import { RootState } from "../store";
 import {
@@ -11,7 +11,7 @@ const initialState = {
   recipesData: [],
   error: undefined,
   sort: "default",
-} as RandomRecipes;
+} as IRandomRecipes;
 
 export const randomRecipesSlice = createSlice({
   name: "randomRecipes",
