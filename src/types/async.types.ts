@@ -15,8 +15,9 @@ export interface FetchingRecipes {
   error?: Error;
 }
 
-export interface IRandomRecipes {
+export interface IRecipesSlice {
   recipesData: FetchingRecipes[];
+  showNextLink: string | undefined;
   error?: Error;
   sort: SortByOptions;
 }

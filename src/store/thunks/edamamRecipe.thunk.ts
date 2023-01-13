@@ -53,6 +53,7 @@ export const showMoreRecipes = createAsyncThunk<
   string,
   { rejectValue: FetchRecipesError }
 >("showMoreRecipes/fetch", async (endpoint: string, thunkApi) => {
+  console.log(endpoint);
   try {
     const recipesResponse = await getMoreRecipes(endpoint);
     const { data } = recipesResponse;
@@ -85,9 +86,41 @@ export const searchRecipes = createAsyncThunk<
   const trimmedQuery = searchQuery.trim();
   try {
     const recipesResponse = await getRecipes(trimmedQuery);
+    const { data } = recipesResponse;
+    return { query: searchQuery, data };
+  } catch (e) {
+    return thunkApi.rejectWithValue({
+      name: "No data avalaible",
+      message:
+        "Very possible there is problem with external service. Please try later or contact admin of the page.",
+    });
+  }
+});
+
+// FIXME: Redudant thunk, figure out how to reuse the thunk in multiple slices
+
+/**
+ * Thunk function created with crateAsyncThunk
+ ** Types for create Async thunk are:
+ **  1. What type will be returned as result
+ **  2. Tells what argument takes the function inside
+ **  3. The third type-parameter is an object with: `{dispatch?, state?, extra?, rejectValue?}`` fields.
+ *
+ * @param  {string} query String query on which the fetch is based
+ * @param  {} thunkApi object that contains all the fields and the rejectWithValue function
+ *
+ */
+export const showMoreSearchedRecipes = createAsyncThunk<
+  RootObjectEdamam,
+  string,
+  { rejectValue: FetchRecipesError }
+>("showMoreSearchedRecipes/showMore", async (endpoint: string, thunkApi) => {
+  console.log("hello there");
+  try {
+    const recipesResponse = await getMoreRecipes(endpoint);
     console.log(recipesResponse);
     const { data } = recipesResponse;
-    return { query: searchQuery, hits: data.hits };
+    return data;
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "No data avalaible",

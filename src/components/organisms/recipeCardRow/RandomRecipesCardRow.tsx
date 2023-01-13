@@ -1,14 +1,17 @@
 import { Button, Center, VStack } from "@chakra-ui/react";
 import React from "react";
-import { getMoreRecipes } from "../../../services/api/endpoints";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { selectRandomRecipes } from "../../../store/slices/randomRecipes.slice";
+import {
+  selectRandomRecipes,
+  selectRandomShowNextLink,
+} from "../../../store/slices/randomRecipes.slice";
 import {
   getRandomRecipes,
   showMoreRecipes,
 } from "../../../store/thunks/edamamRecipe.thunk";
 import { FetchingRecipes } from "../../../types/async.types";
 import AppSection from "../../molecules/appSection/AppSection";
+import ShowMoreButton from "../../molecules/showMoreButton/ShowMoreButton";
 import ModalRecipe from "../modalRecipe/ModalRecipe";
 import RecipeCardRow from "./RecipeCardRow";
 
@@ -24,12 +27,9 @@ const foodNames = [
 
 const RandomRecipesCardRow = ({ className }: RandomRecipesCardRowProps) => {
   const recipes = useAppSelector(selectRandomRecipes);
+  const showMoreLink = useAppSelector(selectRandomShowNextLink);
   const dispatch = useAppDispatch();
 
-  const showNextRecipes = (recipes: FetchingRecipes[]) => {
-    const { data } = recipes[recipes.length - 1];
-    return dispatch(showMoreRecipes(data._links.next.href));
-  };
   const getFoodName = (foodData: typeof foodNames) => {
     const randomIndex = Math.floor(Math.random() * foodData.length);
     return getRandomRecipes(foodData[randomIndex]);
@@ -55,15 +55,10 @@ const RandomRecipesCardRow = ({ className }: RandomRecipesCardRowProps) => {
             />
           );
         })}
-        <Center width="100%">
-          <Button
-            onClick={() => showNextRecipes(recipes)}
-            colorScheme="primary"
-            my="30px"
-          >
-            Show More
-          </Button>
-        </Center>
+        <ShowMoreButton
+          nextLink={showMoreLink}
+          dispatchAction={showMoreRecipes}
+        ></ShowMoreButton>
       </AppSection>
       <ModalRecipe />
     </>

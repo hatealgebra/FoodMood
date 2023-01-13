@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 
 import { Center, Stack } from "@chakra-ui/react";
-import { useAppDispatch } from "../../store/hooks";
-import { fetchRecipes } from "../../store/thunks/edamamRecipe.thunk";
 import AppPage from "../../components/templates/appPage/AppPage.template";
 import AppSection from "../../components/molecules/appSection/AppSection";
 import AlertBox from "../../components/atoms/alertBox/AlertBox";

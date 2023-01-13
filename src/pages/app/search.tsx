@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Text, Wrap } from "@chakra-ui/react";
+import { Box, Button, Text, Wrap } from "@chakra-ui/react";
 import { Field, Form, Formik, FormikHelpers, FormikProps } from "formik";
 
 import { BsSearch } from "react-icons/bs";
@@ -9,11 +9,15 @@ import {
   selectSearchedRecipes,
   selectSearchedRecipesError,
   selectSearchedRecipesQuery,
+  selectSearchedRecipesShowNextLink,
   selectSearchedRecipesStatus,
   sortRecipes,
 } from "../../store/slices/searchedRecipesSlice";
 import useSortRecipes from "../../utils/hooks/useSortRecipes";
-import { searchRecipes } from "../../store/thunks/edamamRecipe.thunk";
+import {
+  searchRecipes,
+  showMoreSearchedRecipes,
+} from "../../store/thunks/edamamRecipe.thunk";
 import AppPage from "../../components/templates/appPage/AppPage.template";
 import AppSection from "../../components/molecules/appSection/AppSection";
 import { IFieldInput } from "../../types/utils.types";
@@ -22,20 +26,22 @@ import Dropdown from "../../components/molecules/dropdown/Dropdown";
 import RecipeCard from "../../components/molecules/recipeCard/RecipeCard";
 import Recipe from "../../types/recipe.types";
 import AlertBox from "../../components/atoms/alertBox/AlertBox";
+import ShowMoreButton from "../../components/molecules/showMoreButton/ShowMoreButton";
+import RecipeCardRow from "../../components/organisms/recipeCardRow/RecipeCardRow";
 
-//  TODO: Create searched slice, so data can persist when switching router URL's
-// ? Maybe create search form for next time
 const SearchPage = () => {
   const initialValues: SearchFormValue = { querySearch: "" };
   const dispatch = useAppDispatch();
 
   const searchQuery = useAppSelector(selectSearchedRecipesQuery);
-  console.log(searchQuery);
-  const recipesData = useAppSelector(selectSearchedRecipes);
+  const recipes = useAppSelector(selectSearchedRecipes);
+  const showMoreLink = useAppSelector(selectSearchedRecipesShowNextLink);
   const recipesStatus = useAppSelector(selectSearchedRecipesStatus);
   const recipesError = useAppSelector(selectSearchedRecipesError);
 
-  const [sortBy, setSortBy] = useSortRecipes(recipesData, sortRecipes);
+  console.log(showMoreLink);
+
+  const [sortBy, setSortBy] = useSortRecipes(recipes, sortRecipes);
 
   const onSubmit = (
     values: SearchFormValue,
@@ -84,10 +90,10 @@ const SearchPage = () => {
       </AppSection>
       <AppSection
         yAxisMinus
-        hideHeading={searchQuery === "" || recipesData.length === 0}
-        headingOne={(recipesData.length !== 0 && "Results for:") || null}
+        hideHeading={searchQuery === "" || recipes.length === 0}
+        headingOne={(recipes.length !== 0 && "Results for:") || null}
       >
-        {recipesData.length > 0 ? (
+        {recipes.length > 0 ? (
           <>
             <Box
               fontFamily="heading"
@@ -127,7 +133,7 @@ const SearchPage = () => {
             [...Array(20)].map((_, i) => (
               <RecipeCard img={null} key={i} isLoading allData />
             ))
-          ) : recipesData.length === 0 && searchQuery !== "" ? (
+          ) : recipes.length === 0 && searchQuery !== "" ? (
             <Text
               textAlign="center"
               fontSize="xl"
@@ -136,24 +142,15 @@ const SearchPage = () => {
             >
               There are no results based on your query.
             </Text>
-          ) : recipesData !== undefined ? (
-            recipesData.map((recipe: Recipe, i: number) => {
-              const {
-                cuisineType,
-                label,
-                totalTime,
-                dishType,
-                mealType,
-                image,
-              } = recipe;
+          ) : recipes !== undefined ? (
+            recipes.map((recipeData, i) => {
+              const { status, data, error } = recipeData;
               return (
-                <RecipeCard
-                  key={label + i}
-                  img={image}
-                  tags={[cuisineType[0], dishType[0], mealType[0]]}
-                  heading={label}
-                  prepareTime={totalTime}
-                  allData={recipe}
+                <RecipeCardRow
+                  key={`Recipe Card Row ${i}`}
+                  isLoading={status === "loading" ? true : false}
+                  recipes={data.hits}
+                  error={error}
                 />
               );
             })
@@ -165,11 +162,12 @@ const SearchPage = () => {
           {recipesError.message}
         </AlertBox>
       )}
-      {/* {recipesData !== [] && !recipesStatus && query !== "" ? (
-        <Center width="100%">
-          <Btn>Show more</Btn>
-        </Center>
-      ) : undefined} */}
+      {recipes.length !== 0 && recipesStatus == "idle" && searchQuery !== "" ? (
+        <ShowMoreButton
+          nextLink={showMoreLink}
+          dispatchAction={showMoreSearchedRecipes}
+        />
+      ) : undefined}
     </AppPage>
   );
 };
