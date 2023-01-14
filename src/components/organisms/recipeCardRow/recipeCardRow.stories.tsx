@@ -2,15 +2,12 @@ import React from "react";
 
 import RecipeCardRow from "./RecipeCardRow";
 import dailyRecipes from "../../../mocks/data/dailyRecipes.json";
-import { recipeRowOrigin } from "../../../utils/firebase.utils";
 import ModalRecipe from "../modalRecipe/ModalRecipe";
 
 export const RecipesRow = () => {
-  const recipeData = dailyRecipes.hits.map((hit) => hit.recipe);
-
   return (
     <>
-      <RecipeCardRow isLoading={false} recipes={recipeData} />
+      <RecipeCardRow isLoading={false} recipes={dailyRecipes.hits} />
       <ModalRecipe />
     </>
   );

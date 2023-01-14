@@ -9,6 +9,8 @@ import {
   RecipesRowLoading,
 } from "./recipeCardRow.stories";
 
+// FIXME: Complete the tests
+
 describe("set of correct rendering", () => {
   test("All elements have correct classname", () => {
     renderComponent(<RecipesRow />);
@@ -28,7 +30,7 @@ describe("set of correct rendering", () => {
   });
   test("No data avalaible", () => {
     renderComponent(<NoRecipesRow />);
-    const msg = screen.getByText(/No saved recipes yet/i);
-    expect(msg).toBeTruthy();
+    const msg = screen.getByText(/No recipes to show/i);
+    expect(msg).toBeVisible();
   });
 });
