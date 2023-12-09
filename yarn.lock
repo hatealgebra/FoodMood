@@ -2519,6 +2519,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chakra-ui/storybook-addon@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@chakra-ui/storybook-addon@npm:5.1.0"
+  peerDependencies:
+    "@chakra-ui/react": ">=2.0.0"
+    "@storybook/components": ">=7.0.12"
+    "@storybook/manager-api": ">=7.0.12"
+    "@storybook/preview-api": ">=7.0.12"
+    "@storybook/types": ">=7.0.24"
+    react: ">=16.8.x"
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 9a16ac3e64e8b7fabfd5f775809ad36ed15ee62e964da3ea5bd70d06e3d1dc0188fceaedba3516076397d0e64e60302b317d78ff8dc702d3ca02fcd6c042c1ba
+  languageName: node
+  linkType: hard
+
 "@chakra-ui/styled-system@npm:2.9.2":
   version: 2.9.2
   resolution: "@chakra-ui/styled-system@npm:2.9.2"
@@ -3151,6 +3170,41 @@ __metadata:
   version: 0.1.6
   resolution: "@floating-ui/utils@npm:0.1.6"
   checksum: 0a089db0e0526b89e83cb0a773a903517db5c9067cd473febfd8fa91a3a2ccbc3a835234796c1bb528def21dbb67be50e28d9c473cb58a6d90679d7e549b9c0c
+  languageName: node
+  linkType: hard
+
+"@fontsource/cabin-sketch@npm:^4.5.0":
+  version: 4.5.9
+  resolution: "@fontsource/cabin-sketch@npm:4.5.9"
+  checksum: 3a68095187d176fc12336c22c31eaf088a007297513610ba74889ce9c31e611ab113d9c56068880ba3f5b0a26529e0b27a22aafc8aab8622ee53a872fb0c0c45
+  languageName: node
+  linkType: hard
+
+"@fontsource/fira-sans@npm:^4.5.0":
+  version: 4.5.10
+  resolution: "@fontsource/fira-sans@npm:4.5.10"
+  checksum: cdc39d68cd3bdabb16bf94ad85d37de6a0155de6396edee558008f52fe3ce4c1c85e362469142c6041c031c88f51d98dfc9aff7b509452859c886b809e73b5e9
+  languageName: node
+  linkType: hard
+
+"@fontsource/fredericka-the-great@npm:^4.5.0":
+  version: 4.5.9
+  resolution: "@fontsource/fredericka-the-great@npm:4.5.9"
+  checksum: 6299651faf813c06580bcaa778a961c9b44d261cb288e45a1e0b0d179b6d2abfea23bb3e5198213d62acf9a828527a437a005da683f1635459fa80c048e819af
+  languageName: node
+  linkType: hard
+
+"@fontsource/kalam@npm:^4.5.0":
+  version: 4.5.10
+  resolution: "@fontsource/kalam@npm:4.5.10"
+  checksum: 3b8588c7dc90bfec8e237006f039ec2015b500fea32ec1617ffd0176f48207cf94d39edd3b0eeed5b8241f79d5b2570065b75e053e560f123bec81d81f6471a2
+  languageName: node
+  linkType: hard
+
+"@fontsource/playfair-display@npm:^4.5.0":
+  version: 4.5.13
+  resolution: "@fontsource/playfair-display@npm:4.5.13"
+  checksum: 2ed2a7a50100972fa11d38411caddf38bb50f68734852b5a278bf68c7a18912ecc4905725d75972fea053408acad9016f338c49829e5b5aa7ef54032a77ec5f3
   languageName: node
   linkType: hard
 
@@ -9161,8 +9215,14 @@ __metadata:
   resolution: "food-mood@workspace:."
   dependencies:
     "@chakra-ui/react": "npm:^2.8.2"
+    "@chakra-ui/storybook-addon": "npm:^5.1.0"
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
+    "@fontsource/cabin-sketch": "npm:^4.5.0"
+    "@fontsource/fira-sans": "npm:^4.5.0"
+    "@fontsource/fredericka-the-great": "npm:^4.5.0"
+    "@fontsource/kalam": "npm:^4.5.0"
+    "@fontsource/playfair-display": "npm:^4.5.0"
     "@storybook/addon-essentials": "npm:^7.6.4"
     "@storybook/addon-interactions": "npm:^7.6.4"
     "@storybook/addon-links": "npm:^7.6.4"

@@ -7,10 +7,14 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@chakra-ui/storybook-addon",
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {},
+  },
+  features: {
+    emotionAlias: false,
   },
   docs: {
     autodocs: "tag",
