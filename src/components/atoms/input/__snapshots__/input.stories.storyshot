@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Atoms/Input All Inputs 1`] = `
+Array [
+  <div>
+    <div
+      className="chakra-stack css-1gij04p"
+    >
+      <div
+        className="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          className="chakra-form__label css-ipvten"
+          htmlFor="field-1"
+          id="field-1-label"
+        >
+          Password
+        </label>
+        <div
+          className="chakra-input__group css-4302v8"
+          name="password"
+        >
+          <input
+            aria-label="password"
+            className="chakra-input css-eq0bw6"
+            disabled={false}
+            id="password"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            readOnly={false}
+            required={false}
+            type="password"
+          />
+        </div>
+      </div>
+      <div
+        className="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          className="chakra-form__label css-ipvten"
+          htmlFor="field-2"
+          id="field-2-label"
+        />
+        <div
+          className="chakra-input__group css-4302v8"
+          name="email"
+        >
+          <input
+            aria-label="email"
+            className="chakra-input css-eq0bw6"
+            disabled={false}
+            id="email"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            placeholder="Search for ..."
+            readOnly={false}
+            required={false}
+            type="email"
+          />
+        </div>
+      </div>
+      <div
+        className="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          className="chakra-form__label css-ipvten"
+          htmlFor="field-3"
+          id="field-3-label"
+        />
+        <div
+          className="chakra-input__group css-4302v8"
+          name="searchba"
+        >
+          <div
+            className="chakra-input__left-element css-1hx7vxy"
+            size="md"
+          >
+            <button
+              aria-label="input-button"
+              className="chakra-button css-1w3aizb"
+              type="submit"
+            >
+              <svg
+                aria-hidden={true}
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+                  fillRule="evenodd"
+                />
+                <path
+                  clipRule="evenodd"
+                  d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+          <input
+            aria-label="searchba"
+            className="chakra-input css-1d4jueb"
+            disabled={false}
+            id="searchba"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            placeholder="Type the text"
+            readOnly={false}
+            required={false}
+            type="email"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Atoms/Input Variable Input 1`] = `
+Array [
+  <div>
+    <div
+      className="chakra-form-control css-1kxonj9"
+      role="group"
+    >
+      <label
+        className="chakra-form__label css-ipvten"
+        htmlFor="field-1"
+        id="field-1-label"
+      >
+        
+      </label>
+      <div
+        className="chakra-input__group css-4302v8"
+        name="justSomeID"
+      >
+        <input
+          aria-label="justSomeID"
+          className="chakra-input css-eq0bw6"
+          disabled={false}
+          id="justSomeID"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          placeholder=""
+          readOnly={false}
+          required={false}
+          type="text"
+        />
+      </div>
+    </div>
+  </div>,
+  <span />,
+]
+`;
