@@ -10,6 +10,9 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import * as myConstClass from "~constants/router.constants";
+import { useAppDispatch } from "~store/hooks";
+import { signOutUser } from "~store/thunks/authentication.thunks";
+import NextLink from "next/link";
 
 const UserAvatar = ({
   name,
@@ -18,11 +21,10 @@ const UserAvatar = ({
   size = "sm",
 }: UserAvatarProps) => {
   const dispatch = useAppDispatch();
-  let navigate = useNavigate();
 
   const signOut = () => {
     dispatch(signOutUser(null));
-    navigate(myConstClass.ROUTE_WEB.LOGIN_PAGE);
+    // navigate(myConstClass.ROUTE_WEB.LOGIN_PAGE);
   };
 
   return (
@@ -43,14 +45,14 @@ const UserAvatar = ({
       <MenuList>
         {name ? (
           <>
-            <MenuItem as={LinkRouter} to={myConstClass.ROUTE_APP.APP_USER_PAGE}>
+            <MenuItem as={NextLink} href={myConstClass.ROUTE_APP.APP_USER_PAGE}>
               Settings
             </MenuItem>
             <MenuDivider />
             <MenuItem onClick={signOut}>Sign out</MenuItem>
           </>
         ) : (
-          <MenuItem as={LinkRouter} to={myConstClass.ROUTE_WEB.LOGIN_PAGE}>
+          <MenuItem as={NextLink} href={myConstClass.ROUTE_WEB.LOGIN_PAGE}>
             Sign In
           </MenuItem>
         )}

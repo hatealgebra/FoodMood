@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { AXIOS } from "../../utils/constants/constants";
+import { AXIOS } from "~constants/constants";
 import { edamamaAppId, edamamKey } from "./auth";
 
 const recipesUrl = "https://api.edamam.com/api/recipes/v2?type=public";
