@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "../pages/homePage/Homepage";
 
-import * as routerConstantClass from "../../utils/constants/router.constants";
+import * as routerConstantClass from "../../constants/router.constants";
 import LoginPage from "../pages/loginPage/LoginPage";
 import SignupPage from "../pages/signupPage/SignupPage";
 import PrivateRoute from "./PrivateRoute";

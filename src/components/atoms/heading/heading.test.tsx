@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { screen } from "@testing-library/react";
 import React from "react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 import { FiraHeadings, Headings } from "./heading.stories";
 
 describe("Rendering correct level of headings", () => {

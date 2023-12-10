@@ -1,4 +1,4 @@
-import * as myConstClass from "./constants/constants";
+import * as myConstClass from "../constants/constants";
 
 import Recipe from "../types/recipe.types";
 

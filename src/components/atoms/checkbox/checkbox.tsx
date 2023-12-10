@@ -3,7 +3,7 @@ import { Checkbox } from "@chakra-ui/react";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 
 describe("checkbox functionality", () => {
   test("checkbox has correct initial value", () => {});

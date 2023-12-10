@@ -1,7 +1,7 @@
 import React from "react";
 
 import { screen } from "@testing-library/react";
-import { renderComponent } from "../../../utils/helpers/testing.helpers";
+import { renderComponent } from "../../../helpers/testing.helpers";
 
 import CustomDivider from "./CustomDivider";
 

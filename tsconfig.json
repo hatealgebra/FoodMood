@@ -13,6 +13,15 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "~assets/*": ["./src/assets/*"],
+      "~atoms/*": ["./src/atoms/*"],
+      "~helpers/*": ["./src/helpers/*"],
+      "~hooks/*": ["./src/hooks/*"],
+      "~constants/*": ["./src/constants/*"],
+      "~utils.*": ["./src/utils/*"],
+    },
     "plugins": [
       {
         "name": "next"

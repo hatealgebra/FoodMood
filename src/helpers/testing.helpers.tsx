@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import themeDefault from "../../components/particles/themeDefault";
+import themeDefault from "../components/particles/themeDefault";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store, { AppDispatch } from "../../store/store";

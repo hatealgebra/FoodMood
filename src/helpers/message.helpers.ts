@@ -1,5 +1,5 @@
 import { createStandaloneToast } from "@chakra-ui/react";
-import themeDefault from "../../components/particles/themeDefault";
+import themeDefault from "../components/particles/themeDefault";
 
 const DURATION = 3000;
 

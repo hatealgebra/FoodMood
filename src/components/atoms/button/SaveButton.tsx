@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import useHover from "../../../utils/hooks/useHover";
+import useHover from "~hooks//useHover";
+
 
 
 export const SaveButton = ({
