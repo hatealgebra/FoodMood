@@ -2,9 +2,9 @@ import React from "react";
 
 import { Field, Form, Formik, FormikFormProps } from "formik";
 import { Box, Button, Link, SimpleGrid, Text } from "@chakra-ui/react";
-import { Link as LinkRouter, useNavigate } from "react-router-dom";
+import NextLink from "next/link";
 
-import * as routeConstantClass from "../../../utils/constants/router.constants";
+import * as routeConstantClass from "~constants/router.constants";
 
 import FormikInput from "../../atoms/input/Input";
 
@@ -103,8 +103,8 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
               <Text alignSelf="flex-start" as="span" variant="small">
                 Already have an account?
                 <Link
-                  as={LinkRouter}
-                  to={routeConstantClass.ROUTE_WEB.LOGIN_PAGE}
+                  as={NextLink}
+                  href={routeConstantClass.ROUTE_WEB.LOGIN_PAGE}
                   mx={1}
                   variant="classic"
                 >

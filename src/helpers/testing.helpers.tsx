@@ -1,24 +1,29 @@
-import { render } from "@testing-library/react";
-
 import { ChakraProvider } from "@chakra-ui/react";
-import themeDefault from "../components/particles/themeDefault";
-import { MemoryRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import store, { AppDispatch } from "../../store/store";
-import {
-  createUser,
-  loginUser,
-} from "../../store/thunks/authentication.thunks";
-import { firebaseRTU } from "./firebase.helpers";
+import themeDefault from "~particles/themeDefault";
 
-export const renderComponent = (component: any) => {
-  return render(
+import { Provider } from "react-redux";
+import store, { AppDispatch } from "~store/store";
+import { createUser, loginUser } from "~store/thunks/authentication.thunks";
+import { firebaseRTU } from "./firebase.helpers";
+import { createRoot } from "react-dom/client";
+
+const WrapperComponent = ({ children }: any) => {
+  return (
     <Provider store={store}>
-      <MemoryRouter>
-        <ChakraProvider theme={themeDefault}>{component})</ChakraProvider>
-      </MemoryRouter>
+      {/* <MemoryRouter> */}
+      <ChakraProvider theme={themeDefault}>{children}</ChakraProvider>
+      {/* </MemoryRouter> */}
     </Provider>
   );
+};
+
+export const renderComponent = (component: any) => {
+  const container = document.body.appendChild(document.createElement("div"));
+
+  const componentToRender = createRoot(container).render(
+    <WrapperComponent>{component}</WrapperComponent>
+  );
+  return componentToRender;
 };
 
 const credentialsLogin = {

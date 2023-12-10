@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 // import ModalRecipe from "../../components/organisms/modalRecipe/ModalRecipe";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch } from "~store/hooks";
 import { setUser } from "./testing.helpers";
 
 export const SetUserData: React.FC<{

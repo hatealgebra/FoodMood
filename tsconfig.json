@@ -16,7 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "~assets/*": ["./src/assets/*"],
-      "~atoms/*": ["./src/atoms/*"],
+      "~atoms/*": ["./src/components/atoms/*"],
+      "~molecules/*": ["./src/components/molecules/*"],
+      "~organisms/*": ["./src/components/organisms/*"],
+      "~templates/*": ["./src/components/templates/*"],
+      "~particles/*": ["./src/components/particles/*"],
       "~helpers/*": ["./src/helpers/*"],
       "~hooks/*": ["./src/hooks/*"],
       "~constants/*": ["./src/constants/*"],

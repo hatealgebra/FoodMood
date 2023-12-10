@@ -11,7 +11,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from "@chakra-ui/react";
-import { Link as LinkRouter } from "react-router-dom";
+import NextLink from "next/link";
 import Logo from "../../atoms/logo/Logo";
 import TouchMenuLinks from "../touchMenuLinks/TouchMenuLinks";
 import { getAuth } from "firebase/auth";
@@ -40,9 +40,9 @@ const TabletMenu = ({ isOpen, onClose }: TabletMenuProps) => {
       <DrawerContent aria-label="tablet-drawer">
         <DrawerCloseButton onClick={onClose} />
         <DrawerHeader>
-          <LinkRouter to="/">
+          <NextLink href="/">
             <Logo width={["120px", "150px"]} />
-          </LinkRouter>
+          </NextLink>
         </DrawerHeader>
         <DrawerBody>
           <TouchMenuLinks noMargin />

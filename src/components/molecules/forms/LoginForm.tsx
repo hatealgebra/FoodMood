@@ -3,21 +3,20 @@ import "firebase/auth";
 
 import { Formik, Field, Form, FormikProps } from "formik";
 import { Button, Link, Text, VStack } from "@chakra-ui/react";
-import { Link as LinkRouter, useNavigate } from "react-router-dom";
+import NextLink from "next/link";
 
-import FormikInput from "../../atoms/input/Input";
-
-import { loginUser } from "../../../store/thunks/authentication.thunks";
+import { loginUser } from "~store/thunks/authentication.thunks";
 import { LoginCredentials } from "../../../types/async.types";
 
-import * as routerConstantClass from "../../../utils/constants/router.constants";
+import * as routerConstantClass from "~constants/router.constants";
 import { useAppDispatch } from "../../../store/hooks";
 import { IFieldInput } from "../../../types/utils.types";
 import { getAuth } from "firebase/auth";
+import FormikInput from "src/components/atoms/input/Input";
 
 const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const user = getAuth();
 
   const initialValues: LoginCredentials = {
@@ -29,7 +28,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
     const { email, psw } = values;
     await dispatch(loginUser({ email, psw }));
     if (user.currentUser !== null) {
-      navigate(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
+      // navigate(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
     }
     actions.resetForm();
   };
@@ -76,8 +75,8 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
             <Text alignSelf="flex-start" as="span" variant="small">
               Not registered yet?
               <Link
-                as={LinkRouter}
-                to={routerConstantClass.ROUTE_WEB.REGISTER_PAGE}
+                as={NextLink}
+                href={routerConstantClass.ROUTE_WEB.REGISTER_PAGE}
                 mx={1}
                 variant="classic"
               >
