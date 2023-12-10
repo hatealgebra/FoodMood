@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@chakra-ui/storybook-addon",
   ],
+  staticDirs: ["../public"],
   framework: {
     name: "@storybook/nextjs",
     options: {},

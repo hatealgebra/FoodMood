@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Molecules/Mobile Menu Mobile Menu Example 1`] = `
+Array [
+  <div>
+    <nav
+      aria-label="mobile-menu"
+      className="css-pbbtxf"
+      id="mobileMenu"
+    >
+      <ul
+        className="css-rz14gx"
+        role="list"
+      >
+        <li
+          className="css-0"
+        >
+          <a
+            className="chakra-link css-qhnakp"
+            href="/"
+            onClick={[Function]}
+          >
+            Homepage
+          </a>
+        </li>
+        <li
+          className="css-0"
+        >
+          <a
+            className="chakra-link css-qhnakp"
+            href="/app/home"
+            onClick={[Function]}
+          >
+            Explore App
+          </a>
+        </li>
+        <li
+          className="css-0"
+        >
+          <a
+            className="chakra-link css-qhnakp"
+            href="/about"
+            onClick={[Function]}
+          >
+            About
+          </a>
+        </li>
+        <li
+          className="css-0"
+        >
+          <a
+            className="chakra-link css-qhnakp"
+            href="/terms-&-policy"
+            onClick={[Function]}
+          >
+            Terms & policy
+          </a>
+        </li>
+      </ul>
+      <div
+        className="css-1c4f3kc"
+      />
+      <div
+        className="css-1c7mt1o"
+      />
+      <div
+        className="chakra-stack css-1lphly1"
+      >
+        <div
+          className="css-uqblax"
+        >
+          <button
+            aria-controls="menu-list-2"
+            aria-expanded={false}
+            aria-haspopup="menu"
+            className="chakra-menu__menu-button css-uuie3h"
+            id="menu-button-2"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            <span
+              className="css-xl71ch"
+            >
+              <span
+                className="chakra-avatar css-nxs594"
+              >
+                <svg
+                  aria-label=" avatar"
+                  className="chakra-avatar__svg css-16ite8i"
+                  role="img"
+                  viewBox="0 0 128 128"
+                >
+                  <path
+                    d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+          <div
+            className="css-r6z5ec"
+            style={
+              Object {
+                "inset": "0 auto auto 0",
+                "minWidth": "max-content",
+                "position": "absolute",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-orientation="vertical"
+              className="chakra-menu__menu-list css-o0wdgj"
+              id="menu-list-2"
+              onKeyDown={[Function]}
+              role="menu"
+              style={
+                Object {
+                  "opacity": 0,
+                  "transform": "scale(0.8) translateZ(0)",
+                  "transformOrigin": "var(--popper-transform-origin)",
+                  "visibility": "hidden",
+                }
+              }
+              tabIndex={-1}
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>,
+  <span />,
+]
+`;

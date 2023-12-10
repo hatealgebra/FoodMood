@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Molecules/App Navbar Application Navbar 1`] = `
+Array [
+  <div>
+    <div
+      className="css-l8yfek"
+    >
+      <a
+        className="chakra-link css-17ks0yt"
+        href="/app/home"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        className="chakra-link css-17ks0yt"
+        href="/app/search"
+        onClick={[Function]}
+      >
+        Search
+      </a>
+      <a
+        className="chakra-link css-17ks0yt"
+        href="/app/favourites"
+        onClick={[Function]}
+      >
+        Saved Recipes
+      </a>
+      <a
+        className="chakra-link css-17ks0yt"
+        href="/app/meal-plan"
+        onClick={[Function]}
+      >
+        Meal Plan
+      </a>
+      <div
+        aria-label="hover-element"
+        className="hover-effect css-1uxy5y5"
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;

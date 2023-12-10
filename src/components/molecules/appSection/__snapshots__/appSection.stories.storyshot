@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Molecules/App Section Generic App Section 1`] = `
+Array [
+  <div>
+    <section
+      className="css-8np5o2"
+    >
+      <div
+        className="chakra-stack css-1hc3846"
+      >
+        <h2
+          className="chakra-heading css-750xsh"
+        >
+          <div
+            className="css-1jrvbaz"
+          >
+            This is
+          </div>
+          <div
+            className="css-fx1ps3"
+          >
+            heading
+          </div>
+        </h2>
+      </div>
+    </section>
+  </div>,
+  <span />,
+]
+`;

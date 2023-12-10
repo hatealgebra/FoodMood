@@ -21,12 +21,16 @@
       "~hooks/*": ["./src/hooks/*"],
       "~constants/*": ["./src/constants/*"],
       "~utils.*": ["./src/utils/*"],
+      "~mocks/*": ["./src/mocks/*"],
+      "~store/*": ["./src/store/*"],
+      "~services/*": ["./src/services/*"],
+      "~types/*": ["./src/types/*"]
     },
     "plugins": [
       {
         "name": "next"
       }
-    ],
+    ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

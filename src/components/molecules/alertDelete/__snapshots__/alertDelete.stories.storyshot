@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Molecules/Alert Delete Alert 1`] = `
+Array [
+  <div>
+    <button
+      className="chakra-button css-qcb80c"
+      onClick={[Function]}
+      type="button"
+    >
+      Delete action
+    </button>
+  </div>,
+  <span />,
+]
+`;

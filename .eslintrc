@@ -1,0 +1,9 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["chakra-ui"],
+  "parserOptions": {
+    "project": true,
+    "tsconfigRootDir": "__dirname"
+  },
+  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"]
+}

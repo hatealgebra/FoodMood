@@ -3,8 +3,6 @@ import { Button } from "@chakra-ui/react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import useHover from "~hooks//useHover";
 
-
-
 export const SaveButton = ({
   size = "sm",
   savedStatus,
