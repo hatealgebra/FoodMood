@@ -39,6 +39,7 @@ export const SaveButton = ({
       isFullWidth={isFullWidth}
       paddingInline="3%"
       size={size}
+      fontWeight="regular"
       width="fit-content"
       leftIcon={
         isHovered || isSaved ? (
