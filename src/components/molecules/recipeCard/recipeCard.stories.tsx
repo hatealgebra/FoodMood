@@ -3,19 +3,21 @@ import React from "react";
 import RecipeCard from "./RecipeCard";
 import pumpkinSoup from "~assets/images/presentation/pumpkin-soup.jpg";
 
-export const PumpkinRecipe = () => (
-  <RecipeCard
-    img={pumpkinSoup}
-    tags={["Japanes", "Soup", "Lunch/Dinner"]}
-    heading="Pumpkin Soup"
-    prepareTime={80}
-    allData={{}}
-  />
-);
+const Template = (args: any) => <RecipeCard {...args} />;
 
-export const LoadingRecipe = () => (
-  <RecipeCard img={null} isLoading allData={{}} />
-);
+export const PumpkinRecipe = Template.bind({});
+PumpkinRecipe.args = {
+  img: pumpkinSoup,
+  tags: ["Japanes", "Soup", "Lunch/Dinner"],
+  heading: "Pumpkin Soup",
+  prepareTime: 80,
+  allData: {},
+};
+
+export const LoadingRecipe = Template.bind({});
+LoadingRecipe.args = {
+  isLoading: true,
+};
 
 export default {
   component: RecipeCard,

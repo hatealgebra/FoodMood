@@ -3,6 +3,7 @@ import React from "react";
 import {
   Box,
   HStack,
+  Heading,
   Image,
   Skeleton,
   Tag,
@@ -14,6 +15,17 @@ import { useAppDispatch } from "../../../store/hooks";
 import { MdTimer } from "react-icons/md";
 import ScrollableRow from "../scrollableRow/ScrollableRow";
 import { openModal } from "~store/slices/modalRecipe.slice";
+import { ImageProps } from "next/image";
+
+interface RecipeCardProps {
+  img: ImageProps;
+  tags?: string[];
+  heading?: string;
+  prepareTime?: number;
+  smaller?: boolean;
+  isLoading?: boolean;
+  allData: any;
+}
 
 const RecipeCard = ({
   img,
@@ -25,13 +37,13 @@ const RecipeCard = ({
   allData,
 }: RecipeCardProps) => {
   const dispatch = useAppDispatch();
+
   return (
     <VStack
       spacing={2}
       background="black"
       width={["100%", "180px", "290px"]}
       minWidth={smaller ? "140px" : "180px"}
-      height={["280px", "230px", "310px"]}
       borderRadius="2px"
       bg="white"
       align="flex-start"
@@ -50,7 +62,7 @@ const RecipeCard = ({
             boxShadow="base"
             borderRadius="5px"
             width="100%"
-            height="55%"
+            h="220px"
             aria-label="loading-recipe-card"
           />
           <Skeleton fontSize="md4">Pumpkin Soup Recipe</Skeleton>
@@ -63,9 +75,9 @@ const RecipeCard = ({
             boxShadow="base"
             borderRadius="5px"
             objectFit="cover"
-            src={img === null ? undefined : img}
+            src={img?.src}
+            h="220px"
             width="100%"
-            height="55%"
             aria-label={`${heading} image`}
           />
           <ScrollableRow smallSpacing>
@@ -75,15 +87,15 @@ const RecipeCard = ({
               </Tag>
             ))}
           </ScrollableRow>
-          <Box
-            fontSize="xl"
-            fontWeight="600"
-            width="inherit"
+          <Heading
+            as="h3"
+            fontFamily="body"
+            fontSize="x-large"
             isTruncated
-            overflow="hidden"
+            noOfLines={[2, 1]}
           >
             {heading}
-          </Box>
+          </Heading>
           <HStack
             position="relative"
             bottom="5px"
@@ -101,15 +113,4 @@ const RecipeCard = ({
     </VStack>
   );
 };
-
-interface RecipeCardProps {
-  img: string | null;
-  tags?: string[];
-  heading?: string;
-  prepareTime?: number;
-  smaller?: boolean;
-  isLoading?: boolean;
-  allData: any;
-}
-
 export default RecipeCard;
