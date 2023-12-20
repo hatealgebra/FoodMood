@@ -1,7 +1,6 @@
 // TODO: Link multiple providers
 // TODO: Email link authentication
 
-import { createStandaloneToast } from "@chakra-ui/react";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -21,8 +20,9 @@ import { CreateUserProps, LoginCredentials } from "../../types/async.types";
 import * as myConstClass from "~constants/router.constants";
 import { userRef } from "~helpers/firestore.helpers";
 import { showError, showSuccess } from "~helpers/message.helpers";
+import { createStandaloneToast } from "@chakra-ui/react";
 
-const toast = createStandaloneToast({ theme: themeDefault });
+// const { toast } = createStandaloneToast({ theme: themeDefault });
 
 export const loginUser = createAsyncThunk<
   any,
@@ -77,14 +77,14 @@ export const createUser = createAsyncThunk<
     console.log("first");
     if (currentUser !== null) {
       await setDoc(userRef(currentUser.uid), { foo: "bar" });
-      toast({
-        title: "ACCOUNT REGISTERED!",
-        description:
-          "Your account was sucesfully created. Please login to proceed",
-        status: "success",
-        position: "top",
-        duration: 3500,
-      });
+      // toast({
+      //   title: "ACCOUNT REGISTERED!",
+      //   description:
+      //     "Your account was sucesfully created. Please login to proceed",
+      //   status: "success",
+      //   position: "top",
+      //   duration: 3500,
+      // });
     }
   } catch (err: any) {
     if (err.message.match(/email-already-in-use/gi)) {
@@ -117,11 +117,11 @@ export const updateUser = createAsyncThunk<
         photoURL: photoURL,
       });
   } catch (e) {
-    toast({ title: "Something went wrong" });
-    return thunkApi.rejectWithValue({
-      name: "Something went wrong.",
-      message: "Message couldn't be update. Try later or contact admin.",
-    });
+    // toast({ title: "Something went wrong" });
+    // return thunkApi.rejectWithValue({
+    //   name: "Something went wrong.",
+    //   message: "Message couldn't be update. Try later or contact admin.",
+    // });
   }
 });
 
@@ -132,12 +132,12 @@ export const signOutUser = createAsyncThunk<
 >("user/signOut", async (_, thunkApi) => {
   try {
     await signOut(getAuth());
-    toast({
-      title: "Signed Out",
-      description: "You were succesfuly signed out from the app.",
-      status: "success",
-      position: "top",
-    });
+    // toast({
+    //   title: "Signed Out",
+    //   description: "You were succesfuly signed out from the app.",
+    //   status: "success",
+    //   position: "top",
+    // });
     return true;
   } catch (e) {
     return thunkApi.rejectWithValue({

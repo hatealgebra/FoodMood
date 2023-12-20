@@ -21,12 +21,12 @@ const fbApp = initializeApp(firebaseConfig);
 export const dbFirestore = getFirestore(fbApp);
 export const storage = getStorage(fbApp);
 
-if (window.location.hostname.includes("localhost")) {
-  connectAuthEmulator(getAuth(), "http://localhost:9099", {
-    disableWarnings: true,
-  });
-  connectFirestoreEmulator(dbFirestore, "localhost", 8080);
-  connectStorageEmulator(storage, "localhost", 9199);
-}
+// if (window.location.hostname.includes("localhost")) {
+//   connectAuthEmulator(getAuth(), "http://localhost:9099", {
+//     disableWarnings: true,
+//   });
+//   connectFirestoreEmulator(dbFirestore, "localhost", 8080);
+//   connectStorageEmulator(storage, "localhost", 9199);
+// }
 
 export default fbApp;

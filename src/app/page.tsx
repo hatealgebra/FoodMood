@@ -20,7 +20,7 @@ import "@fontsource/kalam";
 
 import * as routerConstClass from "~constants/router.constants";
 
-import Section from "../atoms/section/Section";
+import Section from "~atoms/section/Section";
 import NextLink from "next/link";
 import NextImage from "next/image";
 
@@ -121,7 +121,7 @@ const LastSection = () => (
           Find right meal for you, even if You are vegan, vegetarian or
           meat-lover, just type what you want and get variety of food recipes
         </Text>
-        <Button>Get Recipes</Button>
+        <Button colorScheme="primary">Get Recipes</Button>
       </Flex>
       <Image
         as={NextImage}
@@ -182,7 +182,7 @@ const HamburgerRecipe = () => (
           <ListItem>4 thick slice peeled onion</ListItem>
         </UnorderedList>
         <Box>
-          <Heading as="h3" variant="chalk" textAlign="center">
+          <Heading as="h3" variant="chalk" textAlign="center" fontFamily="body">
             Nutrients per serving
           </Heading>
           <SimpleGrid columns={3} spacing={5} mt={5} maxW="350px">
@@ -217,7 +217,7 @@ const HamburgerRecipe = () => (
           gridColumn={{ "2xl": "1/3" }}
           justifySelf="center"
         >
-          <Heading as="h3" textDecoration="underline" variant="chalk">
+          <Heading as="h3" textDecoration="underline" fontFamily="body">
             Total calories
           </Heading>
           <Text position="relative" bottom={8} fontSize="3xl">

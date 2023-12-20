@@ -1,4 +1,5 @@
-import Rect, { useState, useEffect } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 

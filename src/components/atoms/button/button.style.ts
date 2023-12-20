@@ -1,4 +1,8 @@
-import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
+import {
+  defineStyle,
+  defineStyleConfig,
+  withDefaultColorScheme,
+} from "@chakra-ui/react";
 
 const xl = defineStyle({
   fontSize: "lg",
@@ -18,8 +22,6 @@ const link = defineStyle({
 const buttonStyle = defineStyleConfig({
   baseStyle: {
     borderRadius: "5px",
-    borderWidth: "2px",
-    borderStyle: "solid",
     loadingText: "Loading...",
     fontFamily: "body",
     fontWeight: "semibold",
