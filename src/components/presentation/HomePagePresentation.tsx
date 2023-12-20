@@ -22,6 +22,7 @@ import * as routerConstClass from "~constants/router.constants";
 
 import Section from "../atoms/section/Section";
 import NextLink from "next/link";
+import NextImage from "next/image";
 
 import tomatoSalad from "~assets/images/presentation/tomato-salad.png";
 import pastaBeef from "~assets/images/presentation/pasta-w-beef.png";
@@ -76,6 +77,7 @@ const LastSection = () => (
         gridColumn={{ lg: "1/3" }}
       >
         <Image
+          as={NextImage}
           width="90%"
           maxW="320px"
           src={englishBreakfast}
@@ -95,6 +97,7 @@ const LastSection = () => (
         flexDirection="column"
       >
         <Image
+          as={NextImage}
           width="90%"
           maxW="320px"
           src={runningMan}
@@ -121,6 +124,7 @@ const LastSection = () => (
         <Button>Get Recipes</Button>
       </Flex>
       <Image
+        as={NextImage}
         justifySelf="flex-end"
         gridColumn={{ lg: "2/5" }}
         width="100%"
@@ -152,6 +156,7 @@ const HamburgerRecipe = () => (
         Classic Hamburger.
       </Heading>
       <Image
+        as={NextImage}
         gridArea="burgerPhoto"
         src={hamburgerDeconstruct}
         alt="Deconstructed hamburger"
@@ -241,26 +246,31 @@ const PopularFood = () => (
         mt="40px"
       >
         <Image
+          as={NextImage}
           src={pastaWShells}
           alt="Pasta with shells"
           width={["120px", "120px", "160px"]}
         />
         <Image
+          as={NextImage}
           src={tomatoSalad}
           alt="Tomato salad"
           width={["80px", "80px", "110px"]}
         />
         <Image
+          as={NextImage}
           src={pastaBeef}
           alt="Pasta with beef"
           width={["120px", "120px", "160px"]}
         />
         <Image
+          as={NextImage}
           src={indiaSoup}
           alt="India soup"
           width={["80px", "80px", "110px"]}
         />
         <Image
+          as={NextImage}
           src={falafel}
           alt="Falafel with califlower & carrot"
           width="120px"
@@ -273,21 +283,25 @@ const PopularFood = () => (
         my="25px"
       >
         <Image
+          as={NextImage}
           src={losoWShells}
           alt="Loso with shells"
           width={["80px", "80px", "110px"]}
         />
         <Image
+          as={NextImage}
           src={tofu}
           alt="Tofu with salad"
           width={["120px", "120px", "160px"]}
         />
         <Image
+          as={NextImage}
           src={chickenCurry}
           alt="Chicken with curry"
           width={["80px", "80px", "110px"]}
         />
         <Image
+          as={NextImage}
           src={fettucini}
           alt="Tomato fettucini"
           width={["120px", "120px", "160px"]}
@@ -329,25 +343,26 @@ const FirstSection = ({ mobile }: { mobile?: boolean }) => (
           again!
         </Text>
         <HStack my={1}>
-          <Link
+          <Button
             as={NextLink}
-            variant="button"
+            colorScheme="primary"
             href={routerConstClass.ROUTE_APP.APP_HOME_PAGE}
           >
-            <Button>Get Started</Button>
-          </Link>
-          <Link
+            Get Started
+          </Button>
+          <Button
             as={NextLink}
-            variant="button"
+            colorScheme="primary"
             href={routerConstClass.ROUTE_WEB.ABOUT_PAGE}
           >
-            <Button>About</Button>
-          </Link>
+            About
+          </Button>
         </HStack>
       </Flex>
       <Spacer />
       {mobile ? (
         <Image
+          as={NextImage}
           src={heroSection}
           position="relative"
           maxWidth={{ base: "300px", sm: "420px" }}
@@ -357,6 +372,7 @@ const FirstSection = ({ mobile }: { mobile?: boolean }) => (
         />
       ) : (
         <Image
+          as={NextImage}
           src={biggerHeroSection}
           maxWidth={["380px", "380px", "400px", "800px"]}
           mt={2}

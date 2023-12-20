@@ -27,6 +27,7 @@ const preview: Preview = {
     chakra: {
       theme,
     },
+    tags: ["autodocs"],
     controls: {
       matchers: {
         color: /(background|color)$/i,

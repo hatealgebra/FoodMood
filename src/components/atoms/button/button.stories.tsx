@@ -16,7 +16,7 @@ export const GenericButton = Template.bind({});
 GenericButton.args = {
   children: "Button",
   isLoading: false,
-  size: "md",
+  colorScheme: "primary",
 };
 GenericButton.argTypes = {
   colorScheme: {
@@ -27,35 +27,34 @@ GenericButton.argTypes = {
   },
 };
 
-export const AllButtons = () => (
+export const AllColors = () => (
   <>
     <Button colorScheme="primary">Primary</Button>
     <Button colorScheme="secondary">Secondary</Button>
-    <Button colorscheme="tertiary">Tertiary</Button>
+    <Button colorScheme="tertiary">Tertiary</Button>
     <Button colorScheme="warning">Warning</Button>
-    <Button leftIcon={<FcGoogle />} variant="outline">
-      Sign In
-    </Button>
-    <SaveButton savedStatus={true} onClick={() => action("saved")}>
-      Save
-    </SaveButton>
   </>
 );
 
-export const ButtonVariants = () => (
+export const AllVariants = () => (
   <>
     <Button variant="ghost">Ghost</Button>
     <Button variant="solid">Solid</Button>
     <Button variant="outline">Outline</Button>
-    <Button variant="link">Link</Button>
+    <Button variant="link" colorScheme="secondary">
+      Link
+    </Button>
   </>
 );
 
-export const ButtonSize = () => (
+export const AllSizes = () => (
   <>
-    <Button size="sm">Small</Button>
-    <Button size="md">Medium</Button>
-    <Button size="lg">Large</Button>
+    <Button size="lg" colorScheme="primary">
+      Large
+    </Button>
+    <Button size="xl" colorScheme="primary">
+      Extra large
+    </Button>
   </>
 );
 
@@ -75,13 +74,16 @@ export const LoadingButtons = () => (
   </>
 );
 
-export const GenericSaveButton = TemplateSaveButton.bind({});
-GenericSaveButton.args = {
-  savedStatus: true,
-  isLoading: true,
-  isFullWidth: false,
-  onClick: () => action("Save btn clicked"),
-};
+export const SpecialButtons = () => (
+  <>
+    <Button leftIcon={<FcGoogle />} variant="outline">
+      Sign In with Google
+    </Button>
+    <SaveButton savedStatus={true} onClick={() => action("saved")}>
+      Save
+    </SaveButton>
+  </>
+);
 
 export default {
   component: Button,
