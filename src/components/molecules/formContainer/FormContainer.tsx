@@ -6,12 +6,12 @@ const FormContainer = ({ children }: FormContainerProps) => {
     <Flex
       aria-label="form-container"
       flexDirection={["column", "column", "row"]}
+      gap="10%"
       placeItems="space-between"
-      p="5%"
-      pt={{ lg: "2%" }}
+      m="15vh auto"
       placeContent="center"
-      w="100%"
-      margin="auto"
+      w={["95%", "90%", "80%"]}
+      h="fit-content"
     >
       {children}
     </Flex>

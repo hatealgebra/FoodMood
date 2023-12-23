@@ -14,8 +14,8 @@ import NextLink from "next/link";
 
 import * as routerConstantClass from "~constants/router.constants";
 
-import CustomIcon from "../../atoms/customIcon/customIcon/CustomIcon";
-import Logo from "../../atoms/logo/Logo";
+import CustomIcon from "~atoms/customIcon/customIcon/CustomIcon";
+import Logo from "~atoms/logo/Logo";
 
 import { GrFacebook, GrInstagram, GrLinkedin } from "react-icons/gr";
 import { BiCopyright } from "react-icons/bi";
@@ -114,7 +114,7 @@ const Footer = () => {
             </List>
           </VStack>
         </Stack>
-        <HStack justify="center" fontWeight="400" isInline mt={20}>
+        <HStack justify="center" fontWeight="400" mt={20}>
           <CustomIcon icon={BiCopyright} />
           <Text color="mono.400">2021 FoodMood. All rights reserved.</Text>
         </HStack>

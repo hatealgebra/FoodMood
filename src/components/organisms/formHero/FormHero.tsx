@@ -34,11 +34,7 @@ const loginGoogleUnavalaible = () => {
 const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
   return (
     <FormContainer>
-      <Flex
-        maxW="400px"
-        flexDir="column"
-        m={{ base: "0 0 10px 0", md: "0 50px 0 0" }}
-      >
+      <Flex maxW="1200px" flexDir="column" flex="1 1 0">
         <Box>
           {variant === "login" ? (
             <>
@@ -71,7 +67,9 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
               : "or sign up with enail"}
           </CustomDivider>
         </Box>
-        {variant === "signup" ? <SignupForm /> : <LoginForm />}
+        <Box flex="1 1 0">
+          {variant === "signup" ? <SignupForm /> : <LoginForm />}
+        </Box>
       </Flex>
       <Image
         as={NextImage}
@@ -79,8 +77,8 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
         src={imageSrc}
         alt={imageSrc}
         maxWidth="450px"
-        flex="2 2 0"
         mx={{ md: 5 }}
+        flex="50%"
       />
     </FormContainer>
   );

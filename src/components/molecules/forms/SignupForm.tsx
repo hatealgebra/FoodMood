@@ -6,11 +6,11 @@ import NextLink from "next/link";
 
 import * as routeConstantClass from "~constants/router.constants";
 
-import FormikInput from "../../atoms/input/Input";
+import FormikInput from "~atoms/input/Input";
 
-import { useAppDispatch } from "../../../store/hooks";
-import { createUser } from "../../../store/thunks/authentication.thunks";
-import { IFieldInput } from "../../../types/utils.types";
+import { useAppDispatch } from "~store/hooks";
+import { createUser } from "~store/thunks/authentication.thunks";
+import { IFieldInput } from "~types/utils.types";
 
 const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
@@ -97,9 +97,6 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
               <Link alignSelf="flex-end" variant="classic">
                 Forgot password?
               </Link>
-              <Button type="submit" colorScheme="secondary" isFullWidth>
-                Sign Up
-              </Button>
               <Text alignSelf="flex-start" as="span" variant="small">
                 Already have an account?
                 <Link
@@ -112,6 +109,9 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
                 </Link>
               </Text>
             </Box>
+            <Button type="submit" colorScheme="secondary" isFullWidth>
+              Sign Up
+            </Button>
           </SimpleGrid>
         </Form>
       )}
