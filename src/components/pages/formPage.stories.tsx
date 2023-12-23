@@ -1,8 +1,8 @@
 import React from "react";
 
-import GenericPage from "../templates/genericPage/GenericPage";
-import SignupPage from "./signupPage/SignupPage";
-import LoginPage from "./loginPage/LoginPage";
+import GenericPage from "~templates/genericPage/GenericPage";
+import SignupPage from "~app/register/page";
+import LoginPage from "~app/login/page";
 
 export const LoginFormPage = () => <LoginPage />;
 export const SignupFormPage = () => <SignupPage />;

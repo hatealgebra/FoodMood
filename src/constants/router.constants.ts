@@ -3,7 +3,7 @@ export const ROUTE_WEB = {
   LOGIN_PAGE: "/login",
   REGISTER_PAGE: "/register",
   ABOUT_PAGE: "/about",
-  TERMS_POLICY_PAGE: "/terms-&-policy",
+  TERMS_POLICY_PAGE: "/terms",
   CONTACT_PAGE: "/contact-me",
 };
 

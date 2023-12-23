@@ -51,6 +51,12 @@ const colors = {
   black: "#373737",
 };
 
+const breakpoints = {
+  base: "0px",
+  tablet: "400px",
+  desktop: "768px",
+};
+
 const theme = {
   styles: {
     global: {
@@ -73,6 +79,7 @@ const theme = {
 
 const themeDefault = extendTheme({
   config: { initialColorMode: "light" },
+  breakpoints,
   fonts,
   typography,
   colors,

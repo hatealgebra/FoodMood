@@ -6,13 +6,13 @@ import { Button, Link, Text, VStack } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 import { loginUser } from "~store/thunks/authentication.thunks";
-import { LoginCredentials } from "../../../types/async.types";
 
 import * as routerConstantClass from "~constants/router.constants";
-import { useAppDispatch } from "../../../store/hooks";
-import { IFieldInput } from "../../../types/utils.types";
+import { useAppDispatch } from "~store/hooks";
+import { IFieldInput } from "~types/utils.types";
 import { getAuth } from "firebase/auth";
 import FormikInput from "src/components/atoms/input/Input";
+import { LoginCredentials } from "~types/async.types";
 
 const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
@@ -69,7 +69,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
             <Link alignSelf="flex-end" variant="classic">
               Forgot password?
             </Link>
-            <Button type="submit" colorScheme="secondary" isFullWidth>
+            <Button type="submit" colorScheme="secondary" width="full">
               Login
             </Button>
             <Text alignSelf="flex-start" as="span" variant="small">

@@ -17,6 +17,7 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
     <SimpleGrid
       id="mobileMenu"
       as="nav"
+      display={{ base: "grid", tablet: "none" }}
       aria-label="mobile-menu"
       position="fixed"
       height="100%"
@@ -25,7 +26,6 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
       visibility={isOpen ? "visible" : "hidden"}
       backgroundColor="white"
       transition=".3s ease"
-      display="grid"
       templateAreas={`". ." "list firstBox" "secondBox ." ". ."`}
       templateRows=".4fr auto auto 2fr"
       rowGap="20px"

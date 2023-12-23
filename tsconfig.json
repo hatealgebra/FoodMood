@@ -15,6 +15,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "~app/*": ["./src/app/*"],
       "~assets/*": ["./src/assets/*"],
       "~atoms/*": ["./src/components/atoms/*"],
       "~molecules/*": ["./src/components/molecules/*"],

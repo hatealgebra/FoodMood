@@ -11,7 +11,7 @@ const providers = ({ children }: { children: ReactNode }) => {
   return (
     <Provider store={store}>
       <ChakraProvider resetCSS theme={themeDefault}>
-        <GenericPage>{children}</GenericPage>
+        {children}
       </ChakraProvider>
     </Provider>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import {
@@ -9,15 +11,16 @@ import {
   Button,
   Heading,
 } from "@chakra-ui/react";
+import NextImage from "next/image";
 
 import { FcGoogle } from "react-icons/fc";
-import FormContainer from "../../molecules/formContainer/FormContainer";
-import CustomDivider from "../../atoms/customDivider/CustomDivider";
-import LoginForm from "../../molecules/forms/LoginForm";
-import SignupForm from "../../molecules/forms/SignupForm";
+import FormContainer from "~molecules/formContainer/FormContainer";
+import CustomDivider from "~atoms/customDivider/CustomDivider";
+import LoginForm from "~molecules/forms/LoginForm";
+import SignupForm from "~molecules/forms/SignupForm";
 
 const loginGoogleUnavalaible = () => {
-  const toast = createStandaloneToast();
+  const { toast } = createStandaloneToast();
   toast({
     title: "This method is currently unavalible",
     description:
@@ -57,7 +60,7 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
           <Button
             leftIcon={<FcGoogle />}
             variant="outline"
-            isFullWidth
+            width="full"
             onClick={() => loginGoogleUnavalaible()}
           >
             Sign In with the Google
@@ -71,6 +74,7 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
         {variant === "signup" ? <SignupForm /> : <LoginForm />}
       </Flex>
       <Image
+        as={NextImage}
         my={16}
         src={imageSrc}
         alt={imageSrc}
