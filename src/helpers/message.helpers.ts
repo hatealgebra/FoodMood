@@ -3,8 +3,9 @@ import themeDefault from "../components/particles/themeDefault";
 
 const DURATION = 3000;
 
+const { toast } = createStandaloneToast({ theme: themeDefault });
+
 export const showError = async (error: Error) => {
-  const toast = createStandaloneToast({ theme: themeDefault });
   toast({
     title: error.name,
     description: error.message,
@@ -15,7 +16,6 @@ export const showError = async (error: Error) => {
 };
 
 export const showSuccess = async (title: string, description: string) => {
-  const toast = createStandaloneToast({ theme: themeDefault });
   toast({
     title,
     description,

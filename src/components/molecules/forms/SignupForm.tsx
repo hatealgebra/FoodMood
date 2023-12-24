@@ -11,9 +11,12 @@ import FormikInput from "~atoms/input/Input";
 import { useAppDispatch } from "~store/hooks";
 import { createUser } from "~store/thunks/authentication.thunks";
 import { IFieldInput } from "~types/utils.types";
+import { useRouter } from "next/navigation";
+import * as routerConstantClass from "~constants/router.constants";
 
 const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const initialValues: SignupFormValues = {
     name: "",
     email: "",
@@ -30,8 +33,13 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
         return name;
       })
       .join(" ");
-    dispatch(createUser({ email, psw: password, name: capitalizeName }));
-    actions.resetForm();
+
+    try {
+      dispatch(createUser({ email, psw: password, name: capitalizeName }));
+      return router.push(routerConstantClass.ROUTE_WEB.LOGIN_PAGE);
+    } finally {
+      actions.resetForm();
+    }
   };
 
   return (

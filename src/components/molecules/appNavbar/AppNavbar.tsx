@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Box, Link, SimpleGrid } from "@chakra-ui/react";
 import NextLink from "next/link";

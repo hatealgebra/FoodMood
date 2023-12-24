@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import { AnyAction } from "redux";
@@ -10,7 +12,7 @@ const useSortRecipes = (recipes: Recipe[], action: AnyAction) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(action);
+    dispatch(action());
   }, [setSortBy, action, dispatch]);
 
   return [sortBy, setSortBy];

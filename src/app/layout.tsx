@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@chakra-ui/react";
 import Providers from "./providers";
 
 import "@fontsource/fira-sans/400.css";
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <TopPanel />
-          {children}
+          <Box m="10vh auto">{children}</Box>
           <Footer />
         </Providers>
       </body>

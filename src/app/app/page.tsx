@@ -1,23 +1,23 @@
+"use client";
 import { useEffect } from "react";
 
 import { Center, Stack } from "@chakra-ui/react";
-import AppSection from "../../molecules/appSection/AppSection";
-import AppPage from "../../templates/appPage/AppPage.template";
+import AppSection from "~molecules/appSection/AppSection";
 
-import RecipeCardRow from "../../organisms/recipeCardRow/RecipeCardRow";
-import AlertBox from "../../atoms/alertBox/AlertBox";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { fetchRecipes } from "../../../store/thunks/edamamRecipe.thunk";
+import RecipeCardRow from "~organisms/recipeCardRow/RecipeCardRow";
+import AlertBox from "~atoms/alertBox/AlertBox";
+import { useAppDispatch, useAppSelector } from "~store/hooks";
+import { fetchRecipes } from "~store/thunks/edamamRecipe.thunk";
 import {
   selectRandomRecipes,
   selectRandomRecipesError,
   selectRandomRecipesStatus,
-} from "../../../store/slices/randomRecipes.slice";
+} from "~store/slices/randomRecipes.slice";
 import {
   selectSavedRecipes,
   selectSavedRecipesStatus,
   selectSavedRecipesError,
-} from "../../../store/slices/savedRecipes.slice";
+} from "~store/slices/savedRecipes.slice";
 
 const AppHomepage = () => {
   const randomRecipes = useAppSelector(selectRandomRecipes);
@@ -33,7 +33,7 @@ const AppHomepage = () => {
   }, [dispatch]);
 
   return (
-    <AppPage>
+    <>
       <AppSection headingOne="Your daily" headingTwo="recipes">
         <RecipeCardRow
           isLoading={randomRecipesStatus === "loading" ? true : false}
@@ -65,7 +65,7 @@ const AppHomepage = () => {
           />
         </AppSection>
       </Stack>
-    </AppPage>
+    </>
   );
 };
 

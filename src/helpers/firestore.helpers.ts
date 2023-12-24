@@ -1,5 +1,5 @@
 import { collection, doc } from "firebase/firestore";
-import { dbFirestore } from "~services/firebase/configFirebase";
+import { dbFirestore } from "~services/firebase/config";
 
 export const userRef = (uid: string) => doc(dbFirestore, "users", uid);
 

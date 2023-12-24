@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import "firebase/auth";
 
@@ -10,14 +11,13 @@ import { loginUser } from "~store/thunks/authentication.thunks";
 import * as routerConstantClass from "~constants/router.constants";
 import { useAppDispatch } from "~store/hooks";
 import { IFieldInput } from "~types/utils.types";
-import { getAuth } from "firebase/auth";
 import FormikInput from "src/components/atoms/input/Input";
 import { LoginCredentials } from "~types/async.types";
+import { useRouter } from "next/navigation";
 
 const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
-  // let navigate = useNavigate();
-  const user = getAuth();
+  const router = useRouter();
 
   const initialValues: LoginCredentials = {
     email: "",
@@ -26,11 +26,16 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
 
   const logOnSubmit = async (values: typeof initialValues, actions: any) => {
     const { email, psw } = values;
-    await dispatch(loginUser({ email, psw }));
-    if (user.currentUser !== null) {
-      // navigate(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
+    let success = false;
+
+    try {
+      await dispatch(loginUser({ email, psw }));
+      return router.push(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      actions.resetForm();
     }
-    actions.resetForm();
   };
 
   return (

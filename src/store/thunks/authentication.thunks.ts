@@ -13,16 +13,16 @@ import {
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 
-import themeDefault from "../../components/particles/themeDefault";
-import { dbFirestore } from "~services/firebase/configFirebase";
 import { CreateUserProps, LoginCredentials } from "../../types/async.types";
 
-import * as myConstClass from "~constants/router.constants";
 import { userRef } from "~helpers/firestore.helpers";
 import { showError, showSuccess } from "~helpers/message.helpers";
+import themeDefault from "~particles/themeDefault";
 import { createStandaloneToast } from "@chakra-ui/react";
 
-// const { toast } = createStandaloneToast({ theme: themeDefault });
+import * as routerConstants from "~constants/router.constants";
+
+const { toast } = createStandaloneToast({ theme: themeDefault });
 
 export const loginUser = createAsyncThunk<
   any,
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk<
   const { email, psw } = credentials;
   try {
     await signInWithEmailAndPassword(getAuth(), email, psw);
-    return showSuccess("Logged in", "User was successfully logged in.");
+    await showSuccess("Logged in", "User was successfully logged in.");
   } catch (e) {
     const name = "Incorrect login.";
     const message =
@@ -74,19 +74,19 @@ export const createUser = createAsyncThunk<
       displayName: name,
     });
     const { currentUser } = getAuth();
-    console.log("first");
     if (currentUser !== null) {
+      toast({
+        title: "ACCOUNT REGISTERED!",
+        description:
+          "Your account was sucesfully created. Please login to proceed",
+        status: "success",
+        position: "top",
+        duration: 3500,
+      });
       await setDoc(userRef(currentUser.uid), { foo: "bar" });
-      // toast({
-      //   title: "ACCOUNT REGISTERED!",
-      //   description:
-      //     "Your account was sucesfully created. Please login to proceed",
-      //   status: "success",
-      //   position: "top",
-      //   duration: 3500,
-      // });
     }
   } catch (err: any) {
+    console.log(err);
     if (err.message.match(/email-already-in-use/gi)) {
       return thunkApi.rejectWithValue({
         name: "Email exists",
@@ -155,10 +155,10 @@ export const deleteUserAcc = createAsyncThunk<
 >("user,deleteUser", async (user, thunkApi) => {
   if (user) {
     const { uid } = user;
-    const userRef = doc(dbFirestore, "users", uid);
+    // const userRef = doc(dbFirestore, "users", uid);
     try {
       await deleteUser(user);
-      await deleteDoc(userRef);
+      // await deleteDoc(userRef);
     } catch (e) {
       return thunkApi.rejectWithValue({
         name: "Something went wrong",

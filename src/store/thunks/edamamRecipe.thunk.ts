@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getRecipes } from "../../services/api/endpoints";
+import { getRecipes } from "../../services/edamam/endpoints";
 import { FetchRecipesError } from "../../types/async.types";
 import { Hit } from "../../types/recipe.types";
 

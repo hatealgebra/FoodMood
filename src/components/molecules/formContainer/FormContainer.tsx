@@ -7,9 +7,10 @@ const FormContainer = ({ children }: FormContainerProps) => {
       aria-label="form-container"
       flexDirection={["column", "column", "row"]}
       gap="10%"
-      placeItems="space-between"
-      m="15vh auto"
+      placeItems="space-around"
       placeContent="center"
+      alignItems="center"
+      m="auto"
       w={["95%", "90%", "80%"]}
       h="fit-content"
     >

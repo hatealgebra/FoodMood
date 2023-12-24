@@ -34,7 +34,7 @@ const loginGoogleUnavalaible = () => {
 const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
   return (
     <FormContainer>
-      <Flex maxW="1200px" flexDir="column" flex="1 1 0">
+      <Flex maxW="500px" flexDir="column" flex="1 1 0">
         <Box>
           {variant === "login" ? (
             <>
@@ -76,7 +76,7 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
         my={16}
         src={imageSrc}
         alt={imageSrc}
-        maxWidth="450px"
+        maxWidth="650px"
         mx={{ md: 5 }}
         flex="50%"
       />
