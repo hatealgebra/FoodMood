@@ -9,6 +9,7 @@ import {
   deleteUser,
   signOut,
   User,
+  onAuthStateChanged,
 } from "@firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
@@ -132,12 +133,12 @@ export const signOutUser = createAsyncThunk<
 >("user/signOut", async (_, thunkApi) => {
   try {
     await signOut(getAuth());
-    // toast({
-    //   title: "Signed Out",
-    //   description: "You were succesfuly signed out from the app.",
-    //   status: "success",
-    //   position: "top",
-    // });
+    toast({
+      title: "Signed Out",
+      description: "You were succesfuly signed out from the app.",
+      status: "success",
+      position: "top",
+    });
     return true;
   } catch (e) {
     return thunkApi.rejectWithValue({

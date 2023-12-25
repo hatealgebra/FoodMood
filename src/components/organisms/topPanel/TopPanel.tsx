@@ -5,15 +5,7 @@ import { clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import * as routerConstantClass from "~constants/router.constants";
 
-import {
-  Flex,
-  Spacer,
-  HStack,
-  Box,
-  Link,
-  IconButton,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Flex, Spacer, HStack, Box, Link, IconButton } from "@chakra-ui/react";
 import MobileMenu from "~molecules/mobileMenu/MobileMenu";
 import Logo from "~atoms/logo/Logo";
 
@@ -24,11 +16,10 @@ import { useAppSelector } from "~store/hooks";
 import { selectUserStatus } from "~store/slices/user.slice";
 import TabletMenu from "~molecules/tabletMenu/TabletMenu";
 import { getAuth, User } from "firebase/auth";
-import useWindowSize, { WindowSize } from "~hooks/useWindowSize";
 
 // ! hook for scroll handler
 
-const TopPanel = ({ device = "mobile" }: TopPanelProps) => {
+const TopPanel = () => {
   const { ROUTE_WEB } = routerConstantClass;
   const { displayName } = getAuth().currentUser || ({} as User);
   const [isTouchMenuOpen, setTouchMenuOpen] = useState(false);

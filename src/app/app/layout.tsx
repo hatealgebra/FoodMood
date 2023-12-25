@@ -5,10 +5,6 @@ import AppNavbar from "~molecules/appNavbar/AppNavbar";
 import AppSection from "~molecules/appSection/AppSection";
 
 const AppPage: React.FC<Props> = ({ children }) => {
-  // useEffect(() => {
-  //   dispatch(logInUser(userDataMock));
-  // }, []);
-
   return (
     <VStack pb={20}>
       <AppSection yAxisMinus hideHeading>

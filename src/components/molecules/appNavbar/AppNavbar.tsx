@@ -15,7 +15,6 @@ const AppNavbar = () => {
     APP_FAVOURITES_PAGE,
     APP_MEAL_PLAN_PAGE,
   } = routeConstClass.ROUTE_APP;
-  const pathName = window.location.pathname;
   const [ref, value] = useHover();
   const [activeNav, setActiveNav] = useState<string>(value);
 
@@ -28,10 +27,10 @@ const AppNavbar = () => {
         href={url}
         ref={ref}
         sx={{
-          color: url === pathName ? "white" : "black",
+          // color: url === pathName ? "white" : "black",
           "&:hover": {
             textDecorationColor: "primary.500",
-            textDecoration: url === pathName ? "none" : "underline",
+            // textDecoration: url === pathName ? "none" : "underline",
           },
         }}
         color="mono.500"
@@ -69,15 +68,15 @@ const AppNavbar = () => {
         borderRadius="15px"
         transition=".5s ease"
         placeSelf="center"
-        gridColumn={
-          pathName === APP_HOME_PAGE
-            ? "1/2"
-            : pathName === APP_SEARCH_PAGE
-            ? "2/3"
-            : pathName === APP_FAVOURITES_PAGE
-            ? "3/4"
-            : "4/5"
-        }
+        // gridColumn={
+        //   pathName === APP_HOME_PAGE
+        //     ? "1/2"
+        //     : pathName === APP_SEARCH_PAGE
+        //     ? "2/3"
+        //     : pathName === APP_FAVOURITES_PAGE
+        //     ? "3/4"
+        //     : "4/5"
+        // }
       />
     </SimpleGrid>
   );
