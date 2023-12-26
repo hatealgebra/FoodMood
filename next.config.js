@@ -19,6 +19,22 @@ const nextConfig = {
     }
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.edamam.com",
+        port: "",
+        pathname: "/web-img/**",
+      },
+      {
+        protocol: "https",
+        hostname: "edamam-product-images.s3.amazonaws.com",
+        port: "",
+        pathname: "/web-img/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

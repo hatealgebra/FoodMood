@@ -44,18 +44,12 @@ const RecipeCardRow = ({
           </Text>
         ) : (
           recipeRowOrigin(recipes).map((recipe, i) => {
-            const {
-              cuisineType,
-              label,
-              totalTime,
-              dishType,
-              mealType,
-              image,
-            } = recipe as Recipe;
+            const { cuisineType, label, totalTime, dishType, mealType, image } =
+              recipe as Recipe;
             return (
               <RecipeCard
                 key={label + i}
-                img={image}
+                imageSource={image}
                 tags={[cuisineType[0], dishType[0], mealType[0]]}
                 heading={label}
                 prepareTime={totalTime}

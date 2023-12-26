@@ -18,7 +18,7 @@ import { openModal } from "~store/slices/modalRecipe.slice";
 import { ImageProps } from "next/image";
 
 interface RecipeCardProps {
-  img: ImageProps;
+  imageSource: ImageProps;
   tags?: string[];
   heading?: string;
   prepareTime?: number;
@@ -28,7 +28,7 @@ interface RecipeCardProps {
 }
 
 const RecipeCard = ({
-  img,
+  imageSource,
   tags = [],
   heading,
   prepareTime,
@@ -75,7 +75,7 @@ const RecipeCard = ({
             boxShadow="base"
             borderRadius="5px"
             objectFit="cover"
-            src={img}
+            src={imageSource}
             h="220px"
             width="100%"
             aria-label={`${heading} image`}
