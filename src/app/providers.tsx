@@ -5,7 +5,6 @@ import React, { ReactNode } from "react";
 import { Provider } from "react-redux";
 import themeDefault from "~particles/themeDefault";
 import store from "~store/store";
-import GenericPage from "~templates/genericPage/GenericPage";
 
 const providers = ({ children }: { children: ReactNode }) => {
   return (

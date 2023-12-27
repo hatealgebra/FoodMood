@@ -9,19 +9,19 @@ import {
   deleteUser,
   signOut,
   User,
-  onAuthStateChanged,
+  setPersistence,
+  browserSessionPersistence,
+  browserLocalPersistence,
 } from "@firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 
-import { CreateUserProps, LoginCredentials } from "../../types/async.types";
+import { CreateUserProps, LoginCredentials } from "~types/async.types";
 
 import { userRef } from "~helpers/firestore.helpers";
-import { showError, showSuccess } from "~helpers/message.helpers";
+import showToast from "~helpers/toast.helpers";
 import themeDefault from "~particles/themeDefault";
 import { createStandaloneToast } from "@chakra-ui/react";
-
-import * as routerConstants from "~constants/router.constants";
 
 const { toast } = createStandaloneToast({ theme: themeDefault });
 
@@ -31,19 +31,23 @@ export const loginUser = createAsyncThunk<
   { rejectValue: Error }
 >("user/login", async (credentials: LoginCredentials, thunkApi) => {
   const { email, psw } = credentials;
-  try {
-    await signInWithEmailAndPassword(getAuth(), email, psw);
-    await showSuccess("Logged in", "User was successfully logged in.");
-  } catch (e) {
-    const name = "Incorrect login.";
-    const message =
-      "Login does not match. Either email doesn't exist or password is incorrect.";
-    showError({ name, message });
-    return thunkApi.rejectWithValue({
-      name,
-      message,
+  const auth = getAuth();
+  setPersistence(auth, browserLocalPersistence)
+    .then(async () => {
+      await signInWithEmailAndPassword(auth, email, psw);
+      showToast("Logged in", "User was successfully logged in.", "success");
+    })
+    .catch((error) => {
+      console.log(error);
+      const name = "Incorrect login.";
+      const message =
+        "Login does not match. Either email doesn't exist or password is incorrect.";
+      showToast(name, message, "error");
+      return thunkApi.rejectWithValue({
+        name,
+        message,
+      });
     });
-  }
 });
 
 // * Login google
@@ -89,6 +93,11 @@ export const createUser = createAsyncThunk<
   } catch (err: any) {
     console.log(err);
     if (err.message.match(/email-already-in-use/gi)) {
+      showToast(
+        "Email exists",
+        "This email is already in the use, please select different email. Thank you",
+        "error"
+      );
       return thunkApi.rejectWithValue({
         name: "Email exists",
         message:
@@ -118,11 +127,15 @@ export const updateUser = createAsyncThunk<
         photoURL: photoURL,
       });
   } catch (e) {
-    // toast({ title: "Something went wrong" });
-    // return thunkApi.rejectWithValue({
-    //   name: "Something went wrong.",
-    //   message: "Message couldn't be update. Try later or contact admin.",
-    // });
+    showToast(
+      "Something went wrong",
+      "User couldn't be update. Try later or contact admin",
+      "error"
+    );
+    return thunkApi.rejectWithValue({
+      name: "Something went wrong.",
+      message: "Message couldn't be update. Try later or contact admin.",
+    });
   }
 });
 
@@ -133,14 +146,14 @@ export const signOutUser = createAsyncThunk<
 >("user/signOut", async (_, thunkApi) => {
   try {
     await signOut(getAuth());
-    toast({
-      title: "Signed Out",
-      description: "You were succesfuly signed out from the app.",
-      status: "success",
-      position: "top",
-    });
+    showToast(
+      "Signed Out",
+      "You were succesfuly signed out from the app.",
+      "info"
+    );
     return true;
   } catch (e) {
+    showToast("Something went wrong", "Please try again later.", "error");
     return thunkApi.rejectWithValue({
       name: "Something went wrong!",
       message:

@@ -9,6 +9,7 @@ import "@fontsource/playfair-display/variable.css";
 import Footer from "~organisms/footer/Footer";
 import TopPanel from "~organisms/topPanel/TopPanel";
 import { worker } from "~mocks/browser";
+import useUserStatus from "~hooks/useAuthChanged";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
