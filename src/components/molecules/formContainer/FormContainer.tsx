@@ -5,7 +5,7 @@ const FormContainer = ({ children }: FormContainerProps) => {
   return (
     <Flex
       aria-label="form-container"
-      flexDirection={["column", "column", "row"]}
+      flexDirection={["column", "column", "column", "row"]}
       gap="10%"
       placeItems="space-around"
       placeContent="center"

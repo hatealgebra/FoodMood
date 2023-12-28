@@ -50,7 +50,7 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
               <Text maxW="300px">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Dolorem, dicta?
-              </Text>{" "}
+              </Text>
             </>
           )}
           <Button
@@ -76,9 +76,10 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
         my={16}
         src={imageSrc}
         alt={imageSrc}
-        maxWidth="650px"
+        maxWidth="500px"
         mx={{ md: 5 }}
         flex="50%"
+        width={["100%", "100%", "100%", "50%"]}
       />
     </FormContainer>
   );

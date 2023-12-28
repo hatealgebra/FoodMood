@@ -15,17 +15,17 @@ import UserAvatar from "~molecules/userAvatar/UserAvatar";
 import { useAppSelector } from "~store/hooks";
 import { selectUserStatus } from "~store/slices/user.slice";
 import TabletMenu from "~molecules/tabletMenu/TabletMenu";
-import { getAuth, User } from "firebase/auth";
+import useAuthChanged from "~hooks/useAuthChanged";
 
 // ! hook for scroll handler
 
 const TopPanel = () => {
   const { ROUTE_WEB } = routerConstantClass;
-  const { displayName } = getAuth().currentUser || ({} as User);
   const [isTouchMenuOpen, setTouchMenuOpen] = useState(false);
   const [scrollState, setScrollState] = useState(false);
   const [isContactOpen, setContactOpen] = useState(false);
   const userStatus = useAppSelector(selectUserStatus);
+  const [user] = useAuthChanged();
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
@@ -110,7 +110,7 @@ const TopPanel = () => {
               <Link onClick={openModalContact}>Contact</Link>
             </HStack>
             <Spacer />
-            <UserAvatar name={displayName} status={userStatus} />
+            <UserAvatar name={user?.displayName} status={userStatus} />
           </Flex>
           <IconButton
             aria-label="Menu button"

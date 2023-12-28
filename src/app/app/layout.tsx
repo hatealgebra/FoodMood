@@ -12,7 +12,7 @@ import useAuthChanged from "~hooks/useAuthChanged";
 import Loading from "./loading";
 
 const AppPage: React.FC<Props> = ({ children }) => {
-  const isLoggedIn = useAuthChanged();
+  const [isLoggedIn] = useAuthChanged();
 
   if (!isLoggedIn) {
     return <Loading />;

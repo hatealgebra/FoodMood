@@ -24,7 +24,6 @@ const UserAvatar = ({
 
   const signOut = () => {
     dispatch(signOutUser(null));
-    // navigate(myConstClass.ROUTE_WEB.LOGIN_PAGE);
   };
 
   return (
