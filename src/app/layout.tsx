@@ -9,7 +9,6 @@ import "@fontsource/playfair-display/variable.css";
 import Footer from "~organisms/footer/Footer";
 import TopPanel from "~organisms/topPanel/TopPanel";
 import { worker } from "~mocks/browser";
-import useUserStatus from "~hooks/useAuthChanged";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -43,5 +42,10 @@ export default function RootLayout({
     </html>
   );
 }
+
+import { getAuth, connectAuthEmulator } from "firebase/auth";
+
+const auth = getAuth();
+connectAuthEmulator(auth, "http://127.0.0.1:9099");
 
 enableMocking();
