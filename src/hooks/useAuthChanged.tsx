@@ -1,7 +1,6 @@
 "use client";
 import { UserInfo, getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useRouter } from "next/navigation";
-import showToast from "~helpers/toast.helpers";
 import * as routerConstants from "~constants/router.constants";
 import { useState } from "react";
 

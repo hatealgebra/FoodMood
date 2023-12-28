@@ -93,6 +93,8 @@ const RecipeCard = ({
             fontSize="x-large"
             isTruncated
             noOfLines={[2, 1]}
+            overflow="hidden"
+            width="95%"
           >
             {heading}
           </Heading>

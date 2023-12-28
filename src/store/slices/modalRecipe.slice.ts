@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "~store/store";
 
-import type { RootState } from "../store";
-
-import Recipe from "../../types/recipe.types";
+import Recipe from "~types/recipe.types";
 
 const initialState: InitialStateProps = {
   isOpen: false,

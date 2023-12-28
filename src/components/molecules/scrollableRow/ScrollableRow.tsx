@@ -3,15 +3,17 @@ import React from "react";
 import { Box, HStack } from "@chakra-ui/react";
 
 interface ScrollableRowProps {
-  smallSpacing?: boolean
+  children: React.ReactNode;
+  smallSpacing?: boolean;
 }
 
 const ScrollableRow: React.FC<ScrollableRowProps> = ({
   children,
   smallSpacing,
+  ...props
 }) => {
   return (
-    <Box width="100%" my={3} >
+    <Box width="100%" my={3} {...props}>
       <HStack
         spacing={smallSpacing ? 1 : 4}
         overflowX="scroll"

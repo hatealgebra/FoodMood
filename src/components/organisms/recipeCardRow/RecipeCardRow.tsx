@@ -13,10 +13,13 @@ const RecipeCardRow = ({
   isLoading,
   recipes,
   error = null,
+  leftPadding = false,
+  ...props
 }: RecipeCardRowProps) => {
   return (
-    <ScrollableRow>
+    <ScrollableRow {...props}>
       <SimpleGrid
+        px={props.maxW === "100vw" ? [0, "5.5vw", "5.5vw", "10.5vw"] : [0]}
         templateRows={error ? "1fr" : "1fr 1fr"}
         spacingX="6"
         spacingY="2"
@@ -67,6 +70,7 @@ interface RecipeCardRowProps {
   isLoading: boolean;
   recipes: Array<any>;
   error?: FetchRecipesError | null;
+  leftPadding?: boolean;
 }
 
 export default RecipeCardRow;

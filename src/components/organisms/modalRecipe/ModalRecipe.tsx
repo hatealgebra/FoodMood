@@ -21,22 +21,22 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 
-import SaveButton from "../../atoms/button/SaveButton";
+import SaveButton from "~atoms/button/SaveButton";
 
-import ScrollableRow from "../../molecules/scrollableRow/ScrollableRow";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { selectSavedRecipes } from "../../../store/slices/savedRecipes.slice";
+import ScrollableRow from "~molecules/scrollableRow/ScrollableRow";
+import { useAppDispatch, useAppSelector } from "~store/hooks";
+import { selectSavedRecipes } from "~store/slices/savedRecipes.slice";
 import {
   removeSavedRecipe,
   saveRecipe,
-} from "../../../store/thunks/firestoreCRUD.thunk";
+} from "~store/thunks/firestoreCRUD.thunk";
 import {
   closeModal,
   selectModalData,
   selectModalOpen,
-} from "../../../store/slices/modalRecipe.slice";
+} from "~store/slices/modalRecipe.slice";
 
-import Recipe from "../../../types/recipe.types";
+import Recipe from "~types/recipe.types";
 import { getAuth, User } from "firebase/auth";
 
 const ModalRecipe = () => {
@@ -61,6 +61,8 @@ const ModalRecipe = () => {
   const servings = modalRecipeData?.yield || 0;
   const modalOpen = useAppSelector(selectModalOpen);
   const savedRecipes = useAppSelector(selectSavedRecipes);
+
+  console.log("modalOpen", useAppSelector(selectModalOpen));
 
   useEffect(() => {
     const checksIfRecipeIsSaved = () => {

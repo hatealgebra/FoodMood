@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import * as routerConstants from "~constants/router.constants";
 import useAuthChanged from "~hooks/useAuthChanged";
 import Loading from "./loading";
+import ModalRecipe from "~organisms/modalRecipe/ModalRecipe";
 
 const AppPage: React.FC<Props> = ({ children }) => {
   const [isLoggedIn] = useAuthChanged();
@@ -23,6 +24,7 @@ const AppPage: React.FC<Props> = ({ children }) => {
         <AppNavbar />
       </AppSection>
       {children}
+      <ModalRecipe />
     </VStack>
   );
 };

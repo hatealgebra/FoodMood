@@ -16,21 +16,21 @@ const AppNavbar = () => {
     APP_MEAL_PLAN_PAGE,
   } = routeConstClass.ROUTE_APP;
   const [ref, value] = useHover();
-  const [activeNav, setActiveNav] = useState<string>(value);
-
+  const [activeNav, setActiveNav] = useState<string>(window.location.pathname);
   const NavbarLink = ({ url, children }: NavbarLinkProps) => {
     return (
       <Link
         variant="appNav"
         onClick={() => setActiveNav(url)}
         as={NextLink}
+        w="100px"
         href={url}
         ref={ref}
         sx={{
-          // color: url === pathName ? "white" : "black",
+          color: url === activeNav ? "white" : "black",
           "&:hover": {
             textDecorationColor: "primary.500",
-            // textDecoration: url === pathName ? "none" : "underline",
+            textDecoration: url === activeNav ? "none" : "underline",
           },
         }}
         color="mono.500"
@@ -52,6 +52,7 @@ const AppNavbar = () => {
       fontWeight="600"
       position="relative"
       templateRows="1fr"
+      w="fit-content"
       m="5px 0"
     >
       <NavbarLink url={APP_HOME_PAGE}>Home</NavbarLink>
@@ -68,15 +69,15 @@ const AppNavbar = () => {
         borderRadius="15px"
         transition=".5s ease"
         placeSelf="center"
-        // gridColumn={
-        //   pathName === APP_HOME_PAGE
-        //     ? "1/2"
-        //     : pathName === APP_SEARCH_PAGE
-        //     ? "2/3"
-        //     : pathName === APP_FAVOURITES_PAGE
-        //     ? "3/4"
-        //     : "4/5"
-        // }
+        gridColumn={
+          activeNav === APP_HOME_PAGE
+            ? "1/2"
+            : activeNav === APP_SEARCH_PAGE
+            ? "2/3"
+            : activeNav === APP_FAVOURITES_PAGE
+            ? "3/4"
+            : "4/5"
+        }
       />
     </SimpleGrid>
   );

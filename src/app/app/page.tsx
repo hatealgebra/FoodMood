@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-import { Center, Stack } from "@chakra-ui/react";
+import { Box, Center, Stack } from "@chakra-ui/react";
 import AppSection from "~molecules/appSection/AppSection";
 
 import RecipeCardRow from "~organisms/recipeCardRow/RecipeCardRow";
@@ -34,20 +34,16 @@ const AppHomepage = () => {
 
   return (
     <>
-      <AppSection headingOne="Your daily" headingTwo="recipes">
+      <AppSection headingOne="Your daily" headingTwo="recipes" fullWidth>
         <RecipeCardRow
           isLoading={randomRecipesStatus === "loading" ? true : false}
           recipes={randomRecipes}
           error={randomRecipesError}
+          maxW="100vw"
         />
       </AppSection>
-      <Stack
-        direction={{ base: "column", lg: "row" }}
-        width={["100%", "95%", "95%", "80%"]}
-        maxW="1600px"
-        margin="auto"
-      >
-        <AppSection fullWidth headingOne="Today's meal" headingTwo="plan">
+      <Stack direction={{ base: "column", lg: "row" }} width="100%">
+        <AppSection headingOne="Today's meal" headingTwo="plan">
           <Center>
             <AlertBox status="info">Work in progress</AlertBox>
           </Center>
@@ -57,7 +53,7 @@ const AppHomepage = () => {
           <DishPlan dish="dinner" img={pumpkinSoup} mealName="Pumkin soup" />
         </Stack> */}
         </AppSection>
-        <AppSection fullWidth headingOne="My" headingTwo="Favourites">
+        <AppSection headingOne="My" headingTwo="Favourites">
           <RecipeCardRow
             isLoading={savedRecipesStatus === "loading" ? true : false}
             recipes={savedRecipes}

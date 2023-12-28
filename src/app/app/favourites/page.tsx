@@ -1,19 +1,19 @@
+"use client";
 import React from "react";
 
 import { Button, Center, Wrap } from "@chakra-ui/react";
 
-import AppSection from "../../molecules/appSection/AppSection";
-import Dropdown from "../../molecules/dropdown/Dropdown";
-import AppPage from "../../templates/appPage/AppPage.template";
-import RecipeCardRow from "../../organisms/recipeCardRow/RecipeCardRow";
-import { useAppSelector } from "../../../store/hooks";
+import AppSection from "~molecules/appSection/AppSection";
+import Dropdown from "~molecules/dropdown/Dropdown";
+import RecipeCardRow from "~organisms/recipeCardRow/RecipeCardRow";
+import { useAppSelector } from "~store/hooks";
 import {
   selectSavedRecipes,
   selectSavedRecipesError,
   selectSavedRecipesStatus,
-} from "../../../store/slices/savedRecipes.slice";
+} from "~store/slices/savedRecipes.slice";
 import useSortRecipes from "~hooks/useSortRecipes";
-import { sortRecipes } from "../../../store/slices/searchedRecipesSlice";
+import { sortRecipes } from "~store/slices/searchedRecipesSlice";
 
 const SavedRecipesPage = () => {
   const savRecipesStatus = useAppSelector(selectSavedRecipesStatus);
@@ -22,7 +22,7 @@ const SavedRecipesPage = () => {
   const [sortBy, setSortBy] = useSortRecipes(savRecipes, sortRecipes);
 
   return (
-    <AppPage>
+    <>
       <AppSection headingOne="favourite" headingTwo="recipes" secondary>
         <Dropdown
           sortBy={sortBy}
@@ -46,7 +46,7 @@ const SavedRecipesPage = () => {
           <Button colorScheme="primary">Show more</Button>
         )}
       </Center>
-    </AppPage>
+    </>
   );
 };
 

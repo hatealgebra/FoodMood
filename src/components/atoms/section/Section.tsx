@@ -14,7 +14,6 @@ const Section: React.FC<SectionProps> = ({ children, bg, yAxisMinus, app }) => {
       bg={bg}
       as="section"
       py={yAxisMinus ? 0 : { base: 3, lg: 10 }}
-      px={{ base: "5%", md: "3%" }}
       mt={0}
       w="100%"
     >

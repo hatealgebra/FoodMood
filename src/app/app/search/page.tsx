@@ -125,7 +125,7 @@ const SearchPage = () => {
         <Wrap width="100%" spacing="15px">
           {recipesStatus === "loading" ? (
             [...Array(20)].map((_, i) => (
-              <RecipeCard img={null} key={i} isLoading allData />
+              <RecipeCard imageSource={null} key={i} isLoading allData />
             ))
           ) : recipesData === [] && searchQuery !== "" ? (
             <Text
@@ -149,7 +149,7 @@ const SearchPage = () => {
               return (
                 <RecipeCard
                   key={label + i}
-                  img={image}
+                  imageSource={image}
                   tags={[cuisineType[0], dishType[0], mealType[0]]}
                   heading={label}
                   prepareTime={totalTime}

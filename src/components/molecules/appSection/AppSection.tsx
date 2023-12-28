@@ -14,15 +14,15 @@ const AppSection: React.FC<AppSectionProps> = ({
 }) => {
   return (
     <Section yAxisMinus={yAxisMinus}>
-      <VStack
-        width={["100%", "95%", "95%", fullWidth ? "100%" : "85%"]}
-        maxW="1600px"
-        alignContent="center"
-        margin="auto"
-        align="flex-start"
-      >
+      <VStack maxW="1600px" alignContent="center" align="flex-start">
         {!hideHeading && (
-          <Heading variant="fira" as="h2" size="md">
+          <Heading
+            variant="fira"
+            as="h2"
+            size="md"
+            w="fit-content"
+            px={[0, "5.5vw", "5.5vw", "10.5vw"]}
+          >
             <Box color="#373737" textTransform="uppercase" display="inline">
               {headingOne}
             </Box>
@@ -36,7 +36,9 @@ const AppSection: React.FC<AppSectionProps> = ({
             </Box>
           </Heading>
         )}
-        {children}
+        <Box display="box" px={[0, "5.5vw", "5.5vw", fullWidth ? 0 : "10.5vw"]}>
+          {children}
+        </Box>
       </VStack>
     </Section>
   );
