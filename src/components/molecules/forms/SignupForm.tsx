@@ -14,6 +14,26 @@ import { IFieldInput } from "~types/utils.types";
 import { useRouter } from "next/navigation";
 import * as routerConstantClass from "~constants/router.constants";
 
+const validate = (values: SignupFormValues): SignupFormValues => {
+  const passwordRegEx = new RegExp(
+    "^(?=.*[A-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]{8,20}$",
+    "g"
+  );
+
+  const errors = {} as SignupFormValues;
+
+  if (!/^[a-z]+\s[a-z]+$/gi.test(values.name)) {
+    errors.name = "Correct format is: Forename Surname";
+  }
+
+  if (!passwordRegEx.test(values.password) && values.password) {
+    errors.password = "Password is not secure enough!";
+  } else if (values.passwordAgain && values.password !== values.passwordAgain) {
+    errors.passwordAgain = "Passwords are different!";
+  }
+  return errors;
+};
+
 const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -34,12 +54,16 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
       })
       .join(" ");
 
-    try {
-      dispatch(createUser({ email, psw: password, name: capitalizeName }));
-      return router.push(routerConstantClass.ROUTE_WEB.LOGIN_PAGE);
-    } finally {
-      actions.resetForm();
+    const response = await dispatch(
+      createUser({ email, psw: password, name: capitalizeName })
+    );
+
+    if (!response) {
+      return actions.resetForm({
+        values: { email, name, password: "", passwordAgain: "" },
+      });
     }
+    return router.push(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
   };
 
   return (
@@ -132,25 +156,5 @@ interface SignupFormValues {
   password: string;
   passwordAgain: string;
 }
-
-const validate = (values: SignupFormValues): SignupFormValues => {
-  const passwordRegEx = new RegExp(
-    "^(?=.*[A-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]{8,20}$",
-    "g"
-  );
-
-  const errors = {} as SignupFormValues;
-
-  if (!/^[a-z]+\s[a-z]+$/gi.test(values.name)) {
-    errors.name = "Correct format is: Forename Surname";
-  }
-
-  if (!passwordRegEx.test(values.password) && values.password) {
-    errors.password = "Password is not secure enough!";
-  } else if (values.passwordAgain && values.password !== values.passwordAgain) {
-    errors.passwordAgain = "Passwords are different!";
-  }
-  return errors;
-};
 
 export default SignupForm;

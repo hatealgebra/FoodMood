@@ -1,5 +1,6 @@
 import { deleteField, doc, updateDoc } from "firebase/firestore";
-import { dbFirestore } from "./configFirebase";
+import { dbFirestore } from "./config";
+import { userRef } from "./firestoreRefs.services";
 
 export const deleteAllRecipes = async (uid: string) => {
   const recipesRef = doc(dbFirestore, "users", uid);

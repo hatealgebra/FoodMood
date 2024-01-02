@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "food-mood-a535d"
-  }
+    "default": "food-mood-a535d",
+    "stage-food-mood": "food-mood-a535d",
+    "food-mood": "food-mood-a535d"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -5,19 +5,15 @@ import * as routerConstants from "~constants/router.constants";
 import { useState } from "react";
 
 const useAuthChanged = () => {
-  const [user, setUser] = useState<UserInfo | null>(null);
+  const [user, setUser] = useState<UserInfo | null | undefined>(undefined);
   const auth = getAuth();
   const router = useRouter();
 
   onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      router.push(routerConstants.ROUTE_WEB.LOGIN_PAGE);
-      return setUser(null);
-    }
-
-    return setUser(user);
+    setUser(user);
   });
-  return [user, router];
+
+  return { user, router, isAuthenticating: user === undefined };
 };
 
 export default useAuthChanged;

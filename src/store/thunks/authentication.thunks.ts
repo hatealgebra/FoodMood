@@ -13,15 +13,15 @@ import {
   browserSessionPersistence,
   browserLocalPersistence,
 } from "@firebase/auth";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { createAsyncThunk, current } from "@reduxjs/toolkit";
 
 import { CreateUserProps, LoginCredentials } from "~types/async.types";
 
-import { userRef } from "~helpers/firestore.helpers";
 import showToast from "~helpers/toast.helpers";
 import themeDefault from "~particles/themeDefault";
 import { createStandaloneToast } from "@chakra-ui/react";
+import { setDoc } from "firebase/firestore";
+import { userRef } from "~services/firebase/firestoreRefs.services";
 
 const { toast } = createStandaloneToast({ theme: themeDefault });
 
@@ -88,7 +88,11 @@ export const createUser = createAsyncThunk<
         position: "top",
         duration: 3500,
       });
-      await setDoc(userRef(currentUser.uid), { foo: "bar" });
+
+      await setDoc(userRef(currentUser.uid), {
+        favouriteRecipes: [],
+        searchHistory: [],
+      });
     }
   } catch (err: any) {
     console.log(err);

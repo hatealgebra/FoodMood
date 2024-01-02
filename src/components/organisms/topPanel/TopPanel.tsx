@@ -25,7 +25,7 @@ const TopPanel = () => {
   const [scrollState, setScrollState] = useState(false);
   const [isContactOpen, setContactOpen] = useState(false);
   const userStatus = useAppSelector(selectUserStatus);
-  const [user] = useAuthChanged();
+  const { user, isAuthenticating } = useAuthChanged();
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
@@ -110,7 +110,11 @@ const TopPanel = () => {
               <Link onClick={openModalContact}>Contact</Link>
             </HStack>
             <Spacer />
-            <UserAvatar name={user?.displayName} status={userStatus} />
+            <UserAvatar
+              name={user?.displayName}
+              loading={isAuthenticating}
+              status={userStatus}
+            />
           </Flex>
           <IconButton
             aria-label="Menu button"

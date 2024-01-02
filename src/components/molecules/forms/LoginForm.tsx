@@ -26,7 +26,6 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
 
   const logOnSubmit = async (values: typeof initialValues, actions: any) => {
     const { email, psw } = values;
-    let success = false;
 
     try {
       await dispatch(loginUser({ email, psw }));

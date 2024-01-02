@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { DocumentData, onSnapshot } from "firebase/firestore";
 import { readSavedRecipes } from "~store/thunks/firestoreCRUD.thunk";
-import { savedRecipesRef } from "./firestore.helpers";
+import { savedRecipesRef } from "../services/firebase/firestoreRefs.services";
 
 export const firebaseRTU = async (dispatch: Dispatch<any>) => {
   const auth = getAuth();

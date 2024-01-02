@@ -13,11 +13,16 @@ import Loading from "./loading";
 import ModalRecipe from "~organisms/modalRecipe/ModalRecipe";
 
 const AppPage: React.FC<Props> = ({ children }) => {
-  const [isLoggedIn] = useAuthChanged();
+  const { isAuthenticating, user, router } = useAuthChanged();
 
-  if (!isLoggedIn) {
+  if (isAuthenticating) {
     return <Loading />;
   }
+
+  if (!user) {
+    return router.push(routerConstants.ROUTE_WEB.LOGIN_PAGE);
+  }
+
   return (
     <VStack pb={20}>
       <AppSection yAxisMinus hideHeading>
