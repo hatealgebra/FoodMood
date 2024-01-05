@@ -4,7 +4,7 @@ import { dbFirestore } from "~services/firebase/config";
 export const userRef = (uid: string) => doc(dbFirestore, "users", uid);
 
 export const savedRecipesRef = (uid: string) =>
-  collection(dbFirestore, "users", uid, "recipes");
+  collection(dbFirestore, "users", uid, "favouriteRecipes");
 
 export const recipeRef = (uid: string, label: string) =>
-  doc(dbFirestore, "users", uid, "recipes", label);
+  doc(dbFirestore, "users", uid, "favouriteRecipes", label);

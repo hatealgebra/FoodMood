@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import AppNavbar from "~molecules/appNavbar/AppNavbar";
 import AppSection from "~molecules/appSection/AppSection";
 

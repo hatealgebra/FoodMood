@@ -17,6 +17,8 @@ import ScrollableRow from "../scrollableRow/ScrollableRow";
 import { openModal } from "~store/slices/modalRecipe.slice";
 import { ImageProps } from "next/image";
 
+// TODO: Use card component from chakra-ui
+
 interface RecipeCardProps {
   imageSource: ImageProps;
   tags?: string[];
@@ -42,8 +44,8 @@ const RecipeCard = ({
     <VStack
       spacing={2}
       background="black"
-      width={["100%", "180px", "290px"]}
-      minWidth={smaller ? "140px" : "180px"}
+      width="290px"
+      aspectRatio={1}
       borderRadius="2px"
       bg="white"
       align="flex-start"

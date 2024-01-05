@@ -11,7 +11,7 @@ const AlertBox = ({ status, children, title }: AlertBoxProps) => {
   return (
     <Alert aria-label="alert-box" m={2} status={status} maxW="500px">
       <AlertIcon />
-      <Box>
+      <Box w="fit-content">
         <AlertTitle sx={{ textTransform: "capitalize" }}>
           {title || status}
         </AlertTitle>

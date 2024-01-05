@@ -27,6 +27,7 @@ import ScrollableRow from "~molecules/scrollableRow/ScrollableRow";
 import { useAppDispatch, useAppSelector } from "~store/hooks";
 import { selectSavedRecipes } from "~store/slices/savedRecipes.slice";
 import {
+  readSavedRecipes,
   removeSavedRecipe,
   saveRecipe,
 } from "~store/thunks/firestoreCRUD.thunk";
@@ -62,7 +63,17 @@ const ModalRecipe = () => {
   const modalOpen = useAppSelector(selectModalOpen);
   const savedRecipes = useAppSelector(selectSavedRecipes);
 
-  console.log("modalOpen", useAppSelector(selectModalOpen));
+  const onClick = (isSaved: boolean) => {
+    if (isSaved) {
+      dispatch(removeSavedRecipe({ uid, label }));
+    } else {
+      dispatch(saveRecipe({ uid, recipe: modalRecipeData || ({} as Recipe) }));
+    }
+
+    setIsSaved(!isSaved);
+    dispatch(closeModal());
+    dispatch(readSavedRecipes(uid));
+  };
 
   useEffect(() => {
     const checksIfRecipeIsSaved = () => {
@@ -116,22 +127,7 @@ const ModalRecipe = () => {
                 <SaveButton
                   size="md"
                   savedStatus={isSaved}
-                  onClick={
-                    isSaved
-                      ? () => {
-                          dispatch(removeSavedRecipe({ uid, label }));
-                          setIsSaved(false);
-                        }
-                      : () => {
-                          dispatch(
-                            saveRecipe({
-                              uid,
-                              recipe: modalRecipeData || ({} as Recipe),
-                            })
-                          );
-                          setIsSaved(true);
-                        }
-                  }
+                  onClick={() => onClick(isSaved)}
                 >
                   {isSaved ? "Undo" : "Save"}
                 </SaveButton>

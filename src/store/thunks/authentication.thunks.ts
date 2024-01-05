@@ -89,10 +89,7 @@ export const createUser = createAsyncThunk<
         duration: 3500,
       });
 
-      await setDoc(userRef(currentUser.uid), {
-        favouriteRecipes: [],
-        searchHistory: [],
-      });
+      await setDoc(userRef(currentUser.uid), {});
     }
   } catch (err: any) {
     console.log(err);

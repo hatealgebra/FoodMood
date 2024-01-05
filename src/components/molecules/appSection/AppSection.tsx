@@ -1,7 +1,7 @@
 import { Box, Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 
-import Section from "../../atoms/section/Section";
+import Section from "~atoms/section/Section";
 
 const AppSection: React.FC<AppSectionProps> = ({
   headingOne,
@@ -11,17 +11,21 @@ const AppSection: React.FC<AppSectionProps> = ({
   secondary,
   hideHeading,
   fullWidth,
+  noPadHeading,
+  ...props
 }) => {
+  console.log(props);
   return (
-    <Section yAxisMinus={yAxisMinus}>
-      <VStack maxW="1600px" alignContent="center" align="flex-start">
+    <Section yAxisMinus={yAxisMinus} {...props}>
+      <VStack alignContent="center" align="flex-start">
         {!hideHeading && (
           <Heading
             variant="fira"
             as="h2"
             size="md"
-            w="fit-content"
-            px={[0, "5.5vw", "5.5vw", "10.5vw"]}
+            px={["2.5vw", "5.5vw", "5.5vw", noPadHeading ? 0 : "10.5vw"]}
+            width="full"
+            textAlign={["center", "left"]}
           >
             <Box color="#373737" textTransform="uppercase" display="inline">
               {headingOne}
@@ -36,7 +40,11 @@ const AppSection: React.FC<AppSectionProps> = ({
             </Box>
           </Heading>
         )}
-        <Box display="box" px={[0, "5.5vw", "5.5vw", fullWidth ? 0 : "10.5vw"]}>
+        <Box
+          display="box"
+          w="100%"
+          px={["2.5vw", "5.5vw", "5.5vw", !fullWidth ? "10.5vw" : 0]}
+        >
           {children}
         </Box>
       </VStack>
@@ -45,13 +53,14 @@ const AppSection: React.FC<AppSectionProps> = ({
 };
 
 export interface AppSectionProps {
+  children: any;
   headingOne?: string | null;
   headingTwo?: string;
-  children: any;
   yAxisMinus?: boolean;
   secondary?: boolean;
   hideHeading?: boolean;
   fullWidth?: boolean;
+  noPadHeading?: boolean;
 }
 
 export default AppSection;

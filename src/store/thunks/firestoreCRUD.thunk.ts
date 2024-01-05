@@ -1,7 +1,17 @@
+import { User } from "@firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteDoc, DocumentData, setDoc } from "firebase/firestore";
+import {
+  deleteDoc,
+  DocumentData,
+  getDoc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 
-import { recipeRef } from "~services/firebase/firestoreRefs.services";
+import {
+  recipeRef,
+  savedRecipesRef,
+} from "~services/firebase/firestoreRefs.services";
 
 import Recipe from "~types/recipe.types";
 
@@ -11,11 +21,12 @@ import Recipe from "~types/recipe.types";
 // READ operations
 export const readSavedRecipes = createAsyncThunk<
   Recipe[],
-  DocumentData[],
+  string,
   { rejectValue: Error }
->("CRUD/read realtime", (recipes, thunkApi) => {
+>("CRUD/read realtime", async (uid, thunkApi) => {
   try {
-    return recipes as Recipe[];
+    const recipeDocs = await getDocs(savedRecipesRef(uid));
+    return recipeDocs.docs.map((doc) => doc.data() as Recipe);
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "Cant't reach saved recipes",
@@ -36,8 +47,6 @@ export const saveRecipe = createAsyncThunk<
   SaveRecipeArgs,
   { rejectValue: Error }
 >("CRUD/saveRecipe", async ({ uid, recipe }, thunkApi) => {
-  console.log(recipe);
-  console.log("hey");
   const { label } = recipe;
   try {
     uid && (await setDoc(recipeRef(uid, label), recipe));

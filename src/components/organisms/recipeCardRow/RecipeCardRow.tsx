@@ -2,37 +2,35 @@ import React from "react";
 
 import { SimpleGrid, Text } from "@chakra-ui/react";
 
-import RecipeCard from "../../molecules/recipeCard/RecipeCard";
-import ScrollableRow from "../../molecules/scrollableRow/ScrollableRow";
-import { recipeRowOrigin } from "../../../utils/firebase.utils";
-import Recipe from "../../../types/recipe.types";
-import AlertBox from "../../atoms/alertBox/AlertBox";
-import { FetchRecipesError } from "../../../types/async.types";
+import RecipeCard from "~molecules/recipeCard/RecipeCard";
+import ScrollableRow from "~molecules/scrollableRow/ScrollableRow";
+
+import Recipe from "~types/recipe.types";
+import AlertBox from "~atoms/alertBox/AlertBox";
+import { FetchRecipesError } from "~types/async.types";
+import { recipeRowOrigin } from "~utils.firebase.utils";
 
 const RecipeCardRow = ({
   isLoading,
   recipes,
   error = null,
   leftPadding = false,
+  noPadding = false,
   ...props
 }: RecipeCardRowProps) => {
   return (
     <ScrollableRow {...props}>
       <SimpleGrid
-        px={props.maxW === "100vw" ? [0, "5.5vw", "5.5vw", "10.5vw"] : [0]}
+        px={[0, 0, 0, "10.5vw"]}
+        pl={[0, 0, 0, !noPadding ? "10.5vw" : 0]}
+        gridAutoFlow={["row", "column"]}
         templateRows={error ? "1fr" : "1fr 1fr"}
+        w={["100%", "fit-content"]}
+        justifyItems={["center", "flex-start"]}
         spacingX="6"
         spacingY="2"
-        sx={{
-          ".recipe-card:nth-of-type(1n)": { gridRow: "1/2" },
-          ".recipe-card:nth-of-type(2n)": { gridRow: "2/3" },
-        }}
       >
-        {isLoading ? (
-          [...Array(20)].map((_, i) => (
-            <RecipeCard img={null} key={i} isLoading allData={undefined} />
-          ))
-        ) : error ? (
+        {error ? (
           <AlertBox status="error" title={error.name}>
             {error.message}
           </AlertBox>
@@ -57,6 +55,7 @@ const RecipeCardRow = ({
                 heading={label}
                 prepareTime={totalTime}
                 allData={recipe}
+                isLoading={isLoading}
               />
             );
           })
@@ -71,6 +70,7 @@ interface RecipeCardRowProps {
   recipes: Array<any>;
   error?: FetchRecipesError | null;
   leftPadding?: boolean;
+  noPadding?: boolean;
 }
 
 export default RecipeCardRow;
