@@ -20,14 +20,18 @@ const PreferencesBanner = ({
 }: PreferencesBannerProps) => {
   return (
     <BannerContainer backgroundColor="secondary.100" fullHeight>
-      <VStack padding="5% 0" width="70%" maxWidth="500px" margin="auto">
+      <VStack
+        padding="5% 0"
+        width="70%"
+        maxWidth="500px"
+        margin="auto"
+        textAlign="center"
+      >
         <Heading as="h2" size="xl">
           {heading}
         </Heading>
         <Text>{paragraph}</Text>
-        <Button colorScheme="tertiary" alignSelf="flex-start">
-          {buttonText}
-        </Button>
+        <Button colorScheme="tertiary">{buttonText}</Button>
       </VStack>
     </BannerContainer>
   );
