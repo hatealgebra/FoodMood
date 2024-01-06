@@ -1,15 +1,14 @@
 import React from "react";
 
-import AppPage from "../templates/appPage/AppPage.template";
-import AppHomepage from "./appHomepage/AppHomepage";
-import MealPlanPage from "./mealPlanPage/MealPlanPage";
-import SavedRecipesPage from "./savedRecipes/SavedRecipesPage";
-import SearchPage from "./searchPage/SearchPage";
-
 import UserPage from "./userPage/UserPage";
 
 import { SetUserData } from "~helpers/storybook.helpers";
 import ModalRecipe from "../organisms/modalRecipe/ModalRecipe";
+import AppHomepage from "~app/app/page";
+import SearchPage from "~app/app/search/page";
+import SavedRecipesPage from "~app/app/favourites/page";
+import MealPlanPage from "./mealPlanPage/MealPlanPage";
+import AppPage from "~app/app/layout";
 
 export const UserSettings = () => (
   <SetUserData>

@@ -2,9 +2,9 @@ import React from "react";
 
 import AppSection from "../../molecules/appSection/AppSection";
 import DishPlan from "../../molecules/dishPlan/DishPlan";
-import AppPage from "../../templates/appPage/AppPage.template";
 
 import pumpkinSoup from "../../../assets/images/presentation/pumpkin-soup.jpg";
+import AppPage from "~app/app/layout";
 
 const MealPlanPage = () => {
   return (

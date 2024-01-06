@@ -4,7 +4,7 @@ import { getAuth, User } from "firebase/auth";
 import { Field, Form, Formik } from "formik";
 
 import AppSection from "../../molecules/appSection/AppSection";
-import AppPage from "../../templates/appPage/AppPage.template";
+
 import { useAppDispatch } from "../../../store/hooks";
 import {
   deleteUserAcc,
@@ -14,8 +14,10 @@ import { VStack, Text, SimpleGrid, Button } from "@chakra-ui/react";
 import FormikInput from "../../atoms/input/Input";
 import UploadAvatar from "../../molecules/uploadAvatar/UploadAvatar";
 import AlertDelete from "../../molecules/alertDelete/AlertDelete";
-import { deleteAllRecipes } from "../../../services/firebase/CRUD.services";
+
 import { IFieldInput } from "../../../types/utils.types";
+import AppPage from "~app/app/layout";
+import { deleteAllRecipes } from "~services/firebase/firestore.services";
 
 const UserPage = () => {
   const dispatch = useAppDispatch();
