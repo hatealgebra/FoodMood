@@ -14,6 +14,8 @@ import {
   selectRandomRecipesStatus,
 } from "~store/slices/randomRecipes.slice";
 import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
+import SearchBanner from "~molecules/banner/SearchBanner";
+import PreferencesBanner from "~molecules/banner/PreferencesBaner";
 
 const AppHomepage = () => {
   const randomRecipes = useAppSelector(selectRandomRecipes);
@@ -36,7 +38,16 @@ const AppHomepage = () => {
           error={randomRecipesError}
         />
       </AppSection>
-      <AppSection></AppSection>
+      <AppSection hideHeading>
+        <SearchBanner
+          heading="The Search is On:"
+          paragraph="Ready to elevate your cooking game? Click below and start your search now!"
+          buttonText="Start searching"
+          padding="150px"
+          size="sm"
+          backgroundColor="primary.200"
+        />
+      </AppSection>
       <AppSection
         headingOne="My"
         headingTwo="Favourites"
@@ -47,6 +58,13 @@ const AppHomepage = () => {
           isLoading={savedRecipesStatus === "loading" ? true : false}
           recipes={savedRecipes}
           error={savedRecipesError}
+        />
+      </AppSection>
+      <AppSection hideHeading>
+        <PreferencesBanner
+          heading="Craft Your Culinary Journey"
+          paragraph="Indulge in a world of flavors that match your preferences. From savory classics to innovative delights, your customized food adventure starts here."
+          buttonText="Get Started Button"
         />
       </AppSection>
       <AppSection headingOne="Today's meal" headingTwo="plan">

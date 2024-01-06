@@ -34,8 +34,8 @@ const fontSizes = {
 };
 
 const colors = {
-  primary: { 500: "#24c178", 600: "#2a9e68" },
-  secondary: { 500: "#4169e1", 600: "#3a5eca" },
+  primary: { 200: "#d0f6e4", 500: "#24c178", 600: "#2a9e68" },
+  secondary: { 100: "#ecf0fc", 500: "#4169e1", 600: "#3a5eca" },
   tertiary: { 500: "#00416a", 600: "#195478" },
   success: "#34e065",
   warning: { 500: "#e74c3c", 600: "#eb6a5c" },
