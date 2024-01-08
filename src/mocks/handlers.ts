@@ -7,7 +7,6 @@ export const handlers = [
   http.get("https://api.edamam.com/api/recipes/v2", ({ req, res }) => {
     return HttpResponse.json(dailyRecipes);
   }),
-
   http.get("https://www.edamam.com/web-img/*", async () => {
     const { src } = pizzaImage; // it is actually in _next directory
     const imageBuffer = await fetch(src).then((res) => res.arrayBuffer());
@@ -17,4 +16,16 @@ export const handlers = [
       },
     });
   }),
+  http.get(
+    "https://edamam-product-images.s3.amazonaws.com/web-img/*",
+    async () => {
+      const { src } = pizzaImage; // it is actually in _next directory
+      const imageBuffer = await fetch(src).then((res) => res.arrayBuffer());
+      return HttpResponse.arrayBuffer(imageBuffer, {
+        headers: {
+          "Content-Type": "image/jpg",
+        },
+      });
+    }
+  ),
 ];

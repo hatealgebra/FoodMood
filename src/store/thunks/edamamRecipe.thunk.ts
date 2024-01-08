@@ -2,6 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getRecipes } from "../../services/edamam/endpoints";
 import { FetchRecipesError } from "../../types/async.types";
 import { Hit } from "../../types/recipe.types";
+import { arrayUnion, updateDoc } from "firebase/firestore";
+import { searchHistoryRef } from "~services/firebase/firestoreRefs.services";
+import { getAuth } from "@firebase/auth";
 
 /**
  * Thunk function created with crateAsyncThunk
@@ -42,8 +45,19 @@ export const searchRecipesThunk = createAsyncThunk<
   try {
     const searchResponse = await getRecipes(query);
     const { hits } = searchResponse.data;
+    const { currentUser } = getAuth();
+
+    if (currentUser) {
+      const uid = currentUser.uid;
+      const lowerCaseQuery = query.toLowerCase();
+      await updateDoc(searchHistoryRef(uid), {
+        searchHistory: arrayUnion(lowerCaseQuery),
+        // searchedRecipes: { [lowerCaseQuery]: arrayUnion(...hits) },
+      });
+    }
     return { query, hits };
   } catch (err) {
+    console.log(err);
     return thunkApi.rejectWithValue({ name: "Error", message: "hallo" });
   }
 });

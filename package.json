@@ -9,7 +9,7 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "firebase:emulators": "firebase emulators:start --import ./src/mocks/firebase"
+    "firebase:emulators": "firebase emulators:start --import ./src/mocks/firebase --export-on-exit ./src/mocks/firebase"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

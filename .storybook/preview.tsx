@@ -21,8 +21,8 @@ const globalWrapper = (Story) => (
 
 const preview: Preview = {
   decorators: [globalWrapper],
+  loaders: [mswLoader],
   parameters: {
-    loaders: [mswLoader],
     actions: { argTypesRegex: "^on[A-Z].*" },
     chakra: {
       theme,
@@ -37,4 +37,5 @@ const preview: Preview = {
   },
 };
 
+export const loaders = [mswLoader];
 export default preview;
