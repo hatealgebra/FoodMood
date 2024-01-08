@@ -1,6 +1,6 @@
 import React from "react";
 
-import RecipeCardRow from "./RecipeCardRow";
+import RecipeCardRow from "./RecipeCardsScrollable";
 import dailyRecipes from "../../../mocks/data/dailyRecipes.json";
 import { recipeRowOrigin } from "../../../utils/firebase.utils";
 import ModalRecipe from "../modalRecipe/ModalRecipe";

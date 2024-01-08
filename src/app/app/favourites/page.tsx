@@ -5,21 +5,15 @@ import { Button, Center, Wrap } from "@chakra-ui/react";
 
 import AppSection from "~molecules/appSection/AppSection";
 import Dropdown from "~molecules/dropdown/Dropdown";
-import RecipeCardRow from "~organisms/recipeCardRow/RecipeCardRow";
-import { useAppSelector } from "~store/hooks";
-import {
-  selectSavedRecipes,
-  selectSavedRecipesError,
-  selectSavedRecipesStatus,
-} from "~store/slices/savedRecipes.slice";
 import useSortRecipes from "~hooks/useSortRecipes";
 import { sortRecipes } from "~store/slices/searchedRecipesSlice";
+import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
+import RecipeCardsGallery from "~organisms/RecipeCardsGallery";
 
 const SavedRecipesPage = () => {
-  const savRecipesStatus = useAppSelector(selectSavedRecipesStatus);
-  const savRecipes = useAppSelector(selectSavedRecipes);
-  const saveRecipesError = useAppSelector(selectSavedRecipesError);
-  const [sortBy, setSortBy] = useSortRecipes(savRecipes, sortRecipes);
+  const { savedRecipes, savedRecipesStatus, savedRecipesError } =
+    useFavouriteRecipes();
+  const [sortBy, setSortBy] = useSortRecipes(savedRecipes, sortRecipes);
 
   return (
     <>
@@ -30,22 +24,13 @@ const SavedRecipesPage = () => {
           buttonText="sort by"
           sort
         />
-        <Wrap>
-          <RecipeCardRow
-            isLoading={savRecipesStatus === "loading" ? true : false}
-            recipes={savRecipes}
-          />
-        </Wrap>
+        <RecipeCardsGallery
+          isLoading={savedRecipesStatus === "loading" ? true : false}
+          recipes={savedRecipes}
+          error={savedRecipesError}
+          noPadding
+        />
       </AppSection>
-      <Center width="100%">
-        {savRecipesStatus === "loading" ||
-        saveRecipesError ||
-        savRecipes.length === 0 ? (
-          ""
-        ) : (
-          <Button colorScheme="primary">Show more</Button>
-        )}
-      </Center>
     </>
   );
 };

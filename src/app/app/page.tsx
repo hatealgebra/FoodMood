@@ -1,10 +1,9 @@
 "use client";
 import { useEffect } from "react";
 
-import { Box, Center, Stack } from "@chakra-ui/react";
 import AppSection from "~molecules/appSection/AppSection";
 
-import RecipeCardRow from "~organisms/recipeCardRow/RecipeCardRow";
+import RecipeCardRow from "~organisms/recipeCardGroups/RecipeCardsScrollable";
 import AlertBox from "~atoms/alertBox/AlertBox";
 import { useAppDispatch, useAppSelector } from "~store/hooks";
 import { fetchRecipes } from "~store/thunks/edamamRecipe.thunk";
@@ -16,6 +15,7 @@ import {
 import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
 import SearchBanner from "~molecules/banner/SearchBanner";
 import PreferencesBanner from "~molecules/banner/PreferencesBaner";
+import RecipeCardsGallery from "~organisms/RecipeCardsGallery";
 
 const AppHomepage = () => {
   const randomRecipes = useAppSelector(selectRandomRecipes);
@@ -54,7 +54,7 @@ const AppHomepage = () => {
         border="5px solid red"
         fullWidth
       >
-        <RecipeCardRow
+        <RecipeCardsGallery
           isLoading={savedRecipesStatus === "loading" ? true : false}
           recipes={savedRecipes}
           error={savedRecipesError}

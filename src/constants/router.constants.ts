@@ -11,6 +11,6 @@ export const ROUTE_APP = {
   APP_HOME_PAGE: "/app",
   APP_SEARCH_PAGE: "/app/search",
   APP_FAVOURITES_PAGE: "/app/favourites",
-  APP_MEAL_PLAN_PAGE: "/app/meal-plan",
+  APP_MEAL_PLAN_PAGE: "/app/mealPlan",
   APP_USER_PAGE: "/app/user-settings",
 };

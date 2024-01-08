@@ -86,6 +86,7 @@ const SearchPage = () => {
         yAxisMinus
         hideHeading={searchQuery === "" || recipesData === []}
         headingOne={(recipesData.length !== 0 && "Results for:") || null}
+        fullWidth
       >
         {recipesData.length > 0 ? (
           <>

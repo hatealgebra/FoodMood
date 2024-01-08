@@ -24,7 +24,7 @@ const AppPage: React.FC<Props> = ({ children }) => {
   }
 
   return (
-    <VStack pb={20}>
+    <VStack pb={20} minHeight="60vh">
       <AppSection yAxisMinus hideHeading>
         <AppNavbar />
       </AppSection>

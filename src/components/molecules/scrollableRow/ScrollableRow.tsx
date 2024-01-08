@@ -13,7 +13,7 @@ const ScrollableRow: React.FC<ScrollableRowProps> = ({
   ...props
 }) => {
   return (
-    <Box width="100%" my={3} {...props}>
+    <Box width="100%" my={3} transition=".5s all-ease" {...props}>
       <HStack
         spacing={smallSpacing ? 1 : 4}
         overflowX="scroll"
