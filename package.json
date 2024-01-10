@@ -45,6 +45,7 @@
     "@storybook/nextjs": "^7.6.4",
     "@storybook/react": "^7.6.4",
     "@storybook/test": "^7.6.4",
+    "@storybook/test-runner": "^0.16.0",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@types/node": "^20",
