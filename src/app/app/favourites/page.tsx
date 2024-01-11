@@ -1,20 +1,18 @@
 "use client";
 import React from "react";
 
-import { Button, Center, Wrap } from "@chakra-ui/react";
-
 import AppSection from "~molecules/appSection/AppSection";
 import Dropdown from "~molecules/dropdown/Dropdown";
 import useSortRecipes from "~hooks/useSortRecipes";
-import { sortRecipes } from "~store/slices/searchedRecipesSlice";
+
 import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
 import RecipeCardsGallery from "~organisms/RecipeCardsGallery";
+import { sortSavedRecipes } from "~store/slices/savedRecipes.slice";
 
 const SavedRecipesPage = () => {
   const { savedRecipes, savedRecipesStatus, savedRecipesError } =
     useFavouriteRecipes();
-  const [sortBy, setSortBy] = useSortRecipes(savedRecipes, sortRecipes);
-
+  const [sortBy, setSortBy] = useSortRecipes(sortSavedRecipes);
   return (
     <>
       <AppSection headingOne="favourite" headingTwo="recipes" secondary>

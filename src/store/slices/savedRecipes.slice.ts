@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FetchingRecipes } from "../../types/async.types";
-import { SortByOptions } from "../../types/utils.types";
-import { sortRecipesBy } from "../../utils/utils";
+import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import { FetchingRecipes } from "~types/async.types";
+import { SortByOptions } from "~types/utils.types";
 
-import type { RootState } from "../store";
 import { readSavedRecipes, saveRecipe } from "../thunks/firestoreCRUD.thunk";
+import { sortRecipesBy } from "~utils.utils";
+import { RootState } from "~store/store";
 
 const initialState = {
   status: "idle",
@@ -16,7 +16,8 @@ export const savedRecipesSlice = createSlice({
   name: "savedRecipes",
   initialState,
   reducers: {
-    sortRecipes: (state, action: PayloadAction<SortByOptions>) => {
+    sortSavedRecipes: (state, action: PayloadAction<SortByOptions>) => {
+      console.log(current(state.recipesList));
       const sortedRecipes = sortRecipesBy(state.recipesList, action.payload);
       state.recipesList = sortedRecipes;
       state.sort = action.payload;
@@ -32,7 +33,6 @@ export const savedRecipesSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(readSavedRecipes.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.status = "idle";
       state.recipesList = payload;
     });
@@ -52,6 +52,9 @@ export const savedRecipesSlice = createSlice({
     });
   },
 });
+
+export const { sortSavedRecipes, emptySavedRecipes } =
+  savedRecipesSlice.actions;
 
 export const selectSavedRecipes = (state: RootState) =>
   state.savedRecipes.recipesList;
