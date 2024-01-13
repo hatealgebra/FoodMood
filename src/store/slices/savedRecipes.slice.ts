@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FetchingRecipes } from "~types/async.types";
 import { SortByOptions } from "~types/utils.types";
 
@@ -17,7 +17,6 @@ export const savedRecipesSlice = createSlice({
   initialState,
   reducers: {
     sortSavedRecipes: (state, action: PayloadAction<SortByOptions>) => {
-      console.log(current(state.recipesList));
       const sortedRecipes = sortRecipesBy(state.recipesList, action.payload);
       state.recipesList = sortedRecipes;
       state.sort = action.payload;

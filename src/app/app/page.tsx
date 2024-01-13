@@ -48,6 +48,7 @@ const AppHomepage = () => {
           backgroundColor="primary.200"
         />
       </AppSection>
+      {/* FIXME: It should be 3 columns from some viewport */}
       <AppSection
         headingOne="My"
         headingTwo="Favourites"

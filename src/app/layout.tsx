@@ -2,6 +2,7 @@
 import { Box } from "@chakra-ui/react";
 import Providers from "./providers";
 
+import "@fontsource/fira-sans/300.css";
 import "@fontsource/fira-sans/400.css";
 import "@fontsource/fira-sans/500.css";
 import "@fontsource/fira-sans/600.css";
@@ -22,7 +23,7 @@ async function enableMocking() {
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  return worker.start();
+  return worker.start({ onUnhandledRequest: "bypass" });
 }
 
 export default function RootLayout({
