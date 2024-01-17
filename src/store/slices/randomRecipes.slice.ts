@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FetchingRecipes } from "../../types/async.types";
-import { RootState } from "../store";
-import { fetchRecipes } from "../thunks/edamamRecipe.thunk";
+import { RootState } from "~store/store";
+import { fetchRecipes } from "~store/thunks/edamamRecipe.thunk";
+import { FetchingRecipes } from "~types/async.types";
 
 const initialState = {
   status: "idle",

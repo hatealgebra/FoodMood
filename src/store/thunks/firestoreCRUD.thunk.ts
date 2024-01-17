@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 
 import {
-  recipeRef,
+  getRecipeRef,
   savedRecipesRef,
 } from "~services/firebase/firestoreRefs.services";
 
@@ -36,13 +36,9 @@ export const readSavedRecipes = createAsyncThunk<
   }
 });
 
-interface SaveRecipeArgs {
+export interface SaveRecipeArgs {
   uid: string | null;
   recipe: Recipe;
-}
-
-interface AddRecipeMealPlan extends SaveRecipeArgs {
-  date: string;
 }
 
 // CREATE operations
@@ -53,25 +49,7 @@ export const saveRecipe = createAsyncThunk<
 >("CRUD/saveRecipe", async ({ uid, recipe }, thunkApi) => {
   const { label } = recipe;
   try {
-    uid && (await setDoc(recipeRef(uid, label), recipe));
-    return recipe;
-  } catch (e) {
-    return thunkApi.rejectWithValue({
-      name: "Recipe was not saved",
-      message:
-        "There was an error when saving the recipe. Maybe the recipe is incorrect or already saved.",
-    });
-  }
-});
-
-export const addRecipeMealPlan = createAsyncThunk<
-  any,
-  AddRecipeMealPlan,
-  { rejectValue: Error }
->("CRUD/saveRecipe", async ({ uid, date, recipe }, thunkApi) => {
-  console.log(uid, date, recipe);
-  try {
-    uid && (await setDoc(recipeRef(uid, label), recipe));
+    uid && (await setDoc(getRecipeRef(uid, label), recipe));
     return recipe;
   } catch (e) {
     return thunkApi.rejectWithValue({
@@ -97,7 +75,7 @@ export const removeSavedRecipe = createAsyncThunk<
   "CRUD/remove recipe",
   async ({ uid, label }: RemoveSavedRecipesArgs, thunkApi) => {
     try {
-      await deleteDoc(recipeRef(uid, label));
+      await deleteDoc(getRecipeRef(uid, label));
       return label;
     } catch (e) {
       return thunkApi.rejectWithValue({
