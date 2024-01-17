@@ -1,6 +1,6 @@
-import * as myConstClass from "../constants/constants";
+import * as myConstClass from "~constants/constants";
 
-import Recipe from "../types/recipe.types";
+import Recipe from "~types/recipe.types";
 
 export const sortRecipesBy = (recipes: Recipe[], sortBy: string) => {
   return recipes.sort((prev, next) => {
@@ -22,6 +22,18 @@ export const sortRecipesBy = (recipes: Recipe[], sortBy: string) => {
         return 0;
     }
   });
+};
+
+export const transformStringToDate = (date: string): Date => {
+  const [year, month, day] = date.split("/");
+  return new Date(Number(year), Number(month) - 1, Number(day));
+};
+
+export const transformDateToString = (date: Date): string => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 };
 
 export const getTodaysDate = (): string => {

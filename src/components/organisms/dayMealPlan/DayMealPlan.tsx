@@ -6,20 +6,38 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import RecipeCard from "~molecules/recipeCard/RecipeCard";
 import ModalFavourites from "~organisms/ModalFavourites";
-import { useAppSelector } from "~store/hooks";
+import { useAppDispatch, useAppSelector } from "~store/hooks";
 import {
+  TFoodTime,
   selectMealPlanCurrent,
   selectMealPlanDate,
+  selectMealPlanStatus,
 } from "~store/slices/mealPlan.slice";
+import { fetchTodaysPlan } from "~store/thunks/mealPlan.thunk";
+import Recipe from "~types/recipe.types";
 
 type Props = {};
 
 const DayMealPlan = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [mealType, setMealType] = useState<TFoodTime | undefined>(undefined);
+
   const currentMealPlan = useAppSelector(selectMealPlanCurrent);
+  const mealPlanLoading = useAppSelector(selectMealPlanStatus);
+  const date = useAppSelector(selectMealPlanDate);
+  const dispatch = useAppDispatch();
+
+  const openModal = (mealTime: TFoodTime) => {
+    setMealType(mealTime);
+    onOpen();
+  };
+
+  useLayoutEffect(() => {
+    dispatch(fetchTodaysPlan());
+  }, [dispatch]);
 
   return (
     <Stack
@@ -29,11 +47,29 @@ const DayMealPlan = (props: Props) => {
       flexDir={["column", "column", "row"]}
     >
       {Object.keys(currentMealPlan).map((mealType, index) => {
-        const recipeData = Object.values(currentMealPlan)[index];
+        const recipeData = Object.values(currentMealPlan)[index] as Recipe;
+        const { image, label, totalTime } = recipeData;
 
-        return <RecipeCard mealPlanType={mealType} onOpen={onOpen} />;
+        return (
+          <RecipeCard
+            key={`${date}-${mealType}`}
+            mealPlanType={mealType as TFoodTime}
+            onOpen={() => openModal(mealType as TFoodTime)}
+            imageSource={image}
+            // tags={[cuisineType[0], dishType[0], mealType[0]]}
+            heading={label}
+            allData={recipeData}
+            isLoading={mealPlanLoading === "loading"}
+            prepareTime={totalTime}
+          />
+        );
       })}
-      <ModalFavourites isOpen={isOpen} onClose={onClose} />
+      <ModalFavourites
+        isOpen={isOpen}
+        onClose={onClose}
+        date={date}
+        mealType={mealType}
+      />
     </Stack>
   );
 };

@@ -73,6 +73,12 @@ const theme = {
       form: {
         width: "100%",
       },
+      ".react-datepicker-wrapper": {
+        display: "none !important",
+      },
+      ".react-datepicker-popper": {
+        zIndex: "9999 !important",
+      },
     },
   },
 };
