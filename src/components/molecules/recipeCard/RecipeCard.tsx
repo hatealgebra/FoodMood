@@ -29,7 +29,7 @@ interface RecipeCardProps {
   imageSource: ImageProps;
   tags?: string[];
   heading?: string;
-  prepareTime?: number;
+  prepareTime: number;
   smaller?: boolean;
   isLoading?: boolean;
   allData: any;
@@ -85,7 +85,7 @@ const RecipeCard = ({
         },
       }}
     >
-      {isLoading || !allData ? (
+      {isLoading || !Object.keys(allData).length ? (
         <>
           <Skeleton
             boxShadow="base"
@@ -150,7 +150,7 @@ const RecipeCard = ({
           </HStack>
         </>
       )}
-      {!allData && mealPlanType && (
+      {!Object.keys(allData).length && mealPlanType && (
         <IconButton
           position="absolute"
           aria-label="Add new recipe"
