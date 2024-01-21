@@ -14,20 +14,50 @@ import {
   ModalOverlay,
   Tag,
 } from "@chakra-ui/react";
-import React, { SetStateAction } from "react";
+import { getAuth } from "@firebase/auth";
+import React from "react";
 import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
-import { useAppDispatch } from "~store/hooks";
+import { useAppDispatch, useAppSelector } from "~store/hooks";
+import { TFoodTime, selectMealPlanDate } from "~store/slices/mealPlan.slice";
 import { openModal } from "~store/slices/modalRecipe.slice";
+import { addRecipePlanThunk } from "~store/thunks/mealPlan.thunk";
+import Recipe from "~types/recipe.types";
 
 interface ModalFavouritesProps {
   isOpen: boolean;
   onClose: () => void;
+  date?: Date;
+  mealType?: TFoodTime;
 }
 
-const ModalFavourites = ({ isOpen, onClose }: ModalFavouritesProps) => {
+const ModalFavourites = ({
+  isOpen,
+  onClose,
+  mealType,
+}: ModalFavouritesProps) => {
   const { savedRecipes, savedRecipesStatus, savedRecipesError } =
     useFavouriteRecipes();
+  const currentDate = useAppSelector(selectMealPlanDate);
   const dispatch = useAppDispatch();
+  const currentUser = getAuth().currentUser;
+
+  const addRecipe = (
+    uid: string,
+    dateString: string,
+    mealType: TFoodTime,
+    recipeData: Recipe
+  ) => {
+    console.log(dateString);
+    dispatch(
+      addRecipePlanThunk({
+        uid,
+        date: dateString,
+        mealType,
+        recipe: recipeData,
+      })
+    );
+    onClose();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} blockScrollOnMount size="xl">
@@ -91,7 +121,19 @@ const ModalFavourites = ({ isOpen, onClose }: ModalFavouritesProps) => {
                     >
                       Show
                     </Button>
-                    <Button w="full" size="sm" colorScheme="tertiary">
+                    <Button
+                      w="full"
+                      size="sm"
+                      colorScheme="tertiary"
+                      onClick={() =>
+                        addRecipe(
+                          currentUser?.uid,
+                          currentDate,
+                          mealType,
+                          recipe
+                        )
+                      }
+                    >
                       Add
                     </Button>
                   </ButtonGroup>
