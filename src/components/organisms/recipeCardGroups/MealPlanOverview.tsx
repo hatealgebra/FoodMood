@@ -7,6 +7,7 @@ import {
   TFoodTime,
   selectMealPlanCurrent,
   selectMealPlanDate,
+  selectMealPlanPool,
   selectMealPlanStatus,
 } from "~store/slices/mealPlan.slice";
 import { fetchSpecificPlan } from "~store/thunks/mealPlan.thunk";
@@ -16,7 +17,7 @@ const MealPlanOverview = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [mealType, setMealType] = useState<TFoodTime | undefined>(undefined);
 
-  const currentMealPlanDate = useAppSelector(selectMealPlanDate);
+  const recipesPool = useAppSelector(selectMealPlanPool);
   const currentMealPlan = useAppSelector(selectMealPlanCurrent);
   const mealPlanLoading = useAppSelector(selectMealPlanStatus);
   const date = useAppSelector(selectMealPlanDate);

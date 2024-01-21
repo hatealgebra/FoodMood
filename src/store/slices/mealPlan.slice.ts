@@ -1,6 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "~store/store";
-import { addRecipePlanThunk } from "~store/thunks/mealPlan.thunk";
+import {
+  addRecipePlanThunk,
+  fetchSpecificPlan,
+} from "~store/thunks/mealPlan.thunk";
 
 import Recipe from "~types/recipe.types";
 import { getTodaysDate } from "~utils.utils";
@@ -10,7 +13,7 @@ type TMealPlanRecipes = Record<TFoodTime, Recipe | {}>;
 
 interface IMealPlanState {
   data: {
-    currentDate: string;
+    currentDate?: string;
     currentMealPlan: TMealPlanRecipes;
     recipesPool: Record<string, TMealPlanRecipes>;
   };
@@ -20,7 +23,7 @@ interface IMealPlanState {
 
 const initialState: IMealPlanState = {
   data: {
-    currentDate: getTodaysDate(),
+    currentDate: undefined,
     currentMealPlan: {
       breakfast: {},
       lunch: {},
@@ -35,8 +38,29 @@ const initialState: IMealPlanState = {
 export const mealPlanSlice = createSlice({
   name: "mealPlan",
   initialState,
-  reducers: {},
+  reducers: {
+    getFromRecipesPool: (state, { payload }) => {
+      const { date } = payload;
+      state.data.currentMealPlan = state.data.recipesPool[date];
+      state.data.currentDate = date;
+    },
+  },
   extraReducers: (builder) => {
+    builder.addCase(fetchSpecificPlan.pending, (state) => {
+      state.status = "loading";
+      state.error = undefined;
+    });
+    builder.addCase(fetchSpecificPlan.fulfilled, (state, { payload }) => {
+      const { date, mealPlan } = payload;
+      state.data.currentMealPlan = mealPlan;
+      state.data.recipesPool[date] = mealPlan;
+      state.data.currentDate = date;
+      state.status = "idle";
+    });
+    builder.addCase(fetchSpecificPlan.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.status = "idle";
+    });
     builder.addCase(addRecipePlanThunk.pending, (state) => {
       state.status = "loading";
       state.error = undefined;
