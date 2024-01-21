@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  LinkOverlay,
-  Stack,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Stack, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import RecipeCard from "~molecules/recipeCard/RecipeCard";
 import ModalFavourites from "~organisms/ModalFavourites";
@@ -16,15 +9,14 @@ import {
   selectMealPlanDate,
   selectMealPlanStatus,
 } from "~store/slices/mealPlan.slice";
-import { fetchTodaysPlan } from "~store/thunks/mealPlan.thunk";
+import { fetchSpecificPlan } from "~store/thunks/mealPlan.thunk";
 import Recipe from "~types/recipe.types";
 
-type Props = {};
-
-const DayMealPlan = (props: Props) => {
+const MealPlanOverview = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [mealType, setMealType] = useState<TFoodTime | undefined>(undefined);
 
+  const currentMealPlanDate = useAppSelector(selectMealPlanDate);
   const currentMealPlan = useAppSelector(selectMealPlanCurrent);
   const mealPlanLoading = useAppSelector(selectMealPlanStatus);
   const date = useAppSelector(selectMealPlanDate);
@@ -36,8 +28,9 @@ const DayMealPlan = (props: Props) => {
   };
 
   useLayoutEffect(() => {
-    dispatch(fetchTodaysPlan());
-  }, [dispatch]);
+    const todaysDate = new Date();
+    dispatch(fetchSpecificPlan(todaysDate));
+  }, []);
 
   return (
     <Stack
@@ -48,19 +41,18 @@ const DayMealPlan = (props: Props) => {
     >
       {Object.keys(currentMealPlan).map((mealType, index) => {
         const recipeData = Object.values(currentMealPlan)[index] as Recipe;
-        const { image, label, totalTime } = recipeData;
 
         return (
           <RecipeCard
             key={`${date}-${mealType}`}
             mealPlanType={mealType as TFoodTime}
             onOpen={() => openModal(mealType as TFoodTime)}
-            imageSource={image}
+            imageSource={recipeData?.image}
             // tags={[cuisineType[0], dishType[0], mealType[0]]}
-            heading={label}
+            heading={recipeData?.label}
             allData={recipeData}
             isLoading={mealPlanLoading === "loading"}
-            prepareTime={totalTime}
+            prepareTime={recipeData?.totalTime}
           />
         );
       })}
@@ -74,4 +66,4 @@ const DayMealPlan = (props: Props) => {
   );
 };
 
-export default DayMealPlan;
+export default MealPlanOverview;
