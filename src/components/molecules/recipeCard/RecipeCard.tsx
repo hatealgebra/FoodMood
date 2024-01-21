@@ -74,6 +74,7 @@ const RecipeCard = ({
       width="290px"
       aspectRatio={1}
       borderRadius="2px"
+      height="365px"
       bg="white"
       align="flex-start"
       className="recipe-card"
@@ -85,7 +86,7 @@ const RecipeCard = ({
         },
       }}
     >
-      {isLoading || !Object.keys(allData).length ? (
+      {isLoading || !allData || !Object.keys(allData).length ? (
         <>
           <Skeleton
             boxShadow="base"
@@ -150,7 +151,7 @@ const RecipeCard = ({
           </HStack>
         </>
       )}
-      {!Object.keys(allData).length && mealPlanType && (
+      {(!allData || !Object.keys(allData).length) && mealPlanType && (
         <IconButton
           position="absolute"
           aria-label="Add new recipe"

@@ -76,8 +76,15 @@ const theme = {
       ".react-datepicker-wrapper": {
         display: "none !important",
       },
+      ".react-datepicker__tab-loop": {
+        position: "static !important",
+      },
       ".react-datepicker-popper": {
         zIndex: "9999 !important",
+        inset: "unset !important",
+        left: "50% !important",
+        transform: "translateX(-50%) !important",
+        top: "0 !important",
       },
     },
   },
