@@ -24,8 +24,8 @@ export const sortRecipesBy = (recipes: Recipe[], sortBy: string) => {
   });
 };
 
-export const transformStringToDate = (date: string): Date => {
-  const [year, month, day] = date.split("/");
+export const transformStringToDate = (dateKey: string): Date => {
+  const [year, month, day] = dateKey.split("-");
   return new Date(Number(year), Number(month) - 1, Number(day));
 };
 
