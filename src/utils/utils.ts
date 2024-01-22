@@ -43,3 +43,11 @@ export const getTodaysDate = (): string => {
   const day = String(today.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 };
+
+export const getDayFromDate = (date: Date, diff: string) => {
+  const dateInstance = new Date(date);
+  const diffNumber = Number(diff);
+  dateInstance.setDate(date.getDate() + diffNumber);
+
+  return dateInstance.getDate();
+};
