@@ -3,10 +3,11 @@ import { RootState } from "~store/store";
 import {
   addRecipePlanThunk,
   fetchSpecificPlan,
+  removeRecipeThunk,
 } from "~store/thunks/mealPlan.thunk";
 
 import Recipe from "~types/recipe.types";
-import { getTodaysDate } from "~utils.utils";
+import { getTodaysString } from "~utils.utils";
 
 export type TFoodTime = "breakfast" | "lunch" | "dinner";
 type TMealPlanRecipes = Record<TFoodTime, Recipe | {}>;
@@ -23,7 +24,7 @@ interface IMealPlanState {
 
 const initialState: IMealPlanState = {
   data: {
-    currentDate: undefined,
+    currentDate: getTodaysString(),
     currentMealPlan: {
       breakfast: {},
       lunch: {},
@@ -81,6 +82,20 @@ export const mealPlanSlice = createSlice({
       state.status = "idle";
     });
     builder.addCase(addRecipePlanThunk.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.status = "idle";
+    });
+    builder.addCase(removeRecipeThunk.pending, (state) => {
+      state.status = "loading";
+      state.error = undefined;
+    });
+    builder.addCase(removeRecipeThunk.fulfilled, (state, { payload }) => {
+      const { date, mealType } = payload as { date: string; mealType: string };
+      state.data.recipesPool[date][mealType] = {};
+      state.data.currentMealPlan[mealType] = {};
+      state.status = "idle";
+    });
+    builder.addCase(removeRecipeThunk.rejected, (state, { payload }) => {
       state.error = payload;
       state.status = "idle";
     });

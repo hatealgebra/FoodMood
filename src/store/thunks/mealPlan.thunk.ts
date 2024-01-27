@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, current } from "@reduxjs/toolkit";
 import { getDoc, setDoc, updateDoc } from "firebase/firestore";
 import {
   getMealPlanDateRef,
@@ -8,41 +8,7 @@ import { transformDateToString } from "~utils.utils";
 import { SaveRecipeArgs } from "./firestoreCRUD.thunk";
 import { getAuth } from "@firebase/auth";
 import mapValues from "lodash/mapValues";
-
-interface AddRecipeMealPlan extends SaveRecipeArgs {
-  date: string;
-  mealType: string;
-}
-
-export const addRecipePlanThunk = createAsyncThunk<
-  any,
-  AddRecipeMealPlan,
-  { rejectValue: Error }
->("CRUD/saveRecipe", async ({ uid, date, mealType, recipe }, thunkApi) => {
-  try {
-    const recipeRef = getRecipeRef(uid, recipe.label);
-    const targetRef = getMealPlanDateRef(uid, date);
-
-    if (!recipeRef) {
-      return thunkApi.rejectWithValue({});
-    }
-
-    if (!(await getDoc(targetRef)).data()) {
-      await setDoc(targetRef, { breakfast: {}, lunch: {}, dinner: {} });
-    }
-
-    await updateDoc(targetRef, { [mealType]: recipeRef });
-
-    return { date, mealType, recipe };
-  } catch (e) {
-    console.log(e);
-    return thunkApi.rejectWithValue({
-      name: "Recipe was not saved",
-      message:
-        "There was an error when saving the recipe. Maybe the recipe is incorrect or already saved.",
-    });
-  }
-});
+import { RootState } from "~store/store";
 
 export const fetchSpecificPlan = createAsyncThunk<
   any,
@@ -99,5 +65,73 @@ export const fetchSpecificPlan = createAsyncThunk<
     };
   } catch (e) {
     return thunkApi.rejectWithValue({});
+  }
+});
+
+interface AddRecipeMealPlan extends Omit<SaveRecipeArgs, "uid"> {
+  date: string;
+  mealType: string;
+}
+
+export const addRecipePlanThunk = createAsyncThunk<
+  any,
+  AddRecipeMealPlan,
+  { rejectValue: Error }
+>("CRUD/saveRecipe", async ({ date, mealType, recipe }, thunkApi) => {
+  const uid = getAuth().currentUser?.uid as string;
+  const state = thunkApi.getState() as RootState;
+  const currentDate = date || state.mealPlan.data.currentDate;
+
+  try {
+    const recipeRef = getRecipeRef(uid, recipe.label);
+    const targetRef = getMealPlanDateRef(uid, currentDate!);
+    if (!recipeRef) {
+      return thunkApi.rejectWithValue({});
+    }
+
+    if (!(await getDoc(targetRef)).data()) {
+      await setDoc(targetRef, { breakfast: {}, lunch: {}, dinner: {} });
+    }
+
+    await updateDoc(targetRef, { [mealType]: recipeRef });
+
+    return { date: currentDate, mealType, recipe };
+  } catch (e) {
+    console.log(e);
+    return thunkApi.rejectWithValue({
+      name: "Recipe was not saved",
+      message:
+        "There was an error when saving the recipe. Maybe the recipe is incorrect or already saved.",
+    });
+  }
+});
+
+interface RemoveRecipeMealPlan extends Omit<AddRecipeMealPlan, "recipe"> {
+  date: string;
+  mealType: string;
+}
+
+export const removeRecipeThunk = createAsyncThunk<
+  any,
+  RemoveRecipeMealPlan,
+  { rejectValue: Error }
+>("CRUD/removeRecipe", async ({ mealType }, thunkApi) => {
+  const uid = getAuth().currentUser?.uid as string;
+  const state = thunkApi.getState() as RootState;
+  const currentDate = state.mealPlan.data.currentDate;
+
+  try {
+    const targetRef = getMealPlanDateRef(uid, currentDate!);
+
+    await updateDoc(targetRef, { [mealType]: {} });
+
+    return { date: currentDate, mealType };
+  } catch (e) {
+    console.log(e);
+    return thunkApi.rejectWithValue({
+      name: "Recipe was not saved",
+      message:
+        "There was an error when saving the recipe. Maybe the recipe is incorrect or already saved.",
+    });
   }
 });
