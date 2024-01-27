@@ -18,7 +18,11 @@ import { getAuth } from "@firebase/auth";
 import React from "react";
 import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
 import { useAppDispatch, useAppSelector } from "~store/hooks";
-import { TFoodTime, selectMealPlanDate } from "~store/slices/mealPlan.slice";
+import {
+  TFoodTime,
+  selectMealPlanCurrent,
+  selectMealPlanDate,
+} from "~store/slices/mealPlan.slice";
 import { openModal } from "~store/slices/modalRecipe.slice";
 import { addRecipePlanThunk } from "~store/thunks/mealPlan.thunk";
 import Recipe from "~types/recipe.types";
@@ -39,18 +43,14 @@ const ModalFavourites = ({
     useFavouriteRecipes();
   const currentDate = useAppSelector(selectMealPlanDate);
   const dispatch = useAppDispatch();
-  const currentUser = getAuth().currentUser;
 
   const addRecipe = (
-    uid: string,
     dateString: string,
     mealType: TFoodTime,
     recipeData: Recipe
   ) => {
-    console.log(dateString);
     dispatch(
       addRecipePlanThunk({
-        uid,
         date: dateString,
         mealType,
         recipe: recipeData,
@@ -125,14 +125,7 @@ const ModalFavourites = ({
                       w="full"
                       size="sm"
                       colorScheme="tertiary"
-                      onClick={() =>
-                        addRecipe(
-                          currentUser?.uid,
-                          currentDate,
-                          mealType,
-                          recipe
-                        )
-                      }
+                      onClick={() => addRecipe(currentDate, mealType, recipe)}
                     >
                       Add
                     </Button>

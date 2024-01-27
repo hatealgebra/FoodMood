@@ -1,10 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import components from "./componentsStyle";
 
-// function getRem(pxUnit: number) {
-//   return `${pxUnit / 14}rem`;
-// }
-
 const fonts = {
   heading: "PlayFair Display",
   body: "Fira Sans",
