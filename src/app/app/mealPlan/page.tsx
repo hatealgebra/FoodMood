@@ -100,7 +100,10 @@ const MealPlanPage = () => {
           />
         </Box>
       </AppSection>
-      <AppSection headingOne="Today's" headingTwo="meal plan">
+      <AppSection
+        headingOne={`${selectedDate.dayName}'s`}
+        headingTwo="meal plan"
+      >
         <MealPlanOverview />
       </AppSection>
     </>

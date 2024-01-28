@@ -69,7 +69,6 @@ export const fetchSpecificPlan = createAsyncThunk<
 });
 
 interface AddRecipeMealPlan extends Omit<SaveRecipeArgs, "uid"> {
-  date: string;
   mealType: string;
 }
 
@@ -77,10 +76,10 @@ export const addRecipePlanThunk = createAsyncThunk<
   any,
   AddRecipeMealPlan,
   { rejectValue: Error }
->("CRUD/saveRecipe", async ({ date, mealType, recipe }, thunkApi) => {
+>("CRUD/saveRecipe", async ({ mealType, recipe }, thunkApi) => {
   const uid = getAuth().currentUser?.uid as string;
   const state = thunkApi.getState() as RootState;
-  const currentDate = date || state.mealPlan.data.currentDate;
+  const { currentDate } = state.mealPlan.data;
 
   try {
     const recipeRef = getRecipeRef(uid, recipe.label);
@@ -88,7 +87,6 @@ export const addRecipePlanThunk = createAsyncThunk<
     if (!recipeRef) {
       return thunkApi.rejectWithValue({});
     }
-
     if (!(await getDoc(targetRef)).data()) {
       await setDoc(targetRef, { breakfast: {}, lunch: {}, dinner: {} });
     }
@@ -106,16 +104,11 @@ export const addRecipePlanThunk = createAsyncThunk<
   }
 });
 
-interface RemoveRecipeMealPlan extends Omit<AddRecipeMealPlan, "recipe"> {
-  date: string;
-  mealType: string;
-}
-
 export const removeRecipeThunk = createAsyncThunk<
   any,
-  RemoveRecipeMealPlan,
+  string,
   { rejectValue: Error }
->("CRUD/removeRecipe", async ({ mealType }, thunkApi) => {
+>("CRUD/removeRecipe", async (mealType, thunkApi) => {
   const uid = getAuth().currentUser?.uid as string;
   const state = thunkApi.getState() as RootState;
   const currentDate = state.mealPlan.data.currentDate;

@@ -80,12 +80,7 @@ const RecipeCard = ({
         dispatch(openModal(allData));
         break;
       case OnClickActionEnum.REMOVE:
-        dispatch(
-          removeRecipeThunk({
-            mealType: mealPlanType!,
-            recipe: allData,
-          })
-        );
+        dispatch(removeRecipeThunk(mealPlanType!));
         break;
       default:
         onOpen && onOpen();

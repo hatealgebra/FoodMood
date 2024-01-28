@@ -14,8 +14,9 @@ import {
   ModalOverlay,
   Tag,
 } from "@chakra-ui/react";
-import { getAuth } from "@firebase/auth";
-import React from "react";
+import { remove } from "firebase/database";
+import React, { useCallback } from "react";
+import Loading from "~app/app/loading";
 import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
 import { useAppDispatch, useAppSelector } from "~store/hooks";
 import {
@@ -24,13 +25,16 @@ import {
   selectMealPlanDate,
 } from "~store/slices/mealPlan.slice";
 import { openModal } from "~store/slices/modalRecipe.slice";
-import { addRecipePlanThunk } from "~store/thunks/mealPlan.thunk";
+import {
+  addRecipePlanThunk,
+  removeRecipeThunk,
+} from "~store/thunks/mealPlan.thunk";
 import Recipe from "~types/recipe.types";
 
 interface ModalFavouritesProps {
   isOpen: boolean;
   onClose: () => void;
-  date?: Date;
+  date?: string;
   mealType?: TFoodTime;
 }
 
@@ -39,19 +43,31 @@ const ModalFavourites = ({
   onClose,
   mealType,
 }: ModalFavouritesProps) => {
-  const { savedRecipes, savedRecipesStatus, savedRecipesError } =
-    useFavouriteRecipes();
-  const currentDate = useAppSelector(selectMealPlanDate);
+  const { savedRecipes, savedRecipesStatus } = useFavouriteRecipes();
+  const currMealPlan = useAppSelector(selectMealPlanCurrent);
   const dispatch = useAppDispatch();
 
-  const addRecipe = (
-    dateString: string,
-    mealType: TFoodTime,
-    recipeData: Recipe
-  ) => {
+  const isAlreadySet = useCallback(
+    (recipeLabel: string) => {
+      if (currMealPlan && mealType) {
+        const { label } = currMealPlan[mealType];
+        return label === recipeLabel;
+      }
+      return false;
+    },
+    [currMealPlan, mealType]
+  );
+
+  const handleRecipeClick = (mealType: TFoodTime, recipeData: Recipe) => {
+    const { label } = recipeData;
+    console.log(isAlreadySet(label));
+    if (isAlreadySet(label)) {
+      dispatch(removeRecipeThunk(mealType));
+      return;
+    }
+
     dispatch(
       addRecipePlanThunk({
-        date: dateString,
         mealType,
         recipe: recipeData,
       })
@@ -62,7 +78,7 @@ const ModalFavourites = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} blockScrollOnMount size="xl">
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent minBlockSize="xl">
         <ModalHeader>
           <Heading variant="fira" as="h2" size="xl" textAlign="center">
             <Box color="#373737" textTransform="uppercase" display="inline">
@@ -80,59 +96,63 @@ const ModalFavourites = ({
         </ModalHeader>
         <ModalBody>
           <List>
-            {savedRecipes.map((recipe) => {
-              return (
-                <ListItem
-                  display="flex"
-                  key={recipe.label}
-                  borderTop="1px solid lightGray"
-                  m="0"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  pr="2%"
-                >
-                  <Heading fontFamily="body" as="h4" display="inline">
-                    <Flex
-                      justifyContent="space-between"
-                      gap="15px"
-                      p="15px 5px"
-                      alignItems="center"
-                    >
-                      <Box
-                        as="span"
-                        flex="1"
-                        textAlign="left"
-                        fontSize="md"
-                        fontWeight="400"
+            {savedRecipesStatus === "loading" && <Loading />}
+            {savedRecipesStatus === "idle" &&
+              savedRecipes.map((recipe) => {
+                return (
+                  <ListItem
+                    display="flex"
+                    key={recipe.label}
+                    borderTop="1px solid lightGray"
+                    m="0"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    pr="2%"
+                  >
+                    <Heading fontFamily="body" as="h4" display="inline">
+                      <Flex
+                        justifyContent="space-between"
+                        gap="15px"
+                        p="15px 5px"
+                        alignItems="center"
                       >
-                        {recipe.label}
-                      </Box>
-                      <Tag color="secondary.500" fontSize="sm">
-                        {recipe.mealType}
-                      </Tag>
-                    </Flex>
-                  </Heading>
-                  <ButtonGroup>
-                    <Button
-                      size="sm"
-                      colorScheme="primary"
-                      w="full"
-                      onClick={() => dispatch(openModal(recipe))}
-                    >
-                      Show
-                    </Button>
-                    <Button
-                      w="full"
-                      size="sm"
-                      colorScheme="tertiary"
-                      onClick={() => addRecipe(currentDate, mealType, recipe)}
-                    >
-                      Add
-                    </Button>
-                  </ButtonGroup>
-                </ListItem>
-              );
-            })}
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          fontSize="md"
+                          fontWeight="400"
+                        >
+                          {recipe.label}
+                        </Box>
+                        <Tag color="secondary.500" fontSize="sm">
+                          {recipe.mealType}
+                        </Tag>
+                      </Flex>
+                    </Heading>
+                    <ButtonGroup>
+                      <Button
+                        size="sm"
+                        colorScheme="primary"
+                        w="full"
+                        onClick={() => dispatch(openModal(recipe))}
+                      >
+                        Show
+                      </Button>
+                      <Button
+                        w="full"
+                        size="sm"
+                        colorScheme={
+                          isAlreadySet(recipe.label) ? "red" : "tertiary"
+                        }
+                        onClick={() => handleRecipeClick(mealType, recipe)}
+                      >
+                        {isAlreadySet(recipe.label) ? "Remove" : "Choose"}
+                      </Button>
+                    </ButtonGroup>
+                  </ListItem>
+                );
+              })}
           </List>
         </ModalBody>
         <ModalFooter></ModalFooter>
