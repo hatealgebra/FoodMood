@@ -8,5 +8,8 @@ export const savedRecipesRef = (uid: string) =>
 
 export const searchHistoryRef = (uid: string) => doc(dbFirestore, "users", uid);
 
-export const recipeRef = (uid: string, label: string) =>
+export const getRecipeRef = (uid: string, label: string) =>
   doc(dbFirestore, "users", uid, "favouriteRecipes", label);
+
+export const getMealPlanDateRef = (uid: string, date: string) =>
+  doc(dbFirestore, "users", uid, "mealPlan", date);

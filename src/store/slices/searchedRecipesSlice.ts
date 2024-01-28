@@ -3,10 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 import { searchRecipesThunk } from "../thunks/edamamRecipe.thunk";
-import { sortRecipesBy } from "../../utils/utils";
-import { SearchRecipes } from "../../types/async.types";
-import { Hit } from "../../types/recipe.types";
-import { SortByOptions } from "../../types/utils.types";
+import { SearchRecipes } from "~types/async.types";
+import { Hit } from "~types/recipe.types";
+import { SortByOptions } from "~types/utils.types";
+import { sortRecipesBy } from "~utils.utils";
 
 const initialState = {
   query: "",
@@ -20,6 +20,7 @@ export const searchedRecipesSlice = createSlice({
   initialState,
   reducers: {
     sortRecipes: (state, action: PayloadAction<SortByOptions>) => {
+      console.log("hello");
       const sortedRecipes = sortRecipesBy(state.recipesList, action.payload);
       state.recipesList = sortedRecipes;
       state.sort = action.payload;

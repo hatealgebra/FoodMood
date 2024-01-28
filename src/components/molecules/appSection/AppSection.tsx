@@ -14,7 +14,6 @@ const AppSection: React.FC<AppSectionProps> = ({
   noPadHeading,
   ...props
 }) => {
-  console.log(props);
   return (
     <Section yAxisMinus={yAxisMinus} {...props}>
       <VStack alignContent="center" align="flex-start">

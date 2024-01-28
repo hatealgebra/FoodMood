@@ -1,8 +1,4 @@
-import {
-  defineStyle,
-  defineStyleConfig,
-  withDefaultColorScheme,
-} from "@chakra-ui/react";
+import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
 
 const xl = defineStyle({
   fontSize: "lg",
@@ -12,6 +8,12 @@ const xl = defineStyle({
 const lg = defineStyle({
   fontSize: "md",
   height: "50px",
+});
+
+const sm = defineStyle({
+  fontSize: "xs",
+  px: 2,
+  py: 2.5,
 });
 
 const link = defineStyle({
@@ -33,7 +35,7 @@ const buttonStyle = defineStyleConfig({
   defaultProps: {
     size: "lg",
   },
-  sizes: { xl, lg },
+  sizes: { xl, lg, sm },
   variants: { link },
 });
 

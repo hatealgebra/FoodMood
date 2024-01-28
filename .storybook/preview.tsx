@@ -4,7 +4,9 @@ import theme from "../src/components/particles/themeDefault";
 import { initialize, mswLoader } from "msw-storybook-addon";
 import { Provider } from "react-redux";
 import store from "../src/store/store";
+import { handlers } from "../src/mocks/handlers";
 
+import "@fontsource/fira-sans/200.css";
 import "@fontsource/fira-sans/400.css";
 import "@fontsource/fira-sans/500.css";
 import "@fontsource/fira-sans/600.css";
@@ -34,8 +36,8 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    msw: { handlers },
   },
 };
 
-export const loaders = [mswLoader];
 export default preview;

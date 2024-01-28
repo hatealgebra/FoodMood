@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 
 import {
-  recipeRef,
+  getRecipeRef,
   savedRecipesRef,
 } from "~services/firebase/firestoreRefs.services";
 
@@ -36,7 +36,7 @@ export const readSavedRecipes = createAsyncThunk<
   }
 });
 
-interface SaveRecipeArgs {
+export interface SaveRecipeArgs {
   uid: string | null;
   recipe: Recipe;
 }
@@ -49,7 +49,7 @@ export const saveRecipe = createAsyncThunk<
 >("CRUD/saveRecipe", async ({ uid, recipe }, thunkApi) => {
   const { label } = recipe;
   try {
-    uid && (await setDoc(recipeRef(uid, label), recipe));
+    uid && (await setDoc(getRecipeRef(uid, label), recipe));
     return recipe;
   } catch (e) {
     return thunkApi.rejectWithValue({
@@ -75,7 +75,7 @@ export const removeSavedRecipe = createAsyncThunk<
   "CRUD/remove recipe",
   async ({ uid, label }: RemoveSavedRecipesArgs, thunkApi) => {
     try {
-      await deleteDoc(recipeRef(uid, label));
+      await deleteDoc(getRecipeRef(uid, label));
       return label;
     } catch (e) {
       return thunkApi.rejectWithValue({

@@ -1,10 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import components from "./componentsStyle";
 
-// function getRem(pxUnit: number) {
-//   return `${pxUnit / 14}rem`;
-// }
-
 const fonts = {
   heading: "PlayFair Display",
   body: "Fira Sans",
@@ -72,6 +68,19 @@ const theme = {
       },
       form: {
         width: "100%",
+      },
+      ".react-datepicker-wrapper": {
+        display: "none !important",
+      },
+      ".react-datepicker__tab-loop": {
+        position: "static !important",
+      },
+      ".react-datepicker-popper": {
+        zIndex: "9999 !important",
+        inset: "unset !important",
+        left: "50% !important",
+        transform: "translateX(-50%) !important",
+        top: "0 !important",
       },
     },
   },
