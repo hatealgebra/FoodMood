@@ -45,3 +45,10 @@ firestore_export/
 storage_export/
 
 src/mocks/**/*
+
+.nx/cache
+
+storybook-static
+
+# Next.js
+.next
