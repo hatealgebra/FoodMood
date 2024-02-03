@@ -3,13 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nx dev",
-    "build": "nx build",
-    "start": "nx start",
-    "lint": "next lint",
-    "storybook": "nx storybook -p 6006",
-    "build-storybook": "nx build-storybook",
-    "firebase:emulators": "firebase emulators:start --import ./src/mocks/firebase --export-on-exit ./src/mocks/firebase"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
