@@ -61,4 +61,9 @@ export default defineConfig({
       provider: 'v8',
     },
   },
+  server: {
+    fs: {
+      allow: ['..'],
+    },
+  },
 });
