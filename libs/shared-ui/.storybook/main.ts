@@ -12,7 +12,7 @@ const config: StorybookConfig = {
   ],
   staticDirs: ['../public'],
   framework: {
-    name: '@storybook/nextjs',
+    name: '@storybook/react-vite',
     options: {},
   },
   features: {

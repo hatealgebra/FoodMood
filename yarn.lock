@@ -3009,25 +3009,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/storybook-addon@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@chakra-ui/storybook-addon@npm:5.1.0"
-  peerDependencies:
-    "@chakra-ui/react": ">=2.0.0"
-    "@storybook/components": ">=7.0.12"
-    "@storybook/manager-api": ">=7.0.12"
-    "@storybook/preview-api": ">=7.0.12"
-    "@storybook/types": ">=7.0.24"
-    react: ">=16.8.x"
-  peerDependenciesMeta:
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 9a16ac3e64e8b7fabfd5f775809ad36ed15ee62e964da3ea5bd70d06e3d1dc0188fceaedba3516076397d0e64e60302b317d78ff8dc702d3ca02fcd6c042c1ba
-  languageName: node
-  linkType: hard
-
 "@chakra-ui/styled-system@npm:2.9.2":
   version: 2.9.2
   resolution: "@chakra-ui/styled-system@npm:2.9.2"
@@ -7780,7 +7761,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:7.6.4, @storybook/react@npm:^7.6.4":
+"@storybook/react@npm:7.6.4":
   version: 7.6.4
   resolution: "@storybook/react@npm:7.6.4"
   dependencies:
@@ -14485,7 +14466,6 @@ __metadata:
     "@babel/core": "npm:^7.14.5"
     "@babel/preset-react": "npm:^7.14.5"
     "@chakra-ui/react": "npm:^2.8.2"
-    "@chakra-ui/storybook-addon": "npm:^5.1.0"
     "@emotion/babel-plugin": "npm:11.11.0"
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
@@ -14512,7 +14492,6 @@ __metadata:
     "@storybook/core-server": "npm:7.6.4"
     "@storybook/jest": "npm:^0.2.3"
     "@storybook/nextjs": "npm:^7.6.4"
-    "@storybook/react": "npm:^7.6.4"
     "@storybook/react-vite": "npm:7.6.4"
     "@storybook/test": "npm:^7.6.4"
     "@storybook/test-runner": "npm:^0.16.0"
