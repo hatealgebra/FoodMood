@@ -4012,24 +4012,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/cabin-sketch@npm:^4.5.0":
-  version: 4.5.9
-  resolution: "@fontsource/cabin-sketch@npm:4.5.9"
-  checksum: 3a68095187d176fc12336c22c31eaf088a007297513610ba74889ce9c31e611ab113d9c56068880ba3f5b0a26529e0b27a22aafc8aab8622ee53a872fb0c0c45
-  languageName: node
-  linkType: hard
-
 "@fontsource/fira-sans@npm:^4.5.0":
   version: 4.5.10
   resolution: "@fontsource/fira-sans@npm:4.5.10"
   checksum: cdc39d68cd3bdabb16bf94ad85d37de6a0155de6396edee558008f52fe3ce4c1c85e362469142c6041c031c88f51d98dfc9aff7b509452859c886b809e73b5e9
-  languageName: node
-  linkType: hard
-
-"@fontsource/fredericka-the-great@npm:^4.5.0":
-  version: 4.5.9
-  resolution: "@fontsource/fredericka-the-great@npm:4.5.9"
-  checksum: 6299651faf813c06580bcaa778a961c9b44d261cb288e45a1e0b0d179b6d2abfea23bb3e5198213d62acf9a828527a437a005da683f1635459fa80c048e819af
   languageName: node
   linkType: hard
 
@@ -13349,9 +13335,7 @@ __metadata:
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
     "@firebase/auth": "npm:^1.5.1"
-    "@fontsource/cabin-sketch": "npm:^4.5.0"
     "@fontsource/fira-sans": "npm:^4.5.0"
-    "@fontsource/fredericka-the-great": "npm:^4.5.0"
     "@fontsource/kalam": "npm:^4.5.0"
     "@fontsource/playfair-display": "npm:^4.5.0"
     "@nx/eslint": "npm:18.0.0"
@@ -13420,7 +13404,7 @@ __metadata:
     storybook: "npm:^7.6.12"
     stylelint: "npm:^16.0.1"
     ts-node: "npm:10.9.1"
-    typescript: "npm:5.3.3"
+    typescript: "npm:5.3.2"
     vite: "npm:^5.0.0"
     vite-plugin-dts: "npm:~2.3.0"
     vitest: "npm:^1.0.4"
@@ -21663,6 +21647,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:5.3.2":
+  version: 5.3.2
+  resolution: "typescript@npm:5.3.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: d7dbe1fbe19039e36a65468ea64b5d338c976550394ba576b7af9c68ed40c0bc5d12ecce390e4b94b287a09a71bd3229f19c2d5680611f35b7c53a3898791159
+  languageName: node
+  linkType: hard
+
 "typescript@npm:5.3.3, typescript@npm:~5.3.2":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
@@ -21670,6 +21664,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: e33cef99d82573624fc0f854a2980322714986bc35b9cb4d1ce736ed182aeab78e2cb32b385efa493b2a976ef52c53e20d6c6918312353a91850e2b76f1ea44f
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>":
+  version: 5.3.2
+  resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 73c8bad74e732d93211c9d77f28b03307e2f5fc6a0afc73f4b783261ab567686a16d6ae958bdaef383a00be1b0b8c8b6741dd6ca3d13af4963fa7e47456d49c7
   languageName: node
   linkType: hard
 

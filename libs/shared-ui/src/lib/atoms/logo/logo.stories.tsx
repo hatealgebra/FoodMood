@@ -1,7 +1,6 @@
-import React from "react";
-import Logo from "./Logo";
+import Logo from './Logo';
 
-export const FMLogo = () => (
+export const FoodMoodLogo = () => (
   <>
     <Logo width="" />
     <Logo width="200px" />
@@ -11,5 +10,5 @@ export const FMLogo = () => (
 
 export default {
   compnent: Logo,
-  title: "Atoms/Logo",
+  title: 'Atoms/Logo',
 };

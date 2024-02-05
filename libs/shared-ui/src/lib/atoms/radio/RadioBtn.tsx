@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
+import React, { useState } from 'react';
+import { Radio, RadioGroup, Stack } from '@chakra-ui/react';
 
 const RadioBtnGroup = ({
   action,
@@ -7,7 +7,7 @@ const RadioBtnGroup = ({
   radioValues,
   direction,
 }: RadioBtnsProps) => {
-  const [value, setValue] = useState(initialValue || "");
+  const [value, setValue] = useState(initialValue || '');
   return (
     <RadioGroup onChange={setValue} value={value}>
       <Stack direction={direction}>
@@ -29,7 +29,7 @@ export interface RadioBtnsProps {
   action?: () => void;
   initialValue?: any;
   radioValues: [any, string][];
-  direction?: "column" | "row";
+  direction?: 'column' | 'row';
 }
 
 export default RadioBtnGroup;
