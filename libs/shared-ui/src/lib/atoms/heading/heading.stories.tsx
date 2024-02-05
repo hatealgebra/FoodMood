@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import React from 'react';
+import { Box, Heading } from '@chakra-ui/react';
 
 export const Headings = () => (
   <>
@@ -55,5 +55,5 @@ export const DualColor = () => (
 
 export default {
   component: Heading,
-  title: "Atoms/Heading",
+  title: 'Atoms/Heading',
 };

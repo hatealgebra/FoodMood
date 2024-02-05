@@ -33,6 +33,7 @@ export const AllColors = () => (
     <Button colorScheme="secondary">Secondary</Button>
     <Button colorScheme="tertiary">Tertiary</Button>
     <Button colorScheme="warning">Warning</Button>
+    <Button colorScheme="red">Red</Button>
   </>
 );
 

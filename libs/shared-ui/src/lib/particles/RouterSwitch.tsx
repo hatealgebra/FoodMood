@@ -1,18 +1,18 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Homepage from "../pages/homePage/Homepage";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Homepage from '../pages/homePage/Homepage';
 
-import * as routerConstantClass from "../../constants/router.constants";
-import LoginPage from "../pages/loginPage/LoginPage";
-import SignupPage from "../pages/signupPage/SignupPage";
-import PrivateRoute from "./PrivateRoute";
-import AppHomepage from "../pages/appHomepage/AppHomepage";
-import SearchPage from "../pages/searchPage/SearchPage";
-import MealPlanPage from "../pages/mealPlanPage/MealPlanPage";
-import SavedRecipesPage from "../pages/savedRecipes/SavedRecipesPage";
-import AboutPage from "../pages/aboutPage/AboutPage";
-import TermsPage from "../pages/termsPage/TermsPage";
-import { UserSettings } from "../pages/appPage.stories";
+import * as routerConstantClass from '../../../../../src/constants/router.constants';
+import LoginPage from '../pages/loginPage/LoginPage';
+import SignupPage from '../pages/signupPage/SignupPage';
+import PrivateRoute from './PrivateRoute';
+import AppHomepage from '../pages/appHomepage/AppHomepage';
+import SearchPage from '../pages/searchPage/SearchPage';
+import MealPlanPage from '../pages/mealPlanPage/MealPlanPage';
+import SavedRecipesPage from '../pages/savedRecipes/SavedRecipesPage';
+import AboutPage from '../pages/aboutPage/AboutPage';
+import TermsPage from '../../../../../src/components/pages/termsPage/TermsPage';
+import { UserSettings } from '../../../../../src/components/pages/appPage.stories';
 
 const { ROUTE_WEB, ROUTE_APP } = routerConstantClass;
 

@@ -1,9 +1,9 @@
-import { getAuth } from "firebase/auth";
-import React, { ReactNode } from "react";
+import { getAuth } from 'firebase/auth';
+import React, { ReactNode } from 'react';
 
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Route } from 'react-router-dom';
 
-import * as myConstClass from "../../constants/router.constants";
+import * as myConstClass from '../../../../../src/constants/router.constants';
 
 const PrivateRoute: React.FC<any> = ({ children }) => {
   const { currentUser } = getAuth();

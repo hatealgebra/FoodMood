@@ -1,17 +1,11 @@
 import type { Preview } from '@storybook/react';
-import theme from '../../../src/components/particles/themeDefault';
-
-import '@fontsource/fira-sans/200.css';
-import '@fontsource/fira-sans/400.css';
-import '@fontsource/fira-sans/500.css';
-import '@fontsource/fira-sans/600.css';
-import '@fontsource/playfair-display/variable.css';
+import themeDefault from '../src/lib/particles/themeDefault';
 
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     chakra: {
-      theme,
+      theme: themeDefault,
     },
     tags: ['autodocs'],
     controls: {
