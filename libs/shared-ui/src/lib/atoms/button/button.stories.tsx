@@ -1,11 +1,9 @@
-import React from 'react';
-
-import { action, actions } from '@storybook/addon-actions';
-
 import { FcGoogle } from 'react-icons/fc';
 import { Button, ButtonProps, Wrap } from '@chakra-ui/react';
 import SaveButton, { SaveButtonProps } from './SaveButton';
 import { Story, Meta } from '@storybook/react';
+import { jest } from '@storybook/jest';
+import { action } from '@storybook/addon-actions';
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 const TemplateSaveButton: Story<SaveButtonProps> = (args) => (
@@ -17,6 +15,7 @@ GenericButton.args = {
   children: 'Button',
   isLoading: false,
   colorScheme: 'primary',
+  onClick: action('clicked'),
 };
 GenericButton.argTypes = {
   colorScheme: {
@@ -26,6 +25,7 @@ GenericButton.argTypes = {
     },
   },
 };
+GenericButton.play = async ({ canvasElement }) => {};
 
 export const AllColors = () => (
   <>

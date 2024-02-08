@@ -1,6 +1,6 @@
 const switchStyle = {
   baseStyle: {
-    colorScheme: "secondary",
+    colorScheme: 'secondary',
   },
 };
 

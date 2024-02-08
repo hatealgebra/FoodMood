@@ -6,6 +6,7 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-actions',
     '@chakra-ui/storybook-addon',
   ],
   framework: {

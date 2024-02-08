@@ -1,19 +1,20 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
 
-import AlertBox, { AlertBoxProps } from "./AlertBox";
+import AlertBox, { AlertBoxProps } from './AlertBox';
+import { within } from '@storybook/testing-library';
 
 const Template: Story<AlertBoxProps> = (args) => <AlertBox {...args} />;
 
 export const BasicAlert = Template.bind({});
 BasicAlert.args = {
-  children: "This is alert!",
+  children: 'This is alert!',
 };
 BasicAlert.argTypes = {
   status: {
     control: {
-      type: "select",
-      options: ["info", "warning", "success", "error"],
+      type: 'select',
+      options: ['info', 'warning', 'success', 'error'],
     },
   },
 };
@@ -29,5 +30,5 @@ export const AllAlerts = () => (
 
 export default {
   component: AlertBox,
-  title: "Atoms/Alert",
+  title: 'Atoms/Alert',
 } as Meta;

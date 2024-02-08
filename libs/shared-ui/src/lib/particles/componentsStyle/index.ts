@@ -1,13 +1,20 @@
 import Button from './button.style';
 import Heading from './heading.style';
 import CloseButton from './closeButton.style';
+import Checkbox from './checkbox.style';
+import Input from './input.style';
+import List from './list.style';
+import Link from './link.style';
+import Tag from './tag.style';
+import Switch from './switch.style';
+import Tooltip from './tooltip.style';
 
 const components = {
   Button,
   Heading,
-  // Input,
-  // List,
-  // Tag,
+  Input,
+  List,
+  Tag,
   Box: {
     variants: {
       dec: {
@@ -17,10 +24,9 @@ const components = {
       },
     },
   },
-  // Checkbox,
-  // Text,
-  // Link,
-  // Switch,
+  Text,
+  Link,
+  Switch,
   CloseButton,
   Menu: {
     parts: ['menu', 'list', 'item'],
@@ -31,7 +37,7 @@ const components = {
       },
     },
   },
-  // Tooltip,
+  Tooltip,
 };
 
 export default components;
