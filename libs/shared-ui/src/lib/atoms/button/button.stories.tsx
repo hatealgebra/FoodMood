@@ -1,9 +1,9 @@
 import { FcGoogle } from 'react-icons/fc';
 import { Button, ButtonProps, Wrap } from '@chakra-ui/react';
 import SaveButton, { SaveButtonProps } from './SaveButton';
-import { Story, Meta } from '@storybook/react';
-import { jest } from '@storybook/jest';
+import { Meta, StoryFn as Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { expect, userEvent, within } from '@storybook/test';
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 const TemplateSaveButton: Story<SaveButtonProps> = (args) => (
@@ -25,7 +25,13 @@ GenericButton.argTypes = {
     },
   },
 };
-GenericButton.play = async ({ canvasElement }) => {};
+GenericButton.play = async ({ args, canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = canvas.getByRole('button');
+  await userEvent.click(button);
+  expect(args.onClick).toHaveBeenCalled();
+};
 
 export const AllColors = () => (
   <>
@@ -90,10 +96,10 @@ export default {
   component: Button,
   title: 'Atoms/Button',
   decorators: [
-    (Story: any) => (
+    (Story: Story) => (
       <Wrap>
         <Story />
       </Wrap>
     ),
   ],
-} as Meta;
+} as Meta<typeof Button>;

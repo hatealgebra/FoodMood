@@ -27,6 +27,7 @@ const components = {
   Text,
   Link,
   Switch,
+  Checkbox,
   CloseButton,
   Menu: {
     parts: ['menu', 'list', 'item'],

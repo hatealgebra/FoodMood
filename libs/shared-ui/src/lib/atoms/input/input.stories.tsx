@@ -1,10 +1,9 @@
-import React from "react";
-
-import { VStack } from "@chakra-ui/react";
-import FormikInput, { FormikInputProps } from "./Input";
-import TextField from "./Input";
-import { BsSearch } from "react-icons/bs";
-import { Story } from "@storybook/react";
+import { VStack } from '@chakra-ui/react';
+import FormikInput, { FormikInputProps } from './Input';
+import TextField from './Input';
+import { BsSearch } from 'react-icons/bs';
+import { StoryFn as Story } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 
 const Template: Story<FormikInputProps> = (args: any) => (
   <FormikInput {...args} />
@@ -12,18 +11,25 @@ const Template: Story<FormikInputProps> = (args: any) => (
 
 export const VariableInput = Template.bind({});
 VariableInput.args = {
-  id: "justSomeID",
-  placeholder: "",
-  label: "",
+  id: 'justSomeID',
+  placeholder: '',
+  label: '',
 };
 VariableInput.argTypes = {
   type: {
-    defaultValue: "text",
+    defaultValue: 'text',
     control: {
-      options: ["password", "email", "text"],
-      type: "inline-radio",
+      options: ['password', 'email', 'text'],
+      type: 'inline-radio',
     },
   },
+};
+VariableInput.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const input = canvas.getByRole('textbox');
+  await userEvent.type(input, 'Prague');
+  expect(input).toHaveValue('Prague');
 };
 
 export const AllInputs = () => (
@@ -41,5 +47,5 @@ export const AllInputs = () => (
 
 export default {
   component: TextField,
-  title: "Atoms/Input",
+  title: 'Atoms/Input',
 };

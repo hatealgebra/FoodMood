@@ -1,7 +1,6 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn as Story } from '@storybook/react';
 import RadioBtnGroup, { RadioBtnsProps } from './RadioBtn';
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { expect, userEvent, within } from '@storybook/test';
 
 const Template: Story<RadioBtnsProps> = (args: any) => (
   <RadioBtnGroup {...args} />
@@ -28,7 +27,7 @@ RadioButtons.play = async ({ canvasElement }) => {
   const firstRadio = radios[0];
 
   await userEvent.click(firstRadio);
-  await expect(firstRadio).toBeChecked();
+  expect(firstRadio).toBeChecked();
 };
 
 export default {
