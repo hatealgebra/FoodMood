@@ -1,10 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Wrap } from "@chakra-ui/react";
+import { Wrap } from '@chakra-ui/react';
 
-import RecipeCardGroup, {
-  RecipeCardGroupProps,
-} from "./recipeCardGroups/RecipeCardsGroup";
+import RecipeCardGroup, { RecipeCardGroupProps } from './RecipeCardsGroup';
 
 interface RecipeCardsGallery extends RecipeCardGroupProps {
   leftPadding?: boolean;
@@ -27,7 +25,7 @@ const RecipeCardsGallery = ({
       spacingY="2"
       height="fit-content"
       my={3}
-      px={[0, 0, 0, !noPadding ? "10.5vw" : 0]}
+      px={[0, 0, 0, !noPadding ? '10.5vw' : 0]}
     >
       <RecipeCardGroup error={error} isLoading={isLoading} recipes={recipes} />
     </Wrap>

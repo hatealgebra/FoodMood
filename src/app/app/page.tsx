@@ -1,21 +1,21 @@
-"use client";
-import { useEffect } from "react";
+'use client';
+import { useEffect } from 'react';
 
-import AppSection from "~molecules/appSection/AppSection";
+import AppSection from '~molecules/appSection/AppSection';
 
-import RecipeCardRow from "~organisms/recipeCardGroups/RecipeCardsScrollable";
-import AlertBox from "~atoms/alertBox/AlertBox";
-import { useAppDispatch, useAppSelector } from "~store/hooks";
-import { fetchRecipes } from "~store/thunks/edamamRecipe.thunk";
+import RecipeCardRow from 'libs/shared-ui/src/lib/organisms/recipeCardGroups/RecipeCardsScrollable';
+import AlertBox from '~atoms/alertBox/AlertBox';
+import { useAppDispatch, useAppSelector } from '~store/hooks';
+import { fetchRecipes } from '~store/thunks/edamamRecipe.thunk';
 import {
   selectRandomRecipes,
   selectRandomRecipesError,
   selectRandomRecipesStatus,
-} from "~store/slices/randomRecipes.slice";
-import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
-import SearchBanner from "~molecules/banner/SearchBanner";
-import PreferencesBanner from "~molecules/banner/PreferencesBaner";
-import RecipeCardsGallery from "~organisms/RecipeCardsGallery";
+} from '~store/slices/randomRecipes.slice';
+import useFavouriteRecipes from '~hooks/useFavouriteRecipes';
+import SearchBanner from '~molecules/banner/SearchBanner';
+import PreferencesBanner from '~molecules/banner/PreferencesBaner';
+import RecipeCardsGallery from 'libs/shared-ui/src/lib/organisms/recipeCardGroups/RecipeCardsGallery';
 
 const AppHomepage = () => {
   const randomRecipes = useAppSelector(selectRandomRecipes);
@@ -26,14 +26,14 @@ const AppHomepage = () => {
     useFavouriteRecipes();
 
   useEffect(() => {
-    dispatch(fetchRecipes("pizza"));
+    dispatch(fetchRecipes('pizza'));
   }, [dispatch]);
 
   return (
     <>
       <AppSection headingOne="Your daily" headingTwo="recipes" fullWidth>
         <RecipeCardRow
-          isLoading={randomRecipesStatus === "loading" ? true : false}
+          isLoading={randomRecipesStatus === 'loading' ? true : false}
           recipes={randomRecipes}
           error={randomRecipesError}
         />
@@ -56,7 +56,7 @@ const AppHomepage = () => {
         fullWidth
       >
         <RecipeCardsGallery
-          isLoading={savedRecipesStatus === "loading" ? true : false}
+          isLoading={savedRecipesStatus === 'loading' ? true : false}
           recipes={savedRecipes}
           error={savedRecipesError}
         />

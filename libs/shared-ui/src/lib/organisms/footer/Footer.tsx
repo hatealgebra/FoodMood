@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   HStack,
   Stack,
@@ -9,40 +7,39 @@ import {
   List,
   ListItem,
   Link,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+} from '@chakra-ui/react';
+// import NextLink from 'next/link';
 
-import * as routerConstantClass from "~constants/router.constants";
+// import * as routerConstantClass from '~constants/router.constants';
 
-import CustomIcon from "~atoms/customIcon/customIcon/CustomIcon";
-import Logo from "~atoms/logo/Logo";
-
-import { GrFacebook, GrInstagram, GrLinkedin } from "react-icons/gr";
-import { BiCopyright } from "react-icons/bi";
+import { GrFacebook, GrInstagram, GrLinkedin } from 'react-icons/gr';
+import { BiCopyright } from 'react-icons/bi';
+import CustomIcon from '../../atoms/customIcon/CustomIcon';
+import Logo from '../../atoms/logo/Logo';
 
 // TODO fix Nav list menu
 
 const Footer = () => {
-  const { ROUTE_APP, ROUTE_WEB } = routerConstantClass;
+  // const { ROUTE_APP, ROUTE_WEB } = routerConstantClass;
   return (
     <footer>
       <Box
-        p={{ base: "30px 10px", sm: "30px 20px", md: "50px 40px 20px 40px" }}
+        p={{ base: '30px 10px', sm: '30px 20px', md: '50px 40px 20px 40px' }}
         bg="#f2f2f2"
       >
         <Stack
-          direction={["column", "column", "row"]}
+          direction={['column', 'column', 'row']}
           spacing={12}
           justify="space-between"
-          width={["90%", "80%"]}
+          width={['90%', '80%']}
           maxW="800px"
           margin="auto"
         >
           <VStack align="flex-start" spacing={5}>
-            <NextLink href={ROUTE_APP.APP_HOME_PAGE}>
+            {/* <NextLink href={''}>
               <Logo />
-            </NextLink>
-            <Text maxW={["220px", "270px"]}>
+            </NextLink> */}
+            <Text maxW={['220px', '270px']}>
               Food Mood is the app that helps you with meal diversity and
               healthy lifestyle
             </Text>
@@ -76,21 +73,8 @@ const Footer = () => {
             </Text>
 
             <List spacing={3} as={VStack} variant="nav">
-              <ListItem as={NextLink} href="/">
-                Homepage
-              </ListItem>
-              ,
-              <ListItem as={NextLink} href={ROUTE_APP.APP_HOME_PAGE}>
-                Explore App
-              </ListItem>
-              ,
-              <ListItem as={NextLink} href={ROUTE_WEB.ABOUT_PAGE}>
-                About
-              </ListItem>
-              ,
-              <ListItem as={NextLink} href={ROUTE_WEB.TERMS_POLICY_PAGE}>
-                Terms & Policy
-              </ListItem>
+              <ListItem>Homepage</ListItem>,<ListItem>Explore App</ListItem>,
+              <ListItem>About</ListItem>,<ListItem>Terms & Policy</ListItem>
             </List>
           </VStack>
           <VStack align="flex-start">
@@ -98,19 +82,11 @@ const Footer = () => {
               Application
             </Text>
             <List spacing={3} as={VStack} variant="nav">
-              <ListItem as={NextLink} href={ROUTE_APP.APP_HOME_PAGE}>
-                Home
-              </ListItem>
-              <ListItem as={NextLink} href={ROUTE_APP.APP_SEARCH_PAGE}>
-                Search recipes
-              </ListItem>
+              <ListItem>Home</ListItem>
+              <ListItem>Search recipes</ListItem>
 
-              <ListItem as={NextLink} href={ROUTE_APP.APP_FAVOURITES_PAGE}>
-                Favourite meals
-              </ListItem>
-              <ListItem as={NextLink} href={ROUTE_APP.APP_MEAL_PLAN_PAGE}>
-                Meal plan
-              </ListItem>
+              <ListItem>Favourite meals</ListItem>
+              <ListItem>Meal plan</ListItem>
             </List>
           </VStack>
         </Stack>

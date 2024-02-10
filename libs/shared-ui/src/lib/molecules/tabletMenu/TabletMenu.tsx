@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Box,
   Center,
@@ -10,15 +8,15 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
-import Logo from "../../atoms/logo/Logo";
-import TouchMenuLinks from "../touchMenuLinks/TouchMenuLinks";
-import { getAuth } from "firebase/auth";
+} from '@chakra-ui/react';
 
-import UserAvatar from "../userAvatar/UserAvatar";
-import { useAppSelector } from "../../../store/hooks";
-import { selectUserStatus } from "../../../store/slices/user.slice";
+import Logo from '../../atoms/logo/Logo';
+import TouchMenuLinks from '../touchMenuLinks/TouchMenuLinks';
+import { getAuth } from 'firebase/auth';
+
+import UserAvatar from '../userAvatar/UserAvatar';
+// import { useAppSelector } from "../../../store/hooks";
+// import { selectUserStatus } from "../../../store/slices/user.slice";
 
 interface TabletMenuProps {
   isOpen: boolean;
@@ -26,8 +24,8 @@ interface TabletMenuProps {
 }
 
 const TabletMenu = ({ isOpen, onClose }: TabletMenuProps) => {
-  const { currentUser } = getAuth();
-  const userStatus = useAppSelector(selectUserStatus);
+  // const { currentUser } = getAuth();
+  // const userStatus = useAppSelector(selectUserStatus);
   return (
     <Drawer
       isOpen={isOpen}
@@ -40,9 +38,9 @@ const TabletMenu = ({ isOpen, onClose }: TabletMenuProps) => {
       <DrawerContent aria-label="tablet-drawer">
         <DrawerCloseButton onClick={onClose} />
         <DrawerHeader>
-          <NextLink href="/">
-            <Logo width={["120px", "150px"]} />
-          </NextLink>
+          {/* <NextLink href="/">
+            <Logo width={['120px', '150px']} />
+          </NextLink> */}
         </DrawerHeader>
         <DrawerBody>
           <TouchMenuLinks noMargin />
@@ -70,11 +68,11 @@ const TabletMenu = ({ isOpen, onClose }: TabletMenuProps) => {
         </DrawerBody>
         <DrawerFooter>
           <Center margin="auto">
-            <UserAvatar
+            {/* <UserAvatar
               name={currentUser?.displayName!}
-              status={userStatus}
+              // status={userStatus}
               size="md"
-            />
+            /> */}
           </Center>
         </DrawerFooter>
       </DrawerContent>

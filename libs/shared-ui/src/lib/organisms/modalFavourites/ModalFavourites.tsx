@@ -13,25 +13,20 @@ import {
   ModalHeader,
   ModalOverlay,
   Tag,
-} from "@chakra-ui/react";
-import { remove } from "firebase/database";
-import React, { useCallback } from "react";
-import Loading from "~app/app/loading";
-import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
-import { useAppDispatch, useAppSelector } from "~store/hooks";
-import {
-  TFoodTime,
-  selectMealPlanCurrent,
-  selectMealPlanDate,
-} from "~store/slices/mealPlan.slice";
-import { openModal } from "~store/slices/modalRecipe.slice";
+} from '@chakra-ui/react';
+import React, { useCallback } from 'react';
+import Loading from '~app/app/loading';
+import useFavouriteRecipes from '~hooks/useFavouriteRecipes';
+import { useAppDispatch, useAppSelector } from '~store/hooks';
+import { TFoodTime, selectMealPlanCurrent } from '~store/slices/mealPlan.slice';
+import { openModal } from '~store/slices/modalRecipe.slice';
 import {
   addRecipePlanThunk,
   removeRecipeThunk,
-} from "~store/thunks/mealPlan.thunk";
-import Recipe from "~types/recipe.types";
+} from '~store/thunks/mealPlan.thunk';
+import Recipe from '~types/recipe.types';
 
-interface ModalFavouritesProps {
+export interface ModalFavouritesProps {
   isOpen: boolean;
   onClose: () => void;
   date?: string;
@@ -87,7 +82,7 @@ const ModalFavourites = ({
             <Box
               ml={2}
               textTransform="uppercase"
-              color={"primary.500"}
+              color={'primary.500'}
               display="inline"
             >
               recipes
@@ -96,8 +91,8 @@ const ModalFavourites = ({
         </ModalHeader>
         <ModalBody>
           <List>
-            {savedRecipesStatus === "loading" && <Loading />}
-            {savedRecipesStatus === "idle" &&
+            {savedRecipesStatus === 'loading' && <Loading />}
+            {savedRecipesStatus === 'idle' &&
               savedRecipes.map((recipe) => {
                 return (
                   <ListItem
@@ -143,11 +138,11 @@ const ModalFavourites = ({
                         w="full"
                         size="sm"
                         colorScheme={
-                          isAlreadySet(recipe.label) ? "red" : "tertiary"
+                          isAlreadySet(recipe.label) ? 'red' : 'tertiary'
                         }
                         onClick={() => handleRecipeClick(mealType, recipe)}
                       >
-                        {isAlreadySet(recipe.label) ? "Remove" : "Choose"}
+                        {isAlreadySet(recipe.label) ? 'Remove' : 'Choose'}
                       </Button>
                     </ButtonGroup>
                   </ListItem>

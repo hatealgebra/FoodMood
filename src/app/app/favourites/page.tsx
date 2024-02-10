@@ -1,13 +1,13 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import AppSection from "~molecules/appSection/AppSection";
-import Dropdown from "~molecules/dropdown/Dropdown";
-import useSortRecipes from "~hooks/useSortRecipes";
+import AppSection from '~molecules/appSection/AppSection';
+import Dropdown from '~molecules/dropdown/Dropdown';
+import useSortRecipes from '~hooks/useSortRecipes';
 
-import useFavouriteRecipes from "~hooks/useFavouriteRecipes";
-import RecipeCardsGallery from "~organisms/RecipeCardsGallery";
-import { sortSavedRecipes } from "~store/slices/savedRecipes.slice";
+import useFavouriteRecipes from '~hooks/useFavouriteRecipes';
+import RecipeCardsGallery from 'libs/shared-ui/src/lib/organisms/recipeCardGroups/RecipeCardsGallery';
+import { sortSavedRecipes } from '~store/slices/savedRecipes.slice';
 
 const SavedRecipesPage = () => {
   const { savedRecipes, savedRecipesStatus, savedRecipesError } =
@@ -23,7 +23,7 @@ const SavedRecipesPage = () => {
           sort
         />
         <RecipeCardsGallery
-          isLoading={savedRecipesStatus === "loading" ? true : false}
+          isLoading={savedRecipesStatus === 'loading' ? true : false}
           recipes={savedRecipes}
           error={savedRecipesError}
           noPadding

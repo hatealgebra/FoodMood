@@ -1,34 +1,32 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import { clearAllBodyScrollLocks } from "body-scroll-lock";
+// import * as routerConstantClass from '~constants/router.constants';
 
-import * as routerConstantClass from "~constants/router.constants";
+import { Flex, Spacer, HStack, Box, Link, IconButton } from '@chakra-ui/react';
 
-import { Flex, Spacer, HStack, Box, Link, IconButton } from "@chakra-ui/react";
-import MobileMenu from "~molecules/mobileMenu/MobileMenu";
-import Logo from "~atoms/logo/Logo";
-
-import { FiMenu } from "react-icons/fi";
-import ModalContact from "~molecules/modalContact/ModalContact";
-import UserAvatar from "~molecules/userAvatar/UserAvatar";
-import { useAppSelector } from "~store/hooks";
-import { selectUserStatus } from "~store/slices/user.slice";
-import TabletMenu from "~molecules/tabletMenu/TabletMenu";
-import useAuthChanged from "~hooks/useAuthChanged";
+import { FiMenu } from 'react-icons/fi';
+import ModalContact from '../../molecules/modalContact/ModalContact';
+import TabletMenu from '../../molecules/tabletMenu/TabletMenu';
+import MobileMenu from '../../molecules/mobileMenu/MobileMenu';
+import Logo from '../../atoms/logo/Logo';
 
 // ! hook for scroll handler
 
-const TopPanel = () => {
-  const { ROUTE_WEB } = routerConstantClass;
+export interface TopPanelProps {
+  device?: 'mobile' | 'tablet' | 'desktop';
+}
+
+const TopPanel = ({ device }: TopPanelProps) => {
+  // const { ROUTE_WEB } = routerConstantClass;
   const [isTouchMenuOpen, setTouchMenuOpen] = useState(false);
   const [scrollState, setScrollState] = useState(false);
   const [isContactOpen, setContactOpen] = useState(false);
-  const userStatus = useAppSelector(selectUserStatus);
-  const { user, isAuthenticating } = useAuthChanged();
+  // const userStatus = useAppSelector(selectUserStatus);
+  // const { user, isAuthenticating } = useAuthChanged();
 
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
   });
 
   useEffect(() => {
@@ -75,8 +73,8 @@ const TopPanel = () => {
       <Box
         position="fixed"
         width="100%"
-        boxShadow={scrollState ? "md" : "none"}
-        bg={scrollState ? "white" : "transparent"}
+        boxShadow={scrollState ? 'md' : 'none'}
+        bg={scrollState ? 'white' : 'transparent'}
         top={0}
         zIndex={100}
       >
@@ -84,19 +82,19 @@ const TopPanel = () => {
           align="center"
           justifyContent="center"
           boxSizing="border-box"
-          py={[".5em", ".6em"]}
-          px={["1em", "1.5em"]}
+          py={['.5em', '.6em']}
+          px={['1em', '1.5em']}
           flexWrap="nowrap"
           width="100%"
           maxWidth="1100px"
           margin="auto"
         >
           <Link href="/">
-            <Logo width={["120px", "150px"]} />
+            <Logo width={['120px', '150px']} />
           </Link>
           <Spacer />
           <Spacer />
-          <Flex display={{ base: "none", desktop: "flex" }}>
+          <Flex display={{ base: 'none', desktop: 'flex' }}>
             <HStack
               aria-label="desktop-navigation"
               as="nav"
@@ -105,27 +103,27 @@ const TopPanel = () => {
               mr="5vw"
             >
               <Link href="/">Home</Link>
-              <Link href={ROUTE_WEB.ABOUT_PAGE}>About</Link>
-              <Link href={ROUTE_WEB.TERMS_POLICY_PAGE}>Terms</Link>
+              <Link>About</Link>
+              <Link>Terms</Link>
               <Link onClick={openModalContact}>Contact</Link>
             </HStack>
             <Spacer />
-            <UserAvatar
-              name={user?.displayName}
-              loading={isAuthenticating}
-              status={userStatus}
-            />
+            {/* <UserAvatar
+            name={user?.displayName}
+            loading={isAuthenticating}
+            status={userStatus}
+            /> */}
           </Flex>
           <IconButton
             aria-label="Menu button"
             icon={<FiMenu size={25} color="mono.400" />}
-            display={{ desktop: "none" }}
+            display={{ desktop: 'none' }}
             onClick={toggleMobileMenu}
           />
         </Flex>
       </Box>
       <MobileMenu isOpen={isTouchMenuOpen} />
-      <Box display={{ base: "none", tablet: "block", desktop: "none" }}>
+      <Box display={{ base: 'none', tablet: 'block', desktop: 'none' }}>
         <TabletMenu
           isOpen={isTouchMenuOpen}
           onClose={() => setTouchMenuOpen(false)}
@@ -139,9 +137,5 @@ const TopPanel = () => {
     </Box>
   );
 };
-
-export interface TopPanelProps {
-  device?: "mobile" | "tablet" | "desktop";
-}
 
 export default TopPanel;

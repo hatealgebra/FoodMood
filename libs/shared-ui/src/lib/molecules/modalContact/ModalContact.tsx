@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Modal,
   ModalBody,
@@ -13,7 +11,7 @@ import {
   Spacer,
   Button,
   Heading,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 interface ModalContactProps {
   isOpen: boolean;
@@ -50,7 +48,7 @@ const ModalContact = ({ isOpen, onOpen, onClose }: ModalContactProps) => {
             </Link>
             <Spacer />
             <Link variant="button" href="mailto:pavelvondra66@gmail.com">
-              <Button size="md" variant="link" colorSchem="tertiary">
+              <Button size="md" variant="link" colorScheme="tertiary">
                 Email Us
               </Button>
             </Link>

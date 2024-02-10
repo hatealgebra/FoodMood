@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import UserPage from "./userPage/UserPage";
+import UserPage from './userPage/UserPage';
 
-import { SetUserData } from "~helpers/storybook.helpers";
-import ModalRecipe from "../organisms/modalRecipe/ModalRecipe";
-import AppHomepage from "~app/app/page";
-import SearchPage from "~app/app/search/page";
-import SavedRecipesPage from "~app/app/favourites/page";
-import MealPlanPage from "./mealPlanPage/MealPlanPage";
-import AppPage from "~app/app/layout";
+import { SetUserData } from '~helpers/storybook.helpers';
+import ModalRecipe from '../../../libs/shared-ui/src/lib/organisms/modalRecipe/ModalRecipe';
+import AppHomepage from '~app/app/page';
+import SearchPage from '~app/app/search/page';
+import SavedRecipesPage from '~app/app/favourites/page';
+import MealPlanPage from './mealPlanPage/MealPlanPage';
+import AppPage from '~app/app/layout';
 
 export const UserSettings = () => (
   <SetUserData>
@@ -42,7 +42,7 @@ export const MealPlan = () => (
 
 export default {
   component: AppPage,
-  title: "Pages/Application pages",
+  title: 'Pages/Application pages',
   parameters: {
     storyshots: { disable: true },
   },
