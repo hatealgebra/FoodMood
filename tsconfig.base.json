@@ -8,6 +8,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "shared-types": ["libs/shared-types/src/index.ts"],
       "shared-ui": ["libs/shared-ui/src/index.ts"],
       "~app/*": ["./src/app/*"],
       "~assets/*": ["./src/assets/*"],
