@@ -10,21 +10,7 @@
     "paths": {
       "shared-types": ["libs/shared-types/src/index.ts"],
       "shared-ui": ["libs/shared-ui/src/index.ts"],
-      "~app/*": ["./src/app/*"],
-      "~assets/*": ["./src/assets/*"],
-      "~atoms/*": ["./src/components/atoms/*"],
-      "~constants/*": ["./src/constants/*"],
-      "~helpers/*": ["./src/helpers/*"],
-      "~hooks/*": ["./src/hooks/*"],
-      "~mocks/*": ["./src/mocks/*"],
-      "~molecules/*": ["./src/components/molecules/*"],
-      "~organisms/*": ["./src/components/organisms/*"],
-      "~particles/*": ["./src/components/particles/*"],
-      "~services/*": ["./src/services/*"],
-      "~store/*": ["./src/store/*"],
-      "~templates/*": ["./src/components/templates/*"],
-      "~types/*": ["./src/types/*"],
-      "~utils.*": ["./src/utils/*"]
+      "shared-utils": ["libs/shared-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
