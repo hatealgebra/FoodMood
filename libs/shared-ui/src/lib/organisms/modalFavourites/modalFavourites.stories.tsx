@@ -6,7 +6,7 @@ const Template: Story<ModalFavouritesProps> = (args) => (
   <ModalFavourites {...args} />
 );
 
-const ModalFavouritesStory = Template.bind({});
+export const ModalFavouritesStory = Template.bind({});
 ModalFavouritesStory.args = {
   isOpen: true,
 };

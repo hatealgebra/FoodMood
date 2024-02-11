@@ -10,13 +10,18 @@
     "@nx/enforce-module-boundaries": [
       "error",
       {
-        "allow": ["@chakra-ui/react"],
         "depConstraints": [
           {
             "sourceTag": "scope:shared",
             "onlyDependOnLibsWithTags": ["scope:shared"]
           }
         ]
+      }
+    ],
+    "storybook/no-uninstalled-addons": [
+      "error",
+      {
+        "packageJsonLocation": "/package.json"
       }
     ]
   }

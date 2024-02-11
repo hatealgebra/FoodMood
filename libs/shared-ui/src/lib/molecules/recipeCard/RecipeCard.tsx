@@ -28,6 +28,8 @@ import ScrollableRow from '../scrollableRow/ScrollableRow';
 import { CgRemove } from 'react-icons/cg';
 import { LiaEdit } from 'react-icons/lia';
 import { RiEyeLine } from 'react-icons/ri';
+import { IRecipe } from 'shared-types';
+
 // import { removeRecipeThunk } from '~store/thunks/mealPlan.thunk';
 
 // TODO: Use card component from chakra-ui
@@ -39,7 +41,7 @@ export interface RecipeCardProps {
   prepareTime: number;
   smaller?: boolean;
   isLoading?: boolean;
-  allData: any;
+  allData: IRecipe;
   mealPlanType?: any;
   onOpen?: () => void;
 }

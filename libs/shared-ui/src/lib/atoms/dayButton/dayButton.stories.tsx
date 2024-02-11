@@ -1,14 +1,16 @@
-import { Stack } from "@chakra-ui/react";
-import DayButton from "./DayButton";
+import { HStack } from '@chakra-ui/react';
+import { StoryFn as Story } from '@storybook/react';
+import DayButton, { DayButtonProps } from './DayButton';
 
-export const AllDayButtones = () => (
-  <Stack>
-    <DayButton number={1} isActive />
-    <DayButton number={2} />
-  </Stack>
-);
+const Template: Story<DayButtonProps> = (args) => <DayButton {...args} />;
+
+export const DayButtonExample = Template.bind({});
+DayButtonExample.args = {
+  number: 1,
+  isActive: true,
+};
 
 export default {
   component: DayButton,
-  title: "Atoms/DayButton",
+  title: 'Atoms/DayButton',
 };

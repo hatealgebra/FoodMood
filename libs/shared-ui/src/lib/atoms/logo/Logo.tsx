@@ -1,5 +1,5 @@
 import { Image } from '@chakra-ui/react';
-import fmlogo from '~assets/FoodMood_logo.svg';
+import fmlogo from '../../assets/FoodMood_logo.svg';
 import NextImage from 'next/image';
 
 interface LogoProps {
