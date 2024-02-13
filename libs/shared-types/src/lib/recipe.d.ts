@@ -496,5 +496,3 @@ export interface IRootObjectEdamam {
   _links: Links;
   hits: Hit[];
 }
-
-export default Recipe;

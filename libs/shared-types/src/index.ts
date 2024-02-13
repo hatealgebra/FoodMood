@@ -1,2 +1,2 @@
-export * from './lib/recipe';
-export * from './lib/enums';
+export * from './lib/recipe.d';
+export * from './lib/enums.d';
