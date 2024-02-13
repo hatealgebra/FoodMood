@@ -4,6 +4,7 @@ import { mergeConfig } from 'vite';
 const config: StorybookConfig = {
   stories: ['../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: [
+    '@storybook/addon-viewport',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@chakra-ui/storybook-addon',

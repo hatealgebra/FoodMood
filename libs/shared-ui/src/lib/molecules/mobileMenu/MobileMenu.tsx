@@ -1,11 +1,16 @@
-import { Box, SimpleGrid, HStack, Center } from '@chakra-ui/react';
+import { Box, SimpleGrid, HStack, Center, CloseButton } from '@chakra-ui/react';
 
 import TouchMenuLinks from '../touchMenuLinks/TouchMenuLinks';
 // import { getAuth } from 'firebase/auth';
 // import UserAvatar from '../userAvatar/UserAvatar';
 
+export interface MobileMenuProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
 // ! Body scroll doesnt toggle
-const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
+const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
   return (
     <SimpleGrid
       id="mobileMenu"
@@ -13,6 +18,7 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
       display={{ base: 'grid', tablet: 'none' }}
       aria-label="mobile-menu"
       position="fixed"
+      inset={0}
       height="100%"
       width="100%"
       opacity={isOpen ? 1 : 0}
@@ -23,6 +29,7 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
       templateRows=".4fr auto auto 2fr"
       rowGap="20px"
       alignItems="flex-start"
+      zIndex={isOpen ? 99 : -1}
     >
       <TouchMenuLinks />
       <Box
@@ -61,6 +68,14 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
           /> */}
         </Center>
       </HStack>
+      <CloseButton
+        position="absolute"
+        top={0}
+        right={0}
+        m="20px"
+        size="30px"
+        onClick={() => setIsOpen(false)}
+      />
     </SimpleGrid>
   );
 };

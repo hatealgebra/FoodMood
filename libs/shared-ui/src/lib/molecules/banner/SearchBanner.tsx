@@ -3,9 +3,14 @@ import { Button, Heading, Image, Text, VStack } from '@chakra-ui/react';
 
 import BannerContainer from './BannerContainer';
 import oatmealPNG from '../../assets/images/presentation/oatmeal.png';
-// import { sizeToHeight } from './sizeConvert.utils';
 
-interface SearchBannerProps {
+const sizeToHeight = {
+  sm: '250px',
+  md: '500px',
+  lg: '750px',
+};
+
+export interface SearchBannerProps {
   heading: string;
   buttonText: string;
   paragraph?: string;
@@ -27,15 +32,16 @@ const SearchBanner = ({
       <Image
         src={oatmealPNG}
         alignSelf="center"
-        // height={`calc(${sizeToHeight[size]} + ${padding})`}
-        width="auto"
+        height={`calc(${sizeToHeight[size]} + ${padding})`}
+        width={{ base: '100%', md: '50%' }}
+        maxWidth="450px"
         alt="Otmeal"
         objectFit="contain"
       />
       <VStack
         justifyContent="center"
-        alignItems="flex-start"
-        padding="0 5%"
+        alignItems={['center', 'flex-start']}
+        padding={{ base: '0 5%', md: '0 5% 0 0' }}
         textAlign="left"
       >
         <Heading as="h2" size="xl">

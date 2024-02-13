@@ -15,7 +15,6 @@ import {
   Tag,
 } from '@chakra-ui/react';
 import React, { useCallback } from 'react';
-import Loading from '~app/app/loading';
 import useFavouriteRecipes from '~hooks/useFavouriteRecipes';
 import { useAppDispatch, useAppSelector } from '~store/hooks';
 import { TFoodTime, selectMealPlanCurrent } from '~store/slices/mealPlan.slice';
@@ -25,6 +24,7 @@ import {
   removeRecipeThunk,
 } from '~store/thunks/mealPlan.thunk';
 import Recipe from '~types/recipe.types';
+import Loading from '../../atoms/loading/Loading';
 
 export interface ModalFavouritesProps {
   isOpen: boolean;

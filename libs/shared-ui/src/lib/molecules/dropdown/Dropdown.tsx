@@ -11,12 +11,18 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-// import * as myConstClass from '~constants/constants';
-
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { RiArrowUpDownLine } from 'react-icons/ri';
 import { AiOutlineFire } from 'react-icons/ai';
 import { CgTime } from 'react-icons/cg';
+import { SORT_RECIPES_BY } from 'shared-types';
+
+export interface DropdownProps {
+  sortBy: SetStateAction<any>;
+  setSortBy: SetStateAction<any>;
+  buttonText: string;
+  sort?: boolean;
+}
 
 const Dropdown = ({ sortBy, setSortBy, buttonText, sort }: DropdownProps) => {
   const transformValue = (value: string, splitSymbol: string) => {
@@ -60,10 +66,18 @@ const Dropdown = ({ sortBy, setSortBy, buttonText, sort }: DropdownProps) => {
           defaultValue="default"
         >
           <MenuItemOption value="default">Default</MenuItemOption>
-          <MenuItemOption value={''}>Calories: Low To High</MenuItemOption>
-          <MenuItemOption value={''}>Calories: High To Low</MenuItemOption>
-          <MenuItemOption value={''}>Time: Low To High</MenuItemOption>
-          <MenuItemOption value={''}>Time: High To Low</MenuItemOption>
+          <MenuItemOption value={SORT_RECIPES_BY.CALS_LOW_HIGH}>
+            Calories: Low To High
+          </MenuItemOption>
+          <MenuItemOption value={SORT_RECIPES_BY.CALS_HIGH_LOW}>
+            Calories: High To Low
+          </MenuItemOption>
+          <MenuItemOption value={SORT_RECIPES_BY.TIME_LOW_HIGH}>
+            Time: Low To High
+          </MenuItemOption>
+          <MenuItemOption value={SORT_RECIPES_BY.TIME_HIGH_LOW}>
+            Time: High To Low
+          </MenuItemOption>
         </MenuOptionGroup>
       </MenuList>
     </Menu>
@@ -108,13 +122,5 @@ const Dropdown = ({ sortBy, setSortBy, buttonText, sort }: DropdownProps) => {
     </Menu>
   );
 };
-
-//  ? types of the hook
-interface DropdownProps {
-  sortBy: SetStateAction<any>;
-  setSortBy: SetStateAction<any>;
-  buttonText: string;
-  sort?: boolean;
-}
 
 export default Dropdown;
