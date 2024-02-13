@@ -11,8 +11,7 @@ import {
 } from '~store/slices/mealPlan.slice';
 import { fetchSpecificPlan } from '~store/thunks/mealPlan.thunk';
 import Recipe from '~types/recipe.types';
-import RecipeCard from '../../molecules/recipeCard/RecipeCard';
-import ModalFavourites from '../modalFavourites/ModalFavourites';
+import RecipeCard from '../../../libs/shared-ui/src/lib/molecules/recipeCard/RecipeCard';
 
 const MealPlanOverview = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

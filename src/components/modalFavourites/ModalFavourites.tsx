@@ -14,8 +14,8 @@ import {
   ModalOverlay,
   Tag,
 } from '@chakra-ui/react';
-import React, { useCallback } from 'react';
-import useFavouriteRecipes from '~hooks/useFavouriteRecipes';
+import { useCallback } from 'react';
+
 import { useAppDispatch, useAppSelector } from '~store/hooks';
 import { TFoodTime, selectMealPlanCurrent } from '~store/slices/mealPlan.slice';
 import { openModal } from '~store/slices/modalRecipe.slice';
@@ -23,8 +23,9 @@ import {
   addRecipePlanThunk,
   removeRecipeThunk,
 } from '~store/thunks/mealPlan.thunk';
-import Recipe from '~types/recipe.types';
-import Loading from '../../atoms/loading/Loading';
+
+import Loading from '../../../libs/shared-ui/src/lib/atoms/loading/Loading';
+import { IRecipe } from 'shared-types';
 
 export interface ModalFavouritesProps {
   isOpen: boolean;
@@ -53,7 +54,7 @@ const ModalFavourites = ({
     [currMealPlan, mealType]
   );
 
-  const handleRecipeClick = (mealType: TFoodTime, recipeData: Recipe) => {
+  const handleRecipeClick = (mealType: TFoodTime, recipeData: IRecipe) => {
     const { label } = recipeData;
     console.log(isAlreadySet(label));
     if (isAlreadySet(label)) {

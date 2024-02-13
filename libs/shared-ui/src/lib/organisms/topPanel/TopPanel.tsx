@@ -122,7 +122,7 @@ const TopPanel = ({ device }: TopPanelProps) => {
           />
         </Flex>
       </Box>
-      <MobileMenu isOpen={isTouchMenuOpen} />
+      <MobileMenu isOpen={isTouchMenuOpen} setIsOpen={setTouchMenuOpen} />
       <Box display={{ base: 'none', tablet: 'block', desktop: 'none' }}>
         <TabletMenu
           isOpen={isTouchMenuOpen}
