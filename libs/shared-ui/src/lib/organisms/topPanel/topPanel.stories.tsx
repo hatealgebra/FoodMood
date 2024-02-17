@@ -1,8 +1,14 @@
-import { Meta, StoryFn as Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
-import TopPanel, { TopPanelProps } from './TopPanel';
+import TopPanel from './TopPanel';
 
 export const MobilePanelExample = () => <TopPanel device="mobile" />;
+MobilePanelExample.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+};
+
 export const DesktopPanelExample = () => <TopPanel />;
 
 export default {

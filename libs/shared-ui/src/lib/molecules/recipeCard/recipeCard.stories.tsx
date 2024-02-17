@@ -1,6 +1,6 @@
 import { Meta, StoryFn as Story } from '@storybook/react';
 import RecipeCard, { RecipeCardProps } from './RecipeCard';
-import pumpkinSoup from '../../assets/images/presentation/pumpkin-soup.jpg';
+import pumpkinSoup from '../../../assets/images/presentation/pumpkin-soup.jpg';
 
 const Template: Story<RecipeCardProps> = (args) => <RecipeCard {...args} />;
 

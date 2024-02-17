@@ -1,7 +1,5 @@
-import React from "react";
-
-import { Box, Image, Text } from "@chakra-ui/react";
-import Overline from "../../atoms/overLine/Overline";
+import { Box, Image, Text } from '@chakra-ui/react';
+import Overline from '../../atoms/overLine/Overline';
 
 const DishPlan = ({ dish, img, mealName }: DishPlanProps) => {
   return (
@@ -19,7 +17,7 @@ const DishPlan = ({ dish, img, mealName }: DishPlanProps) => {
       <Image
         width="100%"
         maxWidth="350px"
-        height={{ base: "120px", sm: "150px", md: "200px" }}
+        height={{ base: '120px', sm: '150px', md: '200px' }}
         objectFit="cover"
         src={img}
         alt={mealName}
@@ -32,7 +30,7 @@ const DishPlan = ({ dish, img, mealName }: DishPlanProps) => {
 };
 
 export interface DishPlanProps {
-  dish: "breakfast" | "lunch" | "dinner";
+  dish: 'breakfast' | 'lunch' | 'dinner';
   img?: string;
   mealName?: string;
 }

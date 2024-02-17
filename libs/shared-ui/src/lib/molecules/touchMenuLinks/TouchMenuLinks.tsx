@@ -3,6 +3,7 @@ import { Link, ListItem, UnorderedList } from '@chakra-ui/react';
 
 // import * as routerConstantClass from '~constants/router.constants';
 
+// TODO: Move it to the presentation layer
 interface TouchMenuLinksProps {
   noMargin?: boolean;
 }

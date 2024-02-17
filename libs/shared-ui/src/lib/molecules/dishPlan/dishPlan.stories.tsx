@@ -1,7 +1,7 @@
 import DishPlan, { DishPlanProps } from './DishPlan';
 
 import { Meta, StoryFn as Story } from '@storybook/react';
-import pumpkinSoup from '../../assets/images/presentation/pumpkin-soup.jpg';
+import pumpkinSoup from '../../../assets/images/presentation/pumpkin-soup.jpg';
 
 const Template: Story<DishPlanProps> = (args: any) => <DishPlan {...args} />;
 

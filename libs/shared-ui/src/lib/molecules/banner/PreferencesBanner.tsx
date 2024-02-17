@@ -2,7 +2,7 @@ import { Button, Heading, Image, Text, VStack } from '@chakra-ui/react';
 // import NextImage from "next/image";
 
 import BannerContainer from './BannerContainer';
-import undrawPreferences from '../../assets/images/undraw/undraw_preferences.svg';
+// import undrawPreferences from '../../../assets/images/undraw/undraw_preferences.svg';
 
 interface PreferencesBannerProps {
   heading: string;
