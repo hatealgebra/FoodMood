@@ -54,3 +54,4 @@ storybook-static
 
 # Next.js
 .next
+.astro

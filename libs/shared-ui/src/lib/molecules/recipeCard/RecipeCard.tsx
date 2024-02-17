@@ -34,6 +34,13 @@ import { IRecipe } from 'shared-types';
 
 // TODO: Use card component from chakra-ui
 
+enum OnClickActionEnum {
+  ADD = 'add',
+  SHOW = 'show',
+  CHANGE = 'change',
+  REMOVE = 'remove',
+}
+
 export interface RecipeCardProps {
   imageSource: string;
   tags?: string[];
@@ -45,14 +52,6 @@ export interface RecipeCardProps {
   mealPlanType?: any;
   onOpen?: () => void;
 }
-
-enum OnClickActionEnum {
-  ADD = 'add',
-  SHOW = 'show',
-  CHANGE = 'change',
-  REMOVE = 'remove',
-}
-
 const RecipeCard = ({
   imageSource,
   tags = [],

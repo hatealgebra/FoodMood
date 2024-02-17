@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "neverConnectToCloud": true,
   "affected": {
     "defaultBase": "master"
   },
@@ -20,12 +21,6 @@
       }
     },
     {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "test"
-      }
-    },
-    {
       "plugin": "@nx/next/plugin",
       "options": {
         "buildTargetName": "build",
@@ -42,13 +37,27 @@
         "serveTargetName": "serve",
         "serveStaticTargetName": "serve-static"
       }
-    }
+    },
+    {
+      "plugin": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "componentTestingTargetName": "component-test"
+      }
+    },
+    "@nxtensions/astro"
   ],
   "nxCloudAccessToken": "NTI2YmNmMjYtMmQ4Ny00ZTZkLThmODMtMDIxZjg2ZGRiOWM2fHJlYWQtd3JpdGU=",
   "generators": {
     "@nx/react": {
       "library": {
         "unitTestRunner": "vitest"
+      }
+    },
+    "@nx/next": {
+      "application": {
+        "style": "none",
+        "linter": "eslint"
       }
     }
   },
@@ -74,6 +83,11 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
+    },
+    "check": {
+      "cache": true,
+      "inputs": ["default", "^default"]
     }
-  }
+  },
+  "defaultProject": "website"
 }
