@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import AvatarEdit from 'react-avatar-edit';
+// import AvatarEdit from 'react-avatar-edit';
 
 import {
   Avatar,
@@ -79,11 +79,11 @@ const UploadAvatar = ({ uid, photoURL }: UploadAvatarProps) => {
           <ModalBody>
             <Center>
               <Stack spacing={10} direction={{ base: 'column', sm: 'row' }}>
-                <AvatarEdit
+                {/* <AvatarEdit
                   // height={windowsSize.height > 500 ? 230 : 180}
                   // width={windowsSize.width > 500 ? 230 : 180}
                   onCrop={(data: string) => setPreview(data)}
-                />
+                /> */}
                 <Box
                   alignSelf="center"
                   display="flex"

@@ -8,6 +8,7 @@ import Link from './link.style';
 import Tag from './tag.style';
 import Switch from './switch.style';
 import Tooltip from './tooltip.style';
+import Text from './text.style';
 
 const components = {
   Button,

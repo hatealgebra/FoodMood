@@ -4,10 +4,11 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 // import * as routerConstantClass from '~constants/router.constants';
 
 import { Flex, Spacer, HStack, Box, Link, IconButton } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
 
 import { FiMenu } from 'react-icons/fi';
-import { Logo } from '../../atoms';
+import { Logo, MobileMenu, ModalContact, TabletMenu } from '~shared-ui';
+import { Link as RouterLink } from 'react-router-dom';
+import ROUTE_WEB from '../../route.constants';
 
 // ! hook for scroll handler
 
@@ -87,7 +88,7 @@ const TopPanel = ({ device }: TopPanelProps) => {
           maxWidth="1100px"
           margin="auto"
         >
-          <Link href="/">
+          <Link as={RouterLink} to={ROUTE_WEB.HOME_PAGE.path}>
             <Logo width={['120px', '150px']} />
           </Link>
           <Spacer />
@@ -100,9 +101,15 @@ const TopPanel = ({ device }: TopPanelProps) => {
               spacing={14}
               mr="5vw"
             >
-              <Link href="/">Home</Link>
-              <Link>About</Link>
-              <Link>Terms</Link>
+              <Link as={RouterLink} to={ROUTE_WEB.HOME_PAGE.path}>
+                Home
+              </Link>
+              <Link as={RouterLink} to={ROUTE_WEB.ABOUT_PAGE.path}>
+                About
+              </Link>
+              <Link as={RouterLink} to={ROUTE_WEB.TERMS_POLICY_PAGE.path}>
+                Terms
+              </Link>
               <Link onClick={openModalContact}>Contact</Link>
             </HStack>
             <Spacer />

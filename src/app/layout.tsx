@@ -1,15 +1,15 @@
-"use client";
-import { Box } from "@chakra-ui/react";
-import Providers from "./providers";
+'use client';
+import { Box } from '@chakra-ui/react';
+import Providers from './providers';
 
-import "@fontsource/fira-sans/300.css";
-import "@fontsource/fira-sans/400.css";
-import "@fontsource/fira-sans/500.css";
-import "@fontsource/fira-sans/600.css";
-import "@fontsource/playfair-display/variable.css";
-import Footer from "~organisms/footer/Footer";
-import TopPanel from "~organisms/topPanel/TopPanel";
-import { worker } from "~mocks/browser";
+import '@fontsource/fira-sans/300.css';
+import '@fontsource/fira-sans/400.css';
+import '@fontsource/fira-sans/500.css';
+import '@fontsource/fira-sans/600.css';
+import '@fontsource/playfair-display/variable.css';
+import Footer from '~organisms/footer/Footer';
+import TopPanel from '~organisms/topPanel/TopPanel';
+import { worker } from '~mocks/browser';
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -17,13 +17,13 @@ import { worker } from "~mocks/browser";
 // };
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== "development") {
+  if (process.env.NODE_ENV !== 'development') {
     return;
   }
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  return worker.start({ onUnhandledRequest: "bypass" });
+  return worker.start({ onUnhandledRequest: 'bypass' });
 }
 
 export default function RootLayout({

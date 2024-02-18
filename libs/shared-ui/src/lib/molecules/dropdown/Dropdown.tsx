@@ -15,7 +15,7 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import { RiArrowUpDownLine } from 'react-icons/ri';
 import { AiOutlineFire } from 'react-icons/ai';
 import { CgTime } from 'react-icons/cg';
-import { SORT_RECIPES_BY } from 'shared-types';
+import { SORT_RECIPES_BY } from '~shared-types';
 
 export interface DropdownProps {
   sortBy: SetStateAction<any>;
