@@ -5,13 +5,14 @@ import '@fontsource/fira-sans/200.css';
 import '@fontsource/fira-sans/400.css';
 import '@fontsource/fira-sans/500.css';
 import '@fontsource/fira-sans/600.css';
-import '@fontsource/playfair-display/variable.css';
+import '@fontsource/homemade-apple/400.css';
 
 // TODO: Add yarn workspaces to solve the allow list
 
 const fonts = {
   heading: 'PlayFair Display, sans-serif',
   body: 'Fira Sans, sans-serif',
+  chalk: 'Homemade Apple, cursive',
 };
 
 const typography = {

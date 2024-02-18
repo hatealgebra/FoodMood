@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   Text,
   SimpleGrid,
@@ -12,14 +10,19 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
-import reactIcon from '~assets/images/stack/react-js.png';
-import chakraUi from '~assets/images/stack/chakra-ui.png';
-import reduxIcon from '~assets/images/stack/redux-icon.png';
-import rtlPng from '~assets/images/stack/rtl.png';
-import cypressPng from '~assets/images/stack/cypress-logo.png';
-import firebasePng from '~assets/images/stack/firebase-logo.png';
-import storybookPng from '~assets/images/stack/storybook-logo.png';
-import portrait from '~assets/images/stack/portrait-me.jpg';
+import reactIcon from '../assets/images/stack/react-js.png';
+import chakraUi from '../assets/images/stack/chakra-ui.png';
+import reduxIcon from '../assets/images/stack/redux-icon.png';
+import rtlPng from '../assets/images/stack/rtl.png';
+import cypressPng from '../assets/images/stack/cypress-logo.png';
+import firebasePng from '../assets/images/stack/firebase-logo.png';
+import storybookPng from '../assets/images/stack/storybook-logo.png';
+import portrait from '../assets/images/stack/portrait-me.jpg';
+import BlogLayout from '../layouts/blog.layout';
+import { Section } from '~shared-ui';
+
+// TODO: Update copy
+// TODO: Update stack
 
 const AboutPage = () => {
   return (
@@ -58,45 +61,18 @@ const AboutPage = () => {
           spacing="10px"
         >
           <Image
-            as={NextImage}
             placeSelf="center"
             boxSize="100px"
             alt="react-js icon"
             src={reactIcon}
             bg="none"
           />
+          <Image boxSize="150px" alt="chakra-ui icon" src={chakraUi} />
+          <Image boxSize="120px" alt="react-js icon" src={reduxIcon} />
+          <Image boxSize="120px" alt="react-js icon" src={rtlPng} />
+          <Image boxSize="120px" alt="react-js icon" src={cypressPng} />
+          <Image boxSize="120px" alt="react-js icon" src={firebasePng} />
           <Image
-            as={NextImage}
-            boxSize="150px"
-            alt="chakra-ui icon"
-            src={chakraUi}
-          />
-          <Image
-            as={NextImage}
-            boxSize="120px"
-            alt="react-js icon"
-            src={reduxIcon}
-          />
-          <Image
-            as={NextImage}
-            boxSize="120px"
-            alt="react-js icon"
-            src={rtlPng}
-          />
-          <Image
-            as={NextImage}
-            boxSize="120px"
-            alt="react-js icon"
-            src={cypressPng}
-          />
-          <Image
-            as={NextImage}
-            boxSize="120px"
-            alt="react-js icon"
-            src={firebasePng}
-          />
-          <Image
-            as={NextImage}
             position="relative"
             top={'-20px'}
             boxSize="120px"
@@ -119,12 +95,7 @@ const AboutPage = () => {
       <Section>
         <Heading as="h2">About me</Heading>
         <Center my="20px">
-          <Image
-            as={NextImage}
-            boxSize="150px"
-            src={portrait}
-            borderRadius="50%"
-          />
+          <Image boxSize="150px" src={portrait} borderRadius="50%" />
         </Center>
         <Text>
           Hey, my name is Paul. Striving for Front end developer job. Currently
@@ -152,5 +123,4 @@ const AboutPage = () => {
     </BlogLayout>
   );
 };
-
 export default AboutPage;

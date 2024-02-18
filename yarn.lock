@@ -4062,10 +4062,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/homemade-apple@npm:^5.0.18":
+  version: 5.0.18
+  resolution: "@fontsource/homemade-apple@npm:5.0.18"
+  checksum: 5411dda92385fed4b3c91c4db82001d49652c200beee5707e6d22105b77ef68fb0dc9a4ad1da898cdeeec3b2ea82ddc520d0d88aecbb30c347a2a7ace589cbc0
+  languageName: node
+  linkType: hard
+
 "@fontsource/kalam@npm:^4.5.0":
   version: 4.5.10
   resolution: "@fontsource/kalam@npm:4.5.10"
   checksum: 3b8588c7dc90bfec8e237006f039ec2015b500fea32ec1617ffd0176f48207cf94d39edd3b0eeed5b8241f79d5b2570065b75e053e560f123bec81d81f6471a2
+  languageName: node
+  linkType: hard
+
+"@fontsource/pangolin@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "@fontsource/pangolin@npm:5.0.8"
+  checksum: 04ea058e710e5ac517bc9af5d8eca25893f0590f6049571ce5f2070ec850d35d22a08025ce35cd66ddf4d13b7ca31561aed3ad520d10bcf3cd22072a8e8890c9
   languageName: node
   linkType: hard
 
@@ -14648,7 +14662,9 @@ __metadata:
     "@emotion/styled": "npm:^11.11.0"
     "@firebase/auth": "npm:^1.5.1"
     "@fontsource/fira-sans": "npm:^4.5.0"
+    "@fontsource/homemade-apple": "npm:^5.0.18"
     "@fontsource/kalam": "npm:^4.5.0"
+    "@fontsource/pangolin": "npm:^5.0.8"
     "@fontsource/playfair-display": "npm:^4.5.0"
     "@nx/cypress": "npm:18.0.0"
     "@nx/devkit": "npm:^18.0.4"

@@ -1,4 +1,4 @@
-import { IRecipe, SORT_RECIPES_BY } from 'shared-types';
+import { IRecipe, SORT_RECIPES_BY } from '~shared-types';
 
 export const sortRecipesBy = (recipes: IRecipe[], sortBy: string) => {
   return recipes.sort((prev, next) => {

@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '~shared-ui';
 import { BrowserRouter } from 'react-router-dom';
-import { App } from './app/app';
+import App from './app/app';
 
 import '@fontsource/fira-sans/300.css';
 import '@fontsource/fira-sans/400.css';

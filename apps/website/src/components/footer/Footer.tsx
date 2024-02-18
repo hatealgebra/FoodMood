@@ -9,7 +9,7 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import { GrFacebook, GrInstagram, GrLinkedin } from 'react-icons/gr';
+import { GrInstagram, GrLinkedin } from 'react-icons/gr';
 import { BiCopyright } from 'react-icons/bi';
 import { CustomIcon, Logo } from '~shared-ui';
 import ROUTE_WEB from '../../route.constants';
@@ -27,7 +27,7 @@ const Footer = () => {
         <Stack
           direction={['column', 'column', 'row']}
           spacing={12}
-          justify="space-between"
+          justify="space-around"
           width={['90%', '80%']}
           maxW="800px"
           margin="auto"
@@ -41,13 +41,6 @@ const Footer = () => {
               healthy lifestyle
             </Text>
             <HStack spacing={5} color="tertiary.500">
-              <Link
-                href="https://www.facebook.com/Strive.for.food"
-                isExternal
-                aria-label="social-link"
-              >
-                <CustomIcon icon={GrFacebook} color="secondary" />
-              </Link>
               <Link
                 as={RouterLink}
                 to="https://www.instagram.com/hatealgebra/"
@@ -68,24 +61,25 @@ const Footer = () => {
           </VStack>
           <VStack align="flex-start">
             <Text fontSize="lg" fontWeight="700" m={0}>
-              Pages
+              Navigate
             </Text>
 
             <List spacing={3} as={VStack} variant="nav">
-              <ListItem>Homepage</ListItem>,<ListItem>Explore App</ListItem>,
-              <ListItem>About</ListItem>,<ListItem>Terms & Policy</ListItem>
-            </List>
-          </VStack>
-          <VStack align="flex-start">
-            <Text fontSize="lg" fontWeight="700" m={0}>
-              Application
-            </Text>
-            <List spacing={3} as={VStack} variant="nav">
-              <ListItem>Home</ListItem>
-              <ListItem>Search recipes</ListItem>
-
-              <ListItem>Favourite meals</ListItem>
-              <ListItem>Meal plan</ListItem>
+              <ListItem>
+                <Link as={RouterLink} to={ROUTE_WEB.HOME_PAGE.path}>
+                  Homepage
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link as={RouterLink} to={ROUTE_WEB.ABOUT_PAGE.path}>
+                  About app
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link as={RouterLink} to={ROUTE_WEB.TERMS_POLICY_PAGE.path}>
+                  Terms & Policy
+                </Link>
+              </ListItem>
             </List>
           </VStack>
         </Stack>

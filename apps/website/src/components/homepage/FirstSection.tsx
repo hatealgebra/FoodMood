@@ -11,9 +11,9 @@ import {
 import { Link } from 'react-router-dom';
 import { Section } from '~shared-ui';
 
-import heroSection from '../assets/images/presentation/heroSection.svg';
-import biggerHeroSection from '../assets/images/presentation/bigger_hero_section.svg';
-import ROUTE_WEB from '../route.constants';
+import heroSection from '../../assets/images/presentation/heroSection.svg';
+import biggerHeroSection from '../../assets/images/presentation/bigger_hero_section.svg';
+import ROUTE_WEB from '../../route.constants';
 
 interface FirstSectionProps {
   mobile?: boolean;
@@ -51,13 +51,14 @@ const FirstSection = ({ mobile }: FirstSectionProps) => (
           again!
         </Text>
         <HStack my={1}>
-          <Button as={Link} colorScheme="primary" href="">
+          <Button as={Link} colorScheme="primary" to="">
             Get Started
           </Button>
           <Button
+            variant="outline"
             as={Link}
             colorScheme="primary"
-            href={ROUTE_WEB.ABOUT_PAGE.path}
+            to={ROUTE_WEB.ABOUT_PAGE.path}
           >
             About
           </Button>
