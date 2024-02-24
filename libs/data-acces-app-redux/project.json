@@ -1,0 +1,8 @@
+{
+  "name": "data-access-app-redux",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/data-acces-app-redux/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

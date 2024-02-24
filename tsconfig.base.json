@@ -8,11 +8,12 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "app-ui/server": ["libs/app-ui/src/server.ts"],
+      "data-access-app-redux": ["libs/data-acces-app-redux/src/index.ts"],
       "feature-app": ["libs/feature-app/src/index.ts"],
       "ui-shared": ["libs/ui-shared/src/index.ts"],
       "util-shared": ["libs/util-shared/src/index.ts"],
-      "util-types": ["libs/util-types/src/index.ts"],
-      "~app-ui/server": ["libs/app-ui/src/server.ts"]
+      "util-types": ["libs/util-types/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
