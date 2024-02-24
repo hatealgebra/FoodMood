@@ -3,19 +3,19 @@ import { SimpleGrid } from '@chakra-ui/react';
 import RecipeCardGroup, { RecipeCardGroupProps } from './RecipeCardsGroup';
 import ScrollableRow from '../../molecules/scrollableRow/ScrollableRow';
 
-interface RecipeCardRowProps extends RecipeCardGroupProps {
+interface RecipeCardScrollableProps extends RecipeCardGroupProps {
   leftPadding?: boolean;
   noPadding?: boolean;
 }
 
-const RecipeCardRow = ({
+const RecipeCardScrollable = ({
   isLoading,
   recipes,
   error = undefined,
   leftPadding = false,
   noPadding = false,
   ...props
-}: RecipeCardRowProps) => {
+}: RecipeCardScrollableProps) => {
   return (
     <ScrollableRow {...props}>
       <SimpleGrid
@@ -39,4 +39,4 @@ const RecipeCardRow = ({
   );
 };
 
-export default RecipeCardRow;
+export default RecipeCardScrollable;

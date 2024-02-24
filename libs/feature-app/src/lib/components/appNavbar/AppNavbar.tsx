@@ -4,7 +4,7 @@ import { Box, Link, SimpleGrid } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import { useHover } from 'ui-shared';
-import { ROUTE_APP } from '../../route.constants';
+import { ROUTES_APP } from '../../route.constants';
 // Hovering is done through the component styling from chakra UI
 
 const AppNavbar = () => {
@@ -48,7 +48,7 @@ const AppNavbar = () => {
       w="fit-content"
       m="5px 0"
     >
-      {Object.values(ROUTE_APP).map((route) => (
+      {Object.values(ROUTES_APP).map((route) => (
         <NavbarLink url={route.path}>{route.name}</NavbarLink>
       ))}
       <Box

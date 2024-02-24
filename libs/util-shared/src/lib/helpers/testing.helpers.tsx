@@ -1,10 +1,10 @@
+import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import { Provider } from 'react-redux';
 
 import { firebaseRTU } from './firebase.helpers';
 import { createRoot } from 'react-dom/client';
-import { theme } from 'ui-shared';
 
 const WrapperComponent = ({ children }: any) => {
   return (
@@ -20,7 +20,7 @@ export const renderComponent = (component: any) => {
   const container = document.body.appendChild(document.createElement('div'));
 
   const componentToRender = createRoot(container).render(
-    <WrapperComponent>{component}</WrapperComponent>
+    <WrapperComponent>{component}</WrapperComponent>,
   );
   return componentToRender;
 };

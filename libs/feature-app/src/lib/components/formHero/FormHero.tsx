@@ -11,10 +11,7 @@ import {
 import NextImage from 'next/image';
 
 import { FcGoogle } from 'react-icons/fc';
-import FormContainer from '../../molecules/formContainer/FormContainer';
-import CustomDivider from '../../atoms/customDivider/CustomDivider';
-import SignupForm from '../../molecules/forms/SignupForm';
-import LoginForm from '../../molecules/forms/LoginForm';
+import { FormContainer } from 'ui-shared';
 
 const loginGoogleUnavalaible = () => {
   const { toast } = createStandaloneToast();

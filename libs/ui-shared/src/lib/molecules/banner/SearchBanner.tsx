@@ -2,7 +2,7 @@ import { Button, Heading, Image, Text, VStack } from '@chakra-ui/react';
 // import NextImage from 'next/image';
 
 import BannerContainer from './BannerContainer';
-import oatmealPNG from '../../../assets/images/presentation/oatmeal.png';
+import oatmealPNG from '../../../assets/images/oatmeal.png';
 
 const sizeToHeight = {
   sm: '250px',

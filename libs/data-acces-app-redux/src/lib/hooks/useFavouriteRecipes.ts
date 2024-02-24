@@ -1,12 +1,12 @@
-import { getAuth } from "@firebase/auth";
-import React, { useEffect, useMemo, useState } from "react";
-import { useAppDispatch, useAppSelector } from "~store/hooks";
+import { getAuth } from '@firebase/auth';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '.';
 import {
   selectSavedRecipes,
   selectSavedRecipesError,
   selectSavedRecipesStatus,
-} from "~store/slices/savedRecipes.slice";
-import { readSavedRecipes } from "~store/thunks/firestoreCRUD.thunk";
+} from '../slices';
+import { readSavedRecipes } from '../thunks';
 
 const useFavouriteRecipes = () => {
   const savedRecipes = useAppSelector(selectSavedRecipes) || [];

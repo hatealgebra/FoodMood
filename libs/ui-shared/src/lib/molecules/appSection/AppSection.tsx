@@ -3,6 +3,17 @@ import React from 'react';
 
 import Section from '../../atoms/section/Section';
 
+export interface AppSectionProps {
+  children: any;
+  headingOne?: string | null;
+  headingTwo?: string;
+  yAxisMinus?: boolean;
+  secondary?: boolean;
+  hideHeading?: boolean;
+  fullWidth?: boolean;
+  noPadHeading?: boolean;
+}
+
 const AppSection: React.FC<AppSectionProps> = ({
   headingOne,
   headingTwo,
@@ -50,16 +61,5 @@ const AppSection: React.FC<AppSectionProps> = ({
     </Section>
   );
 };
-
-export interface AppSectionProps {
-  children: any;
-  headingOne?: string | null;
-  headingTwo?: string;
-  yAxisMinus?: boolean;
-  secondary?: boolean;
-  hideHeading?: boolean;
-  fullWidth?: boolean;
-  noPadHeading?: boolean;
-}
 
 export default AppSection;
