@@ -1,1 +1,1 @@
-export * from './lib/data-access-firebase';
+export * from './lib/operations';

@@ -14,7 +14,7 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "libs/data-access-firebase/src/lib/operations/index.ts."],
   "extends": "./tsconfig.base.json",
   "ts-node": {
     "compilerOptions": {
