@@ -19,7 +19,7 @@ import firebasePng from '../assets/images/stack/firebase-logo.png';
 import storybookPng from '../assets/images/stack/storybook-logo.png';
 import portrait from '../assets/images/stack/portrait-me.jpg';
 import BlogLayout from '../layouts/blog.layout';
-import { Section } from '~shared-ui';
+import { Section } from 'ui-shared';
 
 // TODO: Update copy
 // TODO: Update stack

@@ -3,7 +3,7 @@
   "plugins": ["chakra-ui", "@nx"],
   "parserOptions": {
     "project": true,
-    "tsconfigRootDir": "__dirname"
+    "tsconfigRootDir": "__dirname",
   },
   "extends": ["next/core-web-vitals", "plugin:storybook/recommended"],
   "rules": {
@@ -13,16 +13,20 @@
         "depConstraints": [
           {
             "sourceTag": "scope:shared",
-            "onlyDependOnLibsWithTags": ["scope:shared"]
-          }
-        ]
-      }
+            "onlyDependOnLibsWithTags": ["scope:shared"],
+          },
+          {
+            "sourceTag": "scope:client",
+            "onlyDependOnLibsWithTags": ["scope:shared"],
+          },
+        ],
+      },
     ],
     "storybook/no-uninstalled-addons": [
       "error",
       {
-        "packageJsonLocation": "/package.json"
-      }
-    ]
-  }
+        "packageJsonLocation": "/package.json",
+      },
+    ],
+  },
 }

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import ROUTE_WEB from '../route.constants';
 import Layout from '../layouts/layout';
-import { useScrollTop } from '~shared-utils';
+import { useScrollTop } from 'util-shared';
 
 const App = () => {
   useScrollTop();

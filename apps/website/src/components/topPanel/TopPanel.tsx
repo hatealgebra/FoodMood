@@ -6,7 +6,7 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { Flex, Spacer, HStack, Box, Link, IconButton } from '@chakra-ui/react';
 
 import { FiMenu } from 'react-icons/fi';
-import { Logo, MobileMenu, ModalContact, TabletMenu } from '~shared-ui';
+import { Logo, MobileMenu, ModalContact, TabletMenu } from 'ui-shared';
 import { Link as RouterLink } from 'react-router-dom';
 import ROUTE_WEB from '../../route.constants';
 

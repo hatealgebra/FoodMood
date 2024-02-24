@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Box, Link, SimpleGrid } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import * as routeConstClass from '~constants/router.constants';
-import useHover from '~hooks/useHover';
+import { useHover } from 'ui-shared';
 
 // Hovering is done through the component styling from chakra UI
 
@@ -73,10 +72,10 @@ const AppNavbar = () => {
           activeNav === APP_HOME_PAGE
             ? '1/2'
             : activeNav === APP_SEARCH_PAGE
-            ? '2/3'
-            : activeNav === APP_FAVOURITES_PAGE
-            ? '3/4'
-            : '4/5'
+              ? '2/3'
+              : activeNav === APP_FAVOURITES_PAGE
+                ? '3/4'
+                : '4/5'
         }
       />
     </SimpleGrid>

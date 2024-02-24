@@ -6,7 +6,7 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react';
-import { Section } from '~shared-ui';
+import { Section } from 'ui-shared';
 
 import pastaWShells from '../../assets/images/presentation/pasta_w_shells.png';
 import tomatoSalad from '../../assets/images/presentation/tomato-salad.png';

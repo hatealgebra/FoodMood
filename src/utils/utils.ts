@@ -1,8 +1,8 @@
-import { IRecipe, SORT_RECIPES_BY } from 'shared-types';
+import { IRecipe, SORT_RECIPES_BY } from 'util-types';
 
 export const sortRecipesBy = (
   recipes: IRecipe[],
-  sortBy: typeof SORT_RECIPES_BY
+  sortBy: typeof SORT_RECIPES_BY,
 ) => {
   return recipes.sort((prev, next) => {
     const prevCalServing = prev.calories / prev.yield;

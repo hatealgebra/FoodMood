@@ -9,7 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { Section } from '~shared-ui';
+import { Section } from 'ui-shared';
 
 import heroSection from '../../assets/images/presentation/heroSection.svg';
 import biggerHeroSection from '../../assets/images/presentation/bigger_hero_section.svg';

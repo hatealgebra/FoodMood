@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { theme } from '~shared-ui';
+import { theme } from 'ui-shared';
 import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 

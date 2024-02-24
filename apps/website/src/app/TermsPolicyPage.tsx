@@ -1,6 +1,6 @@
 import { Heading, Text } from '@chakra-ui/react';
 import BlogLayout from '../layouts/blog.layout';
-import { Section } from '~shared-ui';
+import { Section } from 'ui-shared';
 
 const TermsPage = () => {
   return (

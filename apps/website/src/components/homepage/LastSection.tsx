@@ -6,7 +6,7 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
-import { Section } from '~shared-ui';
+import { Section } from 'ui-shared';
 
 import englishBreakfast from '../../assets/images/presentation/english_breakfast.svg';
 import runningMan from '../../assets/images/presentation/running_man.svg';

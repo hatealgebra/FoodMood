@@ -11,7 +11,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { GrInstagram, GrLinkedin } from 'react-icons/gr';
 import { BiCopyright } from 'react-icons/bi';
-import { CustomIcon, Logo } from '~shared-ui';
+import { CustomIcon, Logo } from 'ui-shared';
 import ROUTE_WEB from '../../route.constants';
 
 // TODO fix Nav list menu

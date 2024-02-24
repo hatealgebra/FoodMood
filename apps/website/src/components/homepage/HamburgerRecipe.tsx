@@ -7,7 +7,7 @@ import {
   Box,
   Text,
 } from '@chakra-ui/react';
-import { Section } from '~shared-ui';
+import { Section } from 'ui-shared';
 
 import hamburgerDeconstruct from '../../assets/images/presentation/hamburger_deconstructed.jpg';
 
