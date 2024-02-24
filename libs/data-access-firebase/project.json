@@ -34,7 +34,7 @@
     "emulator": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd libs/data-access-firebase &&  firebase emulators:start --import ./src/mocks/firebase --export-on-exit ./src/mocks/firebase --project=food-mood-a535d"
+        "command": "cd libs/data-access-firebase && firebase emulators:start --import ./src/mocks --export-on-exit ./src/mocks --project=food-mood-a535d"
       }
     }
   },
