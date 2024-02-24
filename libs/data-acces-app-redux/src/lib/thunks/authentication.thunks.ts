@@ -12,37 +12,35 @@ import {
   setPersistence,
   browserSessionPersistence,
   browserLocalPersistence,
-} from "@firebase/auth";
-import { createAsyncThunk, current } from "@reduxjs/toolkit";
+} from '@firebase/auth';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { CreateUserProps, LoginCredentials } from "~types/async.types";
+import { createStandaloneToast } from '@chakra-ui/react';
+import { setDoc } from 'firebase/firestore';
+import { theme } from 'ui-shared';
+import { LoginCredentials } from 'util-types';
+import { showToast } from 'util-shared';
 
-import showToast from "~helpers/toast.helpers";
-import themeDefault from "~particles/themeDefault";
-import { createStandaloneToast } from "@chakra-ui/react";
-import { setDoc } from "firebase/firestore";
-import { userRef } from "~services/firebase/firestoreRefs.services";
-
-const { toast } = createStandaloneToast({ theme: themeDefault });
+const { toast } = createStandaloneToast({ theme });
 
 export const loginUser = createAsyncThunk<
   any,
   LoginCredentials,
   { rejectValue: Error }
->("user/login", async (credentials: LoginCredentials, thunkApi) => {
+>('user/login', async (credentials: LoginCredentials, thunkApi) => {
   const { email, psw } = credentials;
   const auth = getAuth();
   setPersistence(auth, browserLocalPersistence)
     .then(async () => {
       await signInWithEmailAndPassword(auth, email, psw);
-      showToast("Logged in", "User was successfully logged in.", "success");
+      showToast('Logged in', 'User was successfully logged in.', 'success');
     })
     .catch((error) => {
       console.log(error);
-      const name = "Incorrect login.";
+      const name = 'Incorrect login.';
       const message =
         "Login does not match. Either email doesn't exist or password is incorrect.";
-      showToast(name, message, "error");
+      showToast(name, message, 'error');
       return thunkApi.rejectWithValue({
         name,
         message,
@@ -67,7 +65,7 @@ export const createUser = createAsyncThunk<
   any,
   CreateUserProps,
   { rejectValue: Error }
->("user/register", async (credentials: CreateUserProps, thunkApi) => {
+>('user/register', async (credentials: CreateUserProps, thunkApi) => {
   const { email, psw, name } = credentials;
   try {
     const userData = await createUserWithEmailAndPassword(
@@ -81,11 +79,11 @@ export const createUser = createAsyncThunk<
     const { currentUser } = getAuth();
     if (currentUser !== null) {
       toast({
-        title: "ACCOUNT REGISTERED!",
+        title: 'ACCOUNT REGISTERED!',
         description:
-          "Your account was sucesfully created. Please login to proceed",
-        status: "success",
-        position: "top",
+          'Your account was sucesfully created. Please login to proceed',
+        status: 'success',
+        position: 'top',
         duration: 3500,
       });
 
@@ -95,20 +93,20 @@ export const createUser = createAsyncThunk<
     console.log(err);
     if (err.message.match(/email-already-in-use/gi)) {
       showToast(
-        "Email exists",
-        "This email is already in the use, please select different email. Thank you",
-        "error"
+        'Email exists',
+        'This email is already in the use, please select different email. Thank you',
+        'error'
       );
       return thunkApi.rejectWithValue({
-        name: "Email exists",
+        name: 'Email exists',
         message:
-          "This email is already in the use, please select different email. Thank you",
+          'This email is already in the use, please select different email. Thank you',
       });
     } else {
       return thunkApi.rejectWithValue({
-        name: "Something went wrong",
+        name: 'Something went wrong',
         message:
-          "There was an error. Please try later. If problem persist, please, contact us",
+          'There was an error. Please try later. If problem persist, please, contact us',
       });
     }
   }
@@ -118,7 +116,7 @@ export const updateUser = createAsyncThunk<
   void,
   Partial<User>,
   { rejectValue: Error }
->("user/updateProfile", async (user, thunkApi) => {
+>('user/updateProfile', async (user, thunkApi) => {
   const { currentUser } = getAuth();
   const { displayName, photoURL } = user;
   try {
@@ -129,12 +127,12 @@ export const updateUser = createAsyncThunk<
       });
   } catch (e) {
     showToast(
-      "Something went wrong",
+      'Something went wrong',
       "User couldn't be update. Try later or contact admin",
-      "error"
+      'error'
     );
     return thunkApi.rejectWithValue({
-      name: "Something went wrong.",
+      name: 'Something went wrong.',
       message: "Message couldn't be update. Try later or contact admin.",
     });
   }
@@ -144,21 +142,21 @@ export const signOutUser = createAsyncThunk<
   boolean,
   null,
   { rejectValue: Error }
->("user/signOut", async (_, thunkApi) => {
+>('user/signOut', async (_, thunkApi) => {
   try {
     await signOut(getAuth());
     showToast(
-      "Signed Out",
-      "You were succesfuly signed out from the app.",
-      "info"
+      'Signed Out',
+      'You were succesfuly signed out from the app.',
+      'info'
     );
     return true;
   } catch (e) {
-    showToast("Something went wrong", "Please try again later.", "error");
+    showToast('Something went wrong', 'Please try again later.', 'error');
     return thunkApi.rejectWithValue({
-      name: "Something went wrong!",
+      name: 'Something went wrong!',
       message:
-        "There was problem with signing the user out. Please try refresh.",
+        'There was problem with signing the user out. Please try refresh.',
     });
   }
 });
@@ -167,7 +165,7 @@ export const deleteUserAcc = createAsyncThunk<
   void,
   User | null,
   { rejectValue: Error }
->("user,deleteUser", async (user, thunkApi) => {
+>('user,deleteUser', async (user, thunkApi) => {
   if (user) {
     const { uid } = user;
     // const userRef = doc(dbFirestore, "users", uid);
@@ -176,15 +174,15 @@ export const deleteUserAcc = createAsyncThunk<
       // await deleteDoc(userRef);
     } catch (e) {
       return thunkApi.rejectWithValue({
-        name: "Something went wrong",
+        name: 'Something went wrong',
         message:
-          "User is not probably in the system. Try to refresh browser or contact admin.",
+          'User is not probably in the system. Try to refresh browser or contact admin.',
       });
     }
   } else {
     return thunkApi.rejectWithValue({
-      name: "No user entity",
-      message: "No current user is logged in",
+      name: 'No user entity',
+      message: 'No current user is logged in',
     });
   }
 });

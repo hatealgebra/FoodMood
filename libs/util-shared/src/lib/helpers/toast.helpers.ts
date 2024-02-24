@@ -1,4 +1,5 @@
 import { UseToastOptions, createStandaloneToast } from '@chakra-ui/react';
+import { theme } from 'ui-shared';
 
 const DURATION = 3000;
 

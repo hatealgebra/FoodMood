@@ -1,61 +1,50 @@
-import { User } from "@firebase/auth";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { User } from '@firebase/auth';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  deleteDoc,
-  DocumentData,
-  getDoc,
-  getDocs,
-  setDoc,
-} from "firebase/firestore";
+  readSavedRecipesDB,
+  removeSavedRecipeDB,
+  saveRecipeDB,
+} from 'data-access-firebase';
 
-import {
-  getRecipeRef,
-  savedRecipesRef,
-} from "~services/firebase/firestoreRefs.services";
-
-import Recipe from "~types/recipe.types";
-
-// CREATE operations
-// export const saveReci;
+import { IRecipe } from 'util-types';
 
 // READ operations
 export const readSavedRecipes = createAsyncThunk<
-  Recipe[],
+  IRecipe[],
   string,
   { rejectValue: Error }
->("CRUD/read realtime", async (uid, thunkApi) => {
+>('CRUD/read realtime', async (uid, thunkApi) => {
   try {
-    const recipeDocs = await getDocs(savedRecipesRef(uid));
-    return recipeDocs.docs.map((doc) => doc.data() as Recipe);
+    const savedRecipes = await readSavedRecipesDB(uid);
+    return savedRecipes;
   } catch (e) {
     return thunkApi.rejectWithValue({
       name: "Cant't reach saved recipes",
       message:
-        "Something went wrong and we cannot now show your saved recipes. If problem persist, please contact admin.",
+        'Something went wrong and we cannot now show your saved recipes. If problem persist, please contact admin.',
     });
   }
 });
 
 export interface SaveRecipeArgs {
   uid: string | null;
-  recipe: Recipe;
+  recipe: IRecipe;
 }
 
 // CREATE operations
-export const saveRecipe = createAsyncThunk<
+export const SavedRecipe = createAsyncThunk<
   any,
   SaveRecipeArgs,
   { rejectValue: Error }
->("CRUD/saveRecipe", async ({ uid, recipe }, thunkApi) => {
-  const { label } = recipe;
+>('CRUD/saveRecipe', async ({ uid, recipe }, thunkApi) => {
   try {
-    uid && (await setDoc(getRecipeRef(uid, label), recipe));
+    await saveRecipeDB(uid!, recipe);
     return recipe;
   } catch (e) {
     return thunkApi.rejectWithValue({
-      name: "Recipe was not saved",
+      name: 'Recipe was not saved',
       message:
-        "There was an error when saving the recipe. Maybe the recipe is incorrect or already saved.",
+        'There was an error when saving the recipe. Maybe the recipe is incorrect or already saved.',
     });
   }
 });
@@ -72,14 +61,14 @@ export const removeSavedRecipe = createAsyncThunk<
   RemoveSavedRecipesArgs,
   { rejectValue: Error }
 >(
-  "CRUD/remove recipe",
+  'CRUD/remove recipe',
   async ({ uid, label }: RemoveSavedRecipesArgs, thunkApi) => {
     try {
-      await deleteDoc(getRecipeRef(uid, label));
+      await removeSavedRecipeDB(uid, label);
       return label;
     } catch (e) {
       return thunkApi.rejectWithValue({
-        name: "Cannot remove recipe",
+        name: 'Cannot remove recipe',
         message:
           "Oops. Recipe couldn't be removed. Check if it is in the saved recipes, otherwise contact admin.",
       });

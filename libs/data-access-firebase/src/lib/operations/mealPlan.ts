@@ -3,7 +3,7 @@ import { getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import mapValues from 'lodash/mapValues';
 import { TFoodTime } from 'util-types';
 
-export const getPlan = async (uid: string, dateKey: string) => {
+export const getPlanDB = async (uid: string, dateKey: string) => {
   const mealPlanRef = getMealPlanDateRef(uid, dateKey);
   const mealPlanData = (await getDoc(mealPlanRef)).data();
 
@@ -14,14 +14,23 @@ export const getPlan = async (uid: string, dateKey: string) => {
     const recipeData = (await getDoc(value)).data();
     return recipeData;
   });
-  return mappedMeals;
+  return (
+    mappedMeals || {
+      date: dateKey,
+      mealPlan: {
+        breakfast: {},
+        lunch: {},
+        dinner: {},
+      },
+    }
+  );
 };
 
 export const addPlan = async (
   uid: string,
   currentDate: string,
   mealType: TFoodTime,
-  recipeLabel: string,
+  recipeLabel: string
 ) => {
   const recipeRef = getRecipeRef(uid, recipeLabel);
   const targetRef = getMealPlanDateRef(uid, currentDate!);
@@ -36,7 +45,7 @@ export const addPlan = async (
 export const removeRecipeFromPlan = async (
   uid: string,
   currentDate,
-  mealType: TFoodTime,
+  mealType: TFoodTime
 ) => {
   const targetRef = getMealPlanDateRef(uid, currentDate!);
   await updateDoc(targetRef, { [mealType]: {} });

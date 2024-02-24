@@ -1,10 +1,9 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getRecipes } from "../../services/edamam/endpoints";
-import { FetchRecipesError } from "../../types/async.types";
-import { Hit } from "../../types/recipe.types";
-import { arrayUnion, updateDoc } from "firebase/firestore";
-import { searchHistoryRef } from "~services/firebase/firestoreRefs.services";
-import { getAuth } from "@firebase/auth";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { arrayUnion, updateDoc } from 'firebase/firestore';
+
+import { getAuth } from '@firebase/auth';
+import { FetchRecipesError, IHit } from 'util-types';
 
 /**
  * Thunk function created with crateAsyncThunk
@@ -18,10 +17,10 @@ import { getAuth } from "@firebase/auth";
  *
  */
 export const fetchRecipes = createAsyncThunk<
-  Hit[],
+  IHit[],
   string,
   { rejectValue: FetchRecipesError }
->("searchRecipes/fetch", async (query: string, thunkApi) => {
+>('searchRecipes/fetch', async (query: string, thunkApi) => {
   const trimmedQuery = query.trim();
   try {
     const recipesResponse = await getRecipes(trimmedQuery);
@@ -30,9 +29,9 @@ export const fetchRecipes = createAsyncThunk<
     return recipesData;
   } catch (e) {
     return thunkApi.rejectWithValue({
-      name: "No data avalaible",
+      name: 'No data avalaible',
       message:
-        "Very possible there is problem with external service. Please try later or contact admin of the page.",
+        'Very possible there is problem with external service. Please try later or contact admin of the page.',
     });
   }
 });
@@ -41,7 +40,7 @@ export const searchRecipesThunk = createAsyncThunk<
   { query: string; hits: Hit[] },
   string,
   { rejectValue: Error }
->("recipes/search", async (query: string, thunkApi) => {
+>('recipes/search', async (query: string, thunkApi) => {
   try {
     const searchResponse = await getRecipes(query);
     const { hits } = searchResponse.data;
@@ -58,6 +57,6 @@ export const searchRecipesThunk = createAsyncThunk<
     return { query, hits };
   } catch (err) {
     console.log(err);
-    return thunkApi.rejectWithValue({ name: "Error", message: "hallo" });
+    return thunkApi.rejectWithValue({ name: 'Error', message: 'hallo' });
   }
 });
