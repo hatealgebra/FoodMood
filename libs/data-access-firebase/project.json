@@ -24,6 +24,18 @@
           "codeCoverage": true
         }
       }
+    },
+    "init": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd libs/data-access-firebase && firebase init"
+      }
+    },
+    "emulator": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd libs/data-access-firebase &&  firebase emulators:start --import ./src/mocks/firebase --export-on-exit ./src/mocks/firebase --project=food-mood-a535d"
+      }
     }
   },
   "tags": []
