@@ -6,14 +6,6 @@ import NextLink from 'next/link';
 
 import * as routeConstantClass from '~constants/router.constants';
 
-import FormikInput from '~atoms/input/Input';
-
-import { useAppDispatch } from '~store/hooks';
-import { createUser } from '~store/thunks/authentication.thunks';
-import { IFieldInput } from '~types/utils.types';
-import { useRouter } from 'next/navigation';
-import * as routerConstantClass from '~constants/router.constants';
-
 const validate = (values: SignupFormValues): SignupFormValues => {
   const passwordRegEx = new RegExp(
     '^(?=.*[A-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]{8,20}$',
