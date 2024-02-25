@@ -1,6 +1,6 @@
 import { VStack } from '@chakra-ui/react';
-import FormikInput, { FormikInputProps } from './Input';
-import TextField from './Input';
+import FormikInput, { FormikInputProps } from './FormikInput';
+import TextField from './FormikInput';
 import { BsSearch } from 'react-icons/bs';
 import { StoryFn as Story } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';

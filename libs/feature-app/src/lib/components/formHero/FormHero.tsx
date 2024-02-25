@@ -11,7 +11,10 @@ import {
 import NextImage from 'next/image';
 
 import { FcGoogle } from 'react-icons/fc';
-import { FormContainer } from 'ui-shared';
+import { CustomDivider } from 'ui-shared';
+import SignupForm from '../forms/SignupForm';
+import LoginForm from '../forms/LoginForm';
+import FormContainer from '../formContainer/FormContainer';
 
 const loginGoogleUnavalaible = () => {
   const { toast } = createStandaloneToast();
@@ -24,6 +27,11 @@ const loginGoogleUnavalaible = () => {
     isClosable: true,
   });
 };
+
+interface FormHeroProps {
+  variant: 'login' | 'signup';
+  imageSrc: string;
+}
 
 const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
   return (
@@ -78,10 +86,4 @@ const FormHero = ({ variant, imageSrc }: FormHeroProps) => {
     </FormContainer>
   );
 };
-
-interface FormHeroProps {
-  variant: 'login' | 'signup';
-  imageSrc: string;
-}
-
 export default FormHero;

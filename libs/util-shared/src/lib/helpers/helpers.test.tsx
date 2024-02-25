@@ -1,48 +1,51 @@
-import React from "react";
+import React from 'react';
 
-import { Heading, Text } from "@chakra-ui/react";
-import { render, screen, waitFor } from "@testing-library/react";
-import { getAuth } from "firebase/auth";
-import store from "../../store/store";
-import { showError, showSuccess } from "./toast.helpers";
-import { renderComponent } from "./testing.helpers";
-import { SetUserData } from "./storybook.helpers";
-import { Provider } from "react-redux";
+import { Heading, Text } from '@chakra-ui/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import { getAuth } from 'firebase/auth';
+import store from '../../store/store';
+import {
+  showError,
+  showSuccess,
+} from '../../../../feature-app/src/lib/helpers/toast.helpers';
+import { renderComponent } from './testing.helpers';
+import { SetUserData } from '../../../../feature-app/src/lib/helpers/storybook.helpers';
+import { Provider } from 'react-redux';
 
 const mockError = {
-  name: "Error name",
-  message: "Description of mock error.",
+  name: 'Error name',
+  message: 'Description of mock error.',
 };
 
 const MockComponent = () => {
   return (
     <>
       <Heading as="h2">Hello world</Heading>
-      <Text>{store && "Store is here."}</Text>
+      <Text>{store && 'Store is here.'}</Text>
     </>
   );
 };
-describe("Message helpers", () => {
-  test("Error msg", async () => {
+describe('Message helpers', () => {
+  test('Error msg', async () => {
     const error = await showError(mockError);
     expect(error).toBe(1);
   });
-  test("Success msg", async () => {
+  test('Success msg', async () => {
     const success = await showSuccess(
-      "Success title",
-      "Description of succes msg"
+      'Success title',
+      'Description of succes msg',
     );
     expect(success).toBe(2);
   });
 });
 
-describe("Testing helpers/renderComponent", () => {
+describe('Testing helpers/renderComponent', () => {
   beforeEach(() => renderComponent(<MockComponent />));
-  test("correct component", () => {
-    const heading = screen.getByRole("heading", { name: "Hello world" });
+  test('correct component', () => {
+    const heading = screen.getByRole('heading', { name: 'Hello world' });
     expect(heading).toBeInTheDocument();
   });
-  test("store provided", () => {
+  test('store provided', () => {
     const storeText = screen.getByText(/store is here/i);
     expect(storeText).toBeInTheDocument();
   });

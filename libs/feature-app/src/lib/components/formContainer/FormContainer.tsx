@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 const FormContainer = ({ children }: FormContainerProps) => {
   return (

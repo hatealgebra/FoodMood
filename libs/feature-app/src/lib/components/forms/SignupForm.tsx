@@ -1,18 +1,10 @@
-import React from 'react';
-
 import { Field, Form, Formik, FormikFormProps } from 'formik';
 import { Box, Button, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
-
-import * as routeConstantClass from '~constants/router.constants';
-
-import FormikInput from '~atoms/input/Input';
-
-import { useAppDispatch } from '~store/hooks';
-import { createUser } from '~store/thunks/authentication.thunks';
-import { IFieldInput } from '~types/utils.types';
-import { useRouter } from 'next/navigation';
-import * as routerConstantClass from '~constants/router.constants';
+import { createUser, useAppDispatch } from 'data-access-app-redux';
+import { useRouter } from 'next/router';
+import { ROUTES_APP } from '../../route.constants';
+import { FormikInput } from 'ui-shared';
 
 const validate = (values: SignupFormValues): SignupFormValues => {
   const passwordRegEx = new RegExp(
@@ -63,7 +55,7 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
         values: { email, name, password: '', passwordAgain: '' },
       });
     }
-    return router.push(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
+    return router.push(ROUTES_APP.HOME_PAGE.path);
   };
 
   return (
@@ -133,7 +125,7 @@ const SignupForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
                 Already have an account?
                 <Link
                   as={NextLink}
-                  href={routeConstantClass.ROUTE_WEB.LOGIN_PAGE}
+                  href={ROUTES_APP.SIGNIN_PAGE.path}
                   mx={1}
                   variant="classic"
                 >

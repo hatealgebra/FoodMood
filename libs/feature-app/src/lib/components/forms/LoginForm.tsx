@@ -1,19 +1,15 @@
 'use client';
-import React from 'react';
 import 'firebase/auth';
 
 import { Formik, Field, Form, FormikProps } from 'formik';
 import { Button, Link, Text, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { loginUser } from '~store/thunks/authentication.thunks';
-
-import * as routerConstantClass from '~constants/router.constants';
-import { useAppDispatch } from '~store/hooks';
-import { IFieldInput } from '~types/utils.types';
-import FormikInput from 'src/components/atoms/input/Input';
-import { LoginCredentials } from '~types/async.types';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
+import { loginUser, useAppDispatch } from 'data-access-app-redux';
+import { LoginCredentials } from 'util-types';
+import { ROUTES_APP } from '../../route.constants';
+import { FormikInput, FormikInputProps } from 'ui-shared';
 
 const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
   const dispatch = useAppDispatch();
@@ -29,7 +25,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
 
     try {
       await dispatch(loginUser({ email, psw }));
-      return router.push(routerConstantClass.ROUTE_APP.APP_HOME_PAGE);
+      return router.push(ROUTES_APP.HOME_PAGE.path);
     } catch (e) {
       console.log(e);
     } finally {
@@ -48,7 +44,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
         <Form aria-label="login-form">
           <VStack spacing={3}>
             <Field name="email">
-              {({ field, form }: IFieldInput) => (
+              {({ field }: FormikInputProps) => (
                 <FormikInput
                   isRequired
                   field={field}
@@ -59,7 +55,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
               )}
             </Field>
             <Field name="psw">
-              {({ field, form }: IFieldInput) => (
+              {({ field }: FormikInputProps) => (
                 <FormikInput
                   isRequired
                   field={field}
@@ -80,7 +76,7 @@ const LoginForm = ({ onSubmit }: { onSubmit?: (values: any) => void }) => {
               Not registered yet?
               <Link
                 as={NextLink}
-                href={routerConstantClass.ROUTE_WEB.REGISTER_PAGE}
+                href={ROUTES_APP.SIGNUP_PAGE.path}
                 mx={1}
                 variant="classic"
               >

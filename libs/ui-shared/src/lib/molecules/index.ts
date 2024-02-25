@@ -4,7 +4,6 @@ export { default as SearchBanner } from './banner/SearchBanner';
 export { default as PreferencesBanner } from './banner/PreferencesBanner';
 export { default as DishPlan } from './dishPlan/DishPlan';
 export { default as Dropdown } from './dropdown/Dropdown';
-export { default as FormContainer } from './formContainer/FormContainer';
 export { default as MobileMenu } from './mobileMenu/MobileMenu';
 export { default as ModalContact } from './modalContact/ModalContact';
 export { default as RecipeCard } from './recipeCard/RecipeCard';

@@ -1,5 +1,6 @@
 import { Meta, StoryFn as Story } from '@storybook/react';
 import ModalFavourites, { ModalFavouritesProps } from './ModalFavourites';
+
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
 const Template: Story<ModalFavouritesProps> = (args) => (
