@@ -1,4 +1,3 @@
-import { User } from '@firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   readSavedRecipesDB,
@@ -32,7 +31,7 @@ export interface SaveRecipeArgs {
 }
 
 // CREATE operations
-export const SavedRecipe = createAsyncThunk<
+export const saveRecipe = createAsyncThunk<
   any,
   SaveRecipeArgs,
   { rejectValue: Error }
@@ -73,5 +72,5 @@ export const removeSavedRecipe = createAsyncThunk<
           "Oops. Recipe couldn't be removed. Check if it is in the saved recipes, otherwise contact admin.",
       });
     }
-  }
+  },
 );

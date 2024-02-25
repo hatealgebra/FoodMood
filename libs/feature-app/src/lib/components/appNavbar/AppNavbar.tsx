@@ -5,25 +5,28 @@ import NextLink from 'next/link';
 
 import { useHover } from 'ui-shared';
 import { ROUTES_APP } from '../../route.constants';
+import { usePathname } from 'next/navigation';
+import path from 'path';
 // Hovering is done through the component styling from chakra UI
 
 const AppNavbar = () => {
   const [ref, value] = useHover();
-  const [activeNav, setActiveNav] = useState<string>(window.location.pathname);
+  const pathname = usePathname();
+
+  console.log(pathname);
   const NavbarLink = ({ url, children }: NavbarLinkProps) => {
     return (
       <Link
         variant="appNav"
-        onClick={() => setActiveNav(url)}
         as={NextLink}
         w="100px"
         href={url}
         ref={ref}
         sx={{
-          color: url === activeNav ? 'white' : 'black',
+          color: url === pathname ? 'white' : 'black',
           '&:hover': {
             textDecorationColor: 'primary.500',
-            textDecoration: url === activeNav ? 'none' : 'underline',
+            textDecoration: url === pathname ? 'none' : 'underline',
           },
         }}
         color="mono.500"
@@ -49,7 +52,9 @@ const AppNavbar = () => {
       m="5px 0"
     >
       {Object.values(ROUTES_APP).map((route) => (
-        <NavbarLink url={route.path}>{route.name}</NavbarLink>
+        <NavbarLink key={route.path} url={route.path}>
+          {route.name}
+        </NavbarLink>
       ))}
       <Box
         position="absolute"

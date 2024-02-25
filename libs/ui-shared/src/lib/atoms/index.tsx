@@ -4,6 +4,7 @@ export { default as CustomDivider } from './customDivider/CustomDivider';
 export { default as CustomIcon } from './customIcon/CustomIcon';
 export { default as DayButton } from './dayButton/DayButton';
 export { default as List } from './list/List';
+export * from './formikInput/formikInput';
 export { default as Logo } from './logo/Logo';
 export { default as Overline } from './overLine/Overline';
 export { default as RadioBtn } from './radio/RadioBtn';

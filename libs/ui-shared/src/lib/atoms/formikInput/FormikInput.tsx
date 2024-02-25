@@ -10,7 +10,20 @@ import {
   InputLeftElement,
 } from '@chakra-ui/react';
 
-const FormikInput = ({
+export interface FormikInputProps {
+  label?: string;
+  placeholder?: string;
+  icon?: ReactElement;
+  type: 'password' | 'email' | 'text';
+  field?: object;
+  form?: object;
+  id: string;
+  isRequired?: boolean;
+  isInvalid?: boolean;
+  isDisabled?: boolean;
+}
+
+export const FormikInput = ({
   label,
   type,
   placeholder,
@@ -56,18 +69,5 @@ const FormikInput = ({
     </FormControl>
   );
 };
-
-export interface FormikInputProps {
-  label?: string;
-  placeholder?: string;
-  icon?: ReactElement;
-  type: 'password' | 'email' | 'text';
-  field?: object;
-  form?: object;
-  id: string;
-  isRequired?: boolean;
-  isInvalid?: boolean;
-  isDisabled?: boolean;
-}
 
 export default FormikInput;

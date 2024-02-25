@@ -1,33 +1,26 @@
-"use client";
+'use client';
 
-import { Box, Text, Wrap } from "@chakra-ui/react";
-import { Field, Form, Formik, FormikHelpers, FormikProps } from "formik";
-
-import AppSection from "~molecules/appSection/AppSection";
-
-import FormikInput from "~atoms/input/Input";
-import Dropdown from "~molecules/dropdown/Dropdown";
-import RecipeCard from "~molecules/recipeCard/RecipeCard";
-
-import { BsSearch } from "react-icons/bs";
-import { useAppDispatch, useAppSelector } from "~store/hooks";
+import { Box, Text, Wrap } from '@chakra-ui/react';
 import {
-  sortRecipes,
+  searchRecipesThunk,
   selectSearchedRecipes,
-  selectSearchedRecipesStatus,
   selectSearchedRecipesError,
   selectSearchedRecipesQuery,
-} from "~store/slices/searchedRecipesSlice";
-import Recipe from "~types/recipe.types";
-import { searchRecipesThunk } from "~store/thunks/edamamRecipe.thunk";
-import AlertBox from "~atoms/alertBox/AlertBox";
-import useSortRecipes from "~hooks/useSortRecipes";
-import { IFieldInput } from "~types/utils.types";
+  selectSearchedRecipesStatus,
+  sortRecipes,
+  useAppDispatch,
+  useAppSelector,
+  useSortRecipes,
+} from 'data-access-app-redux';
+import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik';
+
+import { BsSearch } from 'react-icons/bs';
+import { AppSection, FormikInput, FormikInputProps } from 'ui-shared';
 
 //  TODO: Create searched slice, so data can persist when switching router URL's
 // ? Maybe create search form for next time
 const SearchPage = () => {
-  const initialValues: SearchFormValue = { querySearch: "" };
+  const initialValues: SearchFormValue = { querySearch: '' };
   const dispatch = useAppDispatch();
 
   const searchQuery = useAppSelector(selectSearchedRecipesQuery);
@@ -39,7 +32,7 @@ const SearchPage = () => {
 
   const onSubmit = (
     values: SearchFormValue,
-    actions: FormikHelpers<SearchFormValue>
+    actions: FormikHelpers<SearchFormValue>,
   ) => {
     searchQuery !== values.querySearch &&
       dispatch(searchRecipesThunk(values.querySearch));
@@ -49,7 +42,7 @@ const SearchPage = () => {
   const validateSearchForm = (values: SearchFormValue): SearchFormValue => {
     const errors = {} as SearchFormValue;
     if (!values.querySearch.trim()) {
-      errors.querySearch = "Input cannot be empty!";
+      errors.querySearch = 'Input cannot be empty!';
     }
     return errors;
   };
@@ -65,10 +58,10 @@ const SearchPage = () => {
           {(props: FormikProps<any>) => (
             <Form aria-label="login-form" autoComplete="off">
               <Field name="querySearch">
-                {({ field, form }: IFieldInput) => (
+                {({ field, form }: FormikInputProps) => (
                   <FormikInput
                     field={field}
-                    isDisabled={recipesStatus === "loading" ? true : false}
+                    isDisabled={recipesStatus === 'loading' ? true : false}
                     id="searchRecipe"
                     type="text"
                     icon={<BsSearch />}
@@ -84,8 +77,8 @@ const SearchPage = () => {
       </AppSection>
       <AppSection
         yAxisMinus
-        hideHeading={searchQuery === "" || recipesData === []}
-        headingOne={(recipesData.length !== 0 && "Results for:") || null}
+        hideHeading={searchQuery === '' || recipesData === []}
+        headingOne={(recipesData.length !== 0 && 'Results for:') || null}
         fullWidth
       >
         {recipesData.length > 0 ? (
@@ -94,7 +87,7 @@ const SearchPage = () => {
               fontFamily="heading"
               fontSize="3xl"
               fontWeight="black"
-              sx={{ "& > *": { display: "inline" } }}
+              sx={{ '& > *': { display: 'inline' } }}
               textTransform="capitalize"
             >
               <Box color="primary.500">`</Box>
@@ -110,7 +103,7 @@ const SearchPage = () => {
               />
             </Box>
           </>
-        ) : recipesStatus !== "loading" ? (
+        ) : recipesStatus !== 'loading' ? (
           <Text
             textAlign="center"
             fontSize="xl"
@@ -121,14 +114,14 @@ const SearchPage = () => {
             Please type something to search.
           </Text>
         ) : (
-          ""
+          ''
         )}
         <Wrap width="100%" spacing="15px">
-          {recipesStatus === "loading" ? (
+          {recipesStatus === 'loading' ? (
             [...Array(20)].map((_, i) => (
               <RecipeCard imageSource={null} key={i} isLoading allData />
             ))
-          ) : recipesData === [] && searchQuery !== "" ? (
+          ) : recipesData === [] && searchQuery !== '' ? (
             <Text
               textAlign="center"
               fontSize="xl"

@@ -2,37 +2,46 @@
 
 import React from 'react';
 
-import { Box, VStack } from '@chakra-ui/react';
+import { Box, ChakraProvider, VStack } from '@chakra-ui/react';
 
 import Loading from './loading';
-import { useAuthChanged } from 'data-access-app-redux';
+import store, { useAuthChanged } from 'data-access-app-redux';
 import { Props } from 'next/script';
 import { AppNavbar } from 'feature-app';
-import { AppSection } from 'ui-shared';
+import { AppSection, theme } from 'ui-shared';
+import { Provider } from 'react-redux';
 
 interface AppPageProps {
   children: React.ReactNode;
 }
 
 const AppPage = ({ children }: AppPageProps) => {
-  const { isAuthenticating, user, router } = useAuthChanged();
+  // const { isAuthenticating, user, router } = useAuthChanged();
 
-  if (isAuthenticating) {
-    return <Loading />;
-  }
+  // if (isAuthenticating) {
+  // return <Loading />;
+  // }
 
-  if (!user) {
-    return router.push();
-  }
+  // if (!user) {
+  // return router.push();
+  // }
 
   return (
-    <VStack pb={20} minHeight="60vh">
-      <AppSection yAxisMinus hideHeading>
-        <AppNavbar />
-      </AppSection>
-      {children}
-      <ModalRecipe />
-    </VStack>
+    <html>
+      <body>
+        <ChakraProvider theme={theme}>
+          <Provider store={store}>
+            <VStack pb={20} minHeight="60vh">
+              <AppSection yAxisMinus hideHeading>
+                <AppNavbar />
+              </AppSection>
+              {children}
+              {/* <ModalRecipe /> */}
+            </VStack>
+          </Provider>
+        </ChakraProvider>
+      </body>
+    </html>
   );
 };
 
